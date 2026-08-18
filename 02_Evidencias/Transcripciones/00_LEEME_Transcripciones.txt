@@ -1,0 +1,103 @@
+======================================================================
+CARPETA DE TRANSCRIPCIONES ANONIMIZADAS — PROYECTO SIGA (ISR-401)
+Equipo FGMMN — Universidad Técnica Estatal de Quevedo
+Ubicación en el repositorio: 02_Evidencias/Transcripciones/  [Zona P]
+======================================================================
+
+FORMATO
+Archivos .txt en codificación UTF-8, conforme a la Guía y Rúbrica de la
+Entrega 3 (2A), Sección 8.4, que admite únicamente TXT o JSON para las
+transcripciones de la zona pública.
+
+NOMENCLATURA
+YYYY-MM-DD_TipoParticipante_CodigoParticipante_EV-XX_Transcripcion.txt
+
+RENUMERACIÓN DE LA SEGUNDA RONDA — RESUELVE COLISIÓN CON EL CATÁLOGO 1B
+El catálogo de evidencias de la Entrega 2 (1B) ya usaba los códigos EV-01
+a EV-07 para otras evidencias (documento de horario, video AS-IS de
+mantenimiento, documento de cámaras, etc.). Para evitar que dos
+evidencias distintas compartan el mismo identificador, la segunda ronda
+de campo se numera a partir de EV-08, tal como el propio ERS anticipa
+("las nuevas evidencias de campo EV-08 en adelante").
+
+Durante la verificación se detectó que dos de las once entrevistas
+recolectadas en esta ronda (las que inicialmente se etiquetaron como
+"EV01" y "EV02") son en realidad las MISMAS entrevistas ya registradas
+en el catálogo de 1B como EV-01 (Personal de Infraestructura y
+Mantenimiento, 14/05/2026) y EV-02 (30/06/2026) — mismo archivo, misma
+fecha. Por lo tanto:
+  - EV-01 y EV-02 CONSERVAN su código original de 1B (no se renumeran).
+  - Las restantes 9 entrevistas de la segunda ronda son evidencia
+    genuinamente nueva y se numeran EV-08 a EV-16.
+
+CORRECCIÓN PENDIENTE EN EL CATÁLOGO B.1 DEL ERS
+El catálogo de 1B declara a EV-02 como "Docente de la Facultad", pero la
+transcripción real de esa entrevista corresponde a COORD-01
+(Coordinación de carrera). Se confirmó con el equipo que el participante
+correcto es la coordinadora, no un docente. Esta corrección debe
+aplicarse al catálogo B.1 del ERS antes del cierre de la entrega.
+
+INVENTARIO — COBERTURA 11/11 (100 %)
+EV-01  2026-05-14  CONS-01   Video   Personal de servicios generales   (código heredado de 1B)
+EV-02  2026-06-30  COORD-01  Video   Coordinación de carrera            (código heredado de 1B;
+                                                                          catálogo B.1 debe corregirse:
+                                                                          decía "Docente")
+EV-08  2026-07-13  CONS-02   Video   Personal de servicios generales
+EV-09  2026-07-13  CONS-03   Video   Personal de servicios generales
+EV-10  2026-07-21  COORD-02  Video   Coordinación de carrera
+EV-11  2026-07-22  CONS-04   Video   Personal de servicios generales
+EV-12  2026-07-24  DOC-01    Video   Docente de la carrera
+EV-13  2026-07-27  DOC-02    Video   Docente de la carrera
+EV-14  2026-07-28  COORD-03  Audio   Coordinación de carrera
+EV-15  2026-07-29  DOC-03    Audio   Docente de la carrera
+EV-16  2026-07-30  DOC-04    Video   Docente de la carrera
+
+VERIFICACIÓN DEL MÍNIMO DE VIDEOS (Sección 4.2, acumulado 1B+2A)
+9 videos (EV-01, EV-02, EV-08, EV-09, EV-10, EV-11, EV-12, EV-13, EV-16),
+total = 146,5 min, media = 16,28 min. Cumple n≥8, media≥15min, total≥120min.
+Los audios EV-14 y EV-15 (solo audio, por petición de los participantes)
+se suman al mínimo de audios junto con los 9 audios extraídos de los
+videos anteriores.
+
+CRITERIO DE ANONIMIZACIÓN APLICADO
+1. Nombres propios del equipo entrevistador  -> [ENTREVISTADOR]
+2. Participante nombrado en voz alta          -> su código entre corchetes
+3. Terceros mencionados por su nombre         -> marcador de rol genérico
+   (p. ej. [PERSONAL DE SERVICIOS GENERALES], [PERSONAL DE TI])
+4. Cargos únicos e identificables             -> [AUTORIDAD DE LA FACULTAD] / [DECANATO]
+5. Los participantes se identifican únicamente por código (CONS, COORD, DOC).
+
+CORRECCIONES DE CODIFICACIÓN APLICADAS (histórico)
+- EV-03 (ahora EV-08): el participante figuraba como CONS-01; se corrigió a CONS-02.
+- EV-04 (ahora EV-09): el participante figuraba como CONS-04; se corrigió a CONS-03.
+- EV-08 (ahora EV-13): el participante figuraba como DOC-04; se corrigió a DOC-02.
+- EV-09 (ahora EV-14): el encabezado interno decía "Entrevista 08"; se corrigió a EV-09 (numeración
+  provisional de esa etapa) y luego a EV-14 en la renumeración final.
+- EV-05 y EV-06 (ahora EV-10 y EV-11): las etiquetas de hablante originales identificaban al
+  entrevistador por su nombre propio y a la persona participante solo por su rol sin código;
+  se normalizaron a los códigos COORD-02 y CONS-04 respectivamente.
+
+NOTA SOBRE EL CONTENIDO DE LAS INTERVENCIONES
+Las intervenciones de las personas participantes se conservan tal como
+fueron transcritas, sin corrección de estilo ni de gramática, para
+preservar la fidelidad al registro audiovisual original. Únicamente se
+han sustituido los datos identificables según el criterio anterior.
+======================================================================
+
+======================================================================
+CATÁLOGO COMPLETO DE EVIDENCIAS DEL PROYECTO (referencia cruzada)
+======================================================================
+Este archivo cubre solo las transcripciones. El catálogo completo de
+TODAS las evidencias del proyecto (EV-01 a EV-19) y su ubicación exacta
+en el repositorio se mantiene en un documento separado de control del
+equipo. En resumen, fuera de esta carpeta:
+
+EV-03  Cuestionario 1B (9 estudiantes) — histórico, no cuenta para 2A
+EV-04  Fotos de las sesiones EV-01/EV-02 (1B)          -> Fotos_Entorno/
+EV-05  Horario académico vigente (1B)                  -> Documentos_Organizacion/
+EV-06  Video AS-IS mantenimiento físico (1B)            -> 00_Restringido/
+EV-07  Documento evidencia sistema de cámaras (1B)      -> Documentos_Organizacion/
+EV-17  Cuestionario v2.0, 31 estudiantes (reiniciado)   -> Cuestionario/Respuestas/
+EV-18  Fotos de entorno de la segunda ronda             -> Fotos_Entorno/
+EV-19  Fotos de aplicación del cuestionario             -> Cuestionario/Fotos_Aplicacion/
+======================================================================

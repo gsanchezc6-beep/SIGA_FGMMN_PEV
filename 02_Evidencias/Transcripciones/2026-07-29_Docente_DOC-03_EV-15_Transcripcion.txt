@@ -1,0 +1,212 @@
+======================================================================
+TRANSCRIPCIÓN ANONIMIZADA — PROYECTO SIGA (ISR-401)
+Sistema Inteligente de Gestión de Aulas — Equipo FGMMN — UTEQ
+======================================================================
+Identificador de evidencia : EV-15
+Fecha de la sesión         : 2026-07-29
+Técnica de elicitación     : Entrevista semiestructurada
+Modalidad de registro      : Audio MP3 (sin video, por petición del participante)
+Código de participante     : DOC-03
+Perfil del participante    : Docente de la carrera
+Zona de evidencia          : [P] Pública (material anonimizado)
+Anonimización              : sin nombres propios; los cargos únicos y
+                             los terceros mencionados se sustituyen por
+                             marcadores genéricos entre corchetes.
+======================================================================
+
+Entrevista EV-15
+Entrevistador: Bueno, este... bueno, primero que todo, para presentarme. Soy [ENTREVISTADOR], de la Facultad de Ciencias de Computación. Eh, bueno, este proyecto consiste en, mediante el uso de las cámaras, detectar si un, este, un aula está sucia, está limpia. Eh, también pues revisará, este, que esté el aire esté encendido, esté apagado. Eh, puede encender y apagar el proyector, también regular la temperatura y detectar la humedad del curso. Ya. Este, bueno, las preguntas como tal para tener contextualización sobre usted serían: ¿Cuánto tiempo lleva dictando clases en la facultad?
+
+DOC-03: ¿En esta facultad?
+
+Entrevistador: En esta facultad, sí.
+
+DOC-03: Un año.
+
+Entrevistador: Un año, ya. ¿Y docencia en general?
+
+DOC-03: 21 años.
+
+Entrevistador: 21 años. Ok. Eh, ¿cuántas aulas o laboratorios distintos usa o ha usado en este semestre?
+
+DOC-03: Ninguno.
+
+Entrevistador: ¿Aulas? Ajá, aulas o laboratorios.
+
+DOC-03: Uno, dos... tres.
+
+Entrevistador: Tres, ya, listo. Eh, antes de dictar una clase, ¿qué es lo primero que revisa o le preocupa que esté en buen funcionamiento?
+
+DOC-03: Bueno, no me preocupa nada. Pero sí me gusta, que es otra cosa distinta.
+
+Entrevistador: Ah, claro.
+
+DOC-03: Me gusta que esté la pizarra limpia porque yo uso la pizarra. No soy tanto de proyector.
+
+Entrevistador: Que el, por ejemplo, el aire acondicionado esté en buenas condiciones, que esté frío el curso.
+
+DOC-03: No, el aire sí, pero no es algo que me preocupe, pero sí es bueno que esté funcionando.
+
+Entrevistador: Ok. Bueno, entonces teniendo en cuenta eso, le voy a mostrar en este momento eh lo que vienen siendo unos prototipos de lo que viene, lo que es el sistema. Bueno, en este caso sería el panel de control donde usted podrá revisar eh el estado del aula, si está ocupada, está vacía, la temperatura, el porcentaje de humedad, si el proyector está encendido, apagado o está en buen funcionamiento, si no hay ninguna, ningún problema. Por ejemplo, que no tiene...
+
+DOC-03: ¿Eso dónde voy a revisar?
+
+Entrevistador: ¿Mande?
+
+DOC-03: ¿Eso dónde voy a revisarlo? ¿En celular?
+
+Entrevistador: Eso usted lo puede revisar en el celular o como también lo puede revisar en la computadora. Esto, bueno, tiene que estar conectado a internet, está claro. Eh, le detectará si la señal, este, del HDMI está bien o está mal. Por ejemplo, si el proyector este es por Bluetooth también. Eh, pero bueno, la climatización viene a ser el aire acondicionado y la conectividad es del dispositivo como tal de una red IoT, porque ese también va a pues controlar lo que viene siendo la temperatura. En el detalle usted va a ver, bueno, pues más detalles sobre el estado del aula. Por ejemplo, el último registro, porque esto de aquí se actualizará cada 15 segundos para que esté informado. Entonces eso, esa es como tal.
+
+DOC-03: Pero este proyecto tiene un problema.
+
+Entrevistador: Ajá, dígame.
+
+DOC-03: No hay internet. ¿Cómo vas a hacer todo eso? En la mayoría de las aulas... y eso es algo que sí me preocupa. No hay internet. Me preocupa porque yo tengo que marcar. Me preocupa porque tengo que tomar la asistencia. Me preocupa porque a veces en el mismo aula, eh, si digo algún deber, ya quiero subir ahí mismo, eh, si no es el deber, algo que apoye al deber. Y no hay internet. Entonces, si no hay internet, todas estas cosas que usted menciona no van a funcionar. O sea, ¿yo cómo voy a saber lo de un aula si esa aula no tiene internet?
+
+Entrevistador: Entonces, por ejemplo, como estamos en la tarde...
+
+DOC-03: No digo que el proyecto es malo, por si acaso. Es solo que tiene un problema, que no hay internet en las aulas.
+
+Entrevistador: Bueno, mire, solo como para salir de esa parte, porque esto es solo como recopilación de datos. Pero para explicar aquí, yo lo que tenía propuesto por esa misma razón es hacer uso de servidor privado, ¿ya? Entonces usted puede estar como tal conectado directamente y saber, este, en qué estado se encuentra el aula. ¿Ya? Porque el único problema vendría a ser que no podría ver las cámaras, pero estas cosas sí las podría ver. ¿Ya? Pero bueno, este, luego de esta vista, usted podría ver pues un apartado de las alertas generadas por el sistema. En este caso consta de un panel de control que también me muestra pues el aula, el tipo de anomalía que tiene, porque aquí solo se registran los problemas, y este, pues la fecha y la hora de cuándo ocurrió este problema. El estado, por ejemplo, si está pendiente, está en proceso, está cerrado. Y el responsable, en este caso podría ser el conserje directamente.
+
+DOC-03: Mire, este proyecto tiene otro problema. Hay demasiadas cosas que ver.
+
+Entrevistador: Ah, ya, este, bueno...
+
+DOC-03: Por decirle, esta grid de aquí, ¿cuándo termino de ver todo esto? Tiene una, dos, tres, cuatro, cinco, seis, siete, ocho columnas. Ocho columnas por cinco, son 40 cosas que usted me pone en una pantallita. Ese es otro problema. (Risas)
+
+Entrevistador: También puede ser. Bien.
+
+DOC-03: Ese es otro problema. Mira, por decirle algo, si tú me pones 24, eh, a lo mejor aquí, eh, si supiera mi horario, a lo mejor yo puedo saber si el aula que me toca le pasa algo en este número, en este número, en este número, en este número. Así solo tendría que ver cuatro cosas: esto, esto, esto y esto. Y no ver tantas cosas que yo la verdad que esto ni lo voy a ver. Pero si, por decirle aquí, dice "Alertas críticas: una" y aquí mismo, aquí mismo me dice "esto está pasando", ya está completo, yo ya sé lo que está pasando. Pero me mandas a ver en un montón de filas y columnas lo que está pasando, entonces eso no es bueno.
+
+Entrevistador: Ya, entonces esto sería más que todo entonces una vista administrativa, pero ya yéndonos a un usuario, por ejemplo docente, usted quisiera ver una información concreta, directamente, ¿cómo se llama? Algo más específico.
+
+DOC-03: Tal como lo hace el SGA, mira. Te voy a mostrar.
+
+Entrevistador: A ver
+
+DOC-03: Ahí ya tengo todo. ¿Sí me ves? Entonces yo veo, ah, mira, me está pasando tales y tales cosas. Pero si me mandas ahí a este grid con 24, 40 cosas ahí, eso yo no voy a ver. Eso es, digamos, parte de la usabilidad. Mira, tienes dos problemas grandes ya: no tienes internet y esto, demasiadas cosas.
+
+Entrevistador: La plena que sí.
+
+DOC-03: Bueno, se acabó el proyecto. (Risas) ¿Qué más?
+
+Entrevistador: Ya, este, y de ahí la parte de, por lo que usted podría reportar... Ah, esta parte es nomás la generación de reportes. Pero esto sí usted puede hacer directamente con filtros. Por ejemplo, eh, esta sí ya es una...
+
+DOC-03: Pero eso es administrativo.
+
+Entrevistador: Claro, esta sí es administrativo.
+
+DOC-03: No, no, no quiero opinarte como administrativo, sino como usuario.
+
+Entrevistador: Como usuario, claro. Bueno, como usuario esta sería la parte, por ejemplo, usted podría registrar de pronto un problema que no haya sido alertado. En este caso, por ejemplo, aquí en el aula usted puede seleccionar el aula donde, por ejemplo, el aire está goteando, el proyector no vale, eh, digamos el aula está sucia, eh, también este, podría ser que la pizarra, como usted mencionó, siempre que llega está así...
+
+DOC-03: Yo tengo que escribir.
+
+Entrevistador: Usted podría mencionarlo, si no directamente va a ser un reporte automático.
+
+DOC-03: No, tienes que hacer combos. Combos.
+
+Entrevistador: Ah, claro, este, aquí, por ejemplo, el tipo de incidencia...
+
+DOC-03: Por decirle el tipo de incidencia, ahí ya lo que uno ya sabe. Equipo afectado, sale un combito, dices, está hablando del proyector, está hablando de la climatización, está hablando del sensor... bueno, no sé de qué sensor hablan ahí. Está hablando de la conectividad. Entonces uno coge el combito, ¡pa!, conectividad, rápido. Rápido para el usuario.
+
+Entrevistador: Estos sí son combos, estos de acá son textos, así como tal.
+
+DOC-03: Bueno, descripción, bueno, ahí se podría llenar alguna cuestión. Esto de la prioridad, ¿qué es prioridad?
+
+Entrevistador: Claro, por ejemplo, si usted necesita que eso se resuelva así. Por ejemplo, como ya le mencioné, el proyector no vale, es una prioridad como tal alta. Pero, por ejemplo, el aire está goteando, podría ser media. O por ejemplo, el curso está sucio, baja.
+
+DOC-03: Bueno. Seguimiento de... ah, vas a generar tickets. ¿Y dónde llega el ticket?
+
+Entrevistador: Eso le llega al responsable de esta incidencia, bueno, de esta alerta como tal. Usted aquí genera la solicitud...
+
+DOC-03: No, tiene que llegarme a mí.
+
+Entrevistador: ¿Cómo? Ah, no, usted cuando genera el ticket, usted puede ver el historial, o sea, le hacen seguimiento. Usted selecciona el ticket...
+
+DOC-03: Está bien que vaya al mantenimiento. Pero para que esto sea útil, primero tiene que llegarle al [AUTORIDAD DE LA FACULTAD]. Porque las cosas funcionan así. Tiene que llegarle al [AUTORIDAD DE LA FACULTAD], tiene que llegarme a mí, porque yo soy el responsable del comentario, y debería llegarle a la persona encargada del problema. Tres. Porque entonces aquí no hay "yo no he sabido", "yo no vi", "yo no supe". Está comunicada la autoridad, está comunicado el encargado de arreglar el desperfecto y me queda a mí un respaldo. Porque si en una reunión me dicen "no, es que nadie ha avisado", te pongo, señor, aquí está. Me da un respaldo porque yo sí he avisado.
+
+Entrevistador: Ya, entonces, por lo ahí, descartando esta parte de generación de reportes, pues tendría en total estas tres vistas. Aquí, bueno, con los comentarios que usted me dijo, la verdad que...
+
+DOC-03: ¿Cuáles son las preguntas?
+
+Entrevistador: Ah, primero era enseñarle esto de aquí.
+
+DOC-03: Las preguntas. Ya, bueno, ¿qué más?
+
+Entrevistador: Y, este, y en base a eso, pues aquí ya vienen las preguntas, pues. Que bueno, usted me respondió ahorita lo de qué necesitaría ver realmente en este panel de control, que era específicamente eso, de estos cuatro paneles principales. Así que podemos ir con las otras preguntas. Por ejemplo, hoy cuando llega a un aula y el proyector no enciende o no tiene señal, ¿cuánto tiempo realmente usted pierde resolviendo o que le solucionen este problema?
+
+DOC-03: Es que no soy profesor de proyector. Soy profesor de pizarra. Yo casi el proyector no le paro mucha bola.
+
+Entrevistador: Eso, bueno, sí, hemos dado la clase con usted y casi no usa proyector.
+
+DOC-03: Yo no uso proyector. Es que es una cosa, una cuestión que a mí no me preocupa mucho. Pero a otros docentes sí. A otros docentes sí les preocupa el proyector, no les preocupa la pizarra. Pero si usted me dice que la pizarra está dañada, eso es algo que sí me preocupa.
+
+Entrevistador: Ah, bueno, eso sí podría quedar como tal vez ese reporte. Eh, bueno, esto ya sería ahí. ¿Qué tan seguido le ha tocado interrumpir una clase por un problema técnico del aula?
+
+DOC-03: Chuzo, no es muy frecuente porque como no uso el proyector. Pero a veces sí he querido usar el proyector y no se conecta. El proyector enciende, pero no sé qué problema hay con el cable, eso es lo uno. Lo otro es que se proyecta, pero yo tengo mis documentos en la nube y no tengo internet. O sea, puedo proyectar, pero no puedo llegar a mi documento. Yo diría que por semestre máximo me pasará unas tres veces eso de ahí, tres, dos veces, porque no uso mucho el proyector. Pero sí me pasa.
+
+Entrevistador: Ah, ya, entonces sí. Bueno, este, las pantallas que le he mostrado en este momento, pues, ¿cuál le pareció como tal más fácil de entender sin una explicación como tal?
+
+DOC-03: ¿De estas pantallas? Ninguna.
+
+Entrevistador: Ninguna. (Risas)
+
+Entrevistador: Ya, listo. Eh, ¿qué hubiera hecho falta para entender esto sin ningún tipo de explicación?
+
+DOC-03: Simplicidad.
+
+Entrevistador: Simplicidad.
+
+DOC-03: Claro. Está muy cargado. Mucha información que yo ni sé qué hay ahí. Hay que simplificar. Así como te mostré en el SGA esos cuadritos, con unos cuadritos ahí, suficiente.
+
+Entrevistador: Si reporta una falla desde la pantalla de mantenimiento que le mostré, ¿en cuánto tiempo esperaría una respuesta o una solución?
+
+DOC-03: Bueno, siendo optimista, la siguiente semana. Siendo optimista. Cuento los días, ¿no? No la siguiente clase, porque podría ser mañana. Pero digamos dándole chance para que se haga, la próxima semana esperaría.
+
+Entrevistador: Y bueno, ¿desde qué dispositivo consultaría esto normalmente? ¿Su celular antes de entrar a una clase o una computadora, laptop, o sea?
+
+DOC-03: Yo creo que depende de lo que tenga a mano, porque si tengo el computador usando, usaría el computador, pero si estoy usando el celular, usaría el celular. No tendría preferencia realmente.
+
+Entrevistador: Ambas.
+
+DOC-03: Ambas. Ahora, que yo esté pensando que primero voy a revisar para ir a dar mi clase, no. Yo iría directo. No estaría con la previa. No, yo voy, ahí me choco con el problema y lo que sí usaría es el reporte. El reportar, mira, esto no está funcionando. Pero de que yo esté viendo que si esto, que si el otro, en eso no.
+
+Entrevistador: Y ahora que lo dice, añadiendo eso, ¿usted reportar también le parecería como más sencillo el tomar una foto o directamente solo escribir?
+
+DOC-03: Yo creo que deberían haber ambas opciones, porque no necesariamente son los equipos que mencionas. Podría haber una banca dañada. No es una cuestión que me afecte a mí, pero sí es una cuestión que le afecta a la facultad o a la carrera. Una banca dañada, una banca que está apenitas dañada, la siguiente semana ya no está apenitas, está más. Y al final del semestre estará destruida. Entonces si yo le puedo tomar la foto, la foto y decir "mira, esta banca está dañada en tal aula", estaría bien.
+
+Entrevistador: Ok. Y bueno, este, ahora, esto es por... Si pudiera ver el estado del aula desde su dispositivo antes de entrar, ¿cómo lo haría sentir?
+
+DOC-03: ¿Cómo me haría sentir?
+
+Entrevistador: Si
+
+DOC-03: No sentiría nada. Indiferente. Indiferente, a mí no me... Eso implica el uso de una cámara.
+
+Entrevistador: Ajá, prácticamente. Y bueno, ¿hay algo importante para su rol como docente...?
+
+DOC-03: No creo que eso sea conveniente, que los profesores veamos las aulas, por muchos motivos. No es conveniente. Imagínate que el aula esté vacía y, vaya, entre estudiantes tienen sus romances, tienen sus cosas y tú vas a estar viendo eso. No, no es bueno. No, es que es normal, pues ya son mayores de edad, son jóvenes, están experimentando ese tipo de cosas y tú vas a estar viendo. Bueno, aunque uno diga "¿yo qué voy a estar viendo?", pero si ya estás viendo, te quedas viendo. No es que tú lo estás buscando, pero "ay, mira estos manes". Y te hacen una captura de pantalla, te hacen un meme. No creo que esté bien eso. Esa es una opción que no la considero así como que es muy prudente que exista.
+
+Entrevistador: Precisamente esa era una de las preguntas de seguridad, que si usted consideraría, eh, ¿cómo se llama? Le preocuparía que otro docente pudiera ver, o usted por ejemplo, pudiera ver ese tipo de cosas, por ejemplo la cámara, o que pueda ver una parte del área administrativa.
+
+DOC-03: No, yo creo que no es conveniente. No es conveniente porque a veces pasan cosas que son casualidades y que pueden haber malas interpretaciones.
+
+Entrevistador: Y bueno, por último, ¿hay algo importante como su rol de docente que no hayamos cubierto en esta pequeña entrevista?
+
+DOC-03: ¿Sobre esto de estas cosas de aquí? El aula abierta o el aula cerrada. Eso yo me imagino que ustedes han vivido un poco eso. El aula está cerrada. Entonces tengo que llegar y no tengo cómo decirle a la persona que abre "abre el aula". Claro, se podría enviar como tal... Por supuesto. Eso es algo para mí mucho más importante que el proyector. El aula. Y la gente está haciendo bulla en el pasillo y tú llegas, ¿y qué pasó? El aula está cerrada. Una cosa. Otra cosa son las luces. A pesar de que problemas de luces no existen, yo no recuerdo así "ay, mira, aquí prende, acá no prende". En las aulas normalmente las luces hay, pero si no hubieran las luces fuera un problema. Y eso también debería estar dentro del grupo de fallos, no solamente el proyector, el aire, también las luces podría ser. Otro tipo de problema que se da y que usted no lo está viendo... no lo está viendo porque no está lloviendo. Pero cuando llueve las aulas están inundadas. Y eso no veo que esté ahí. Entonces cuando tú llegas, el aula está inundada, bueno, ¿qué opciones tengo? Yo quisiera saber si esa aula está inundada, qué opciones tengo, qué aula está vacía para yo poder ir. Y poder comunicar a la coordinación con una fotillo "el aula está inundada, me estoy cambiando a esta otra aula que está libre", pero tiene que estar la certificación de que está libre. No me voy a meter a otra aula para después que el profesor que le corresponde esa aula me esté mirando ahí con cara de pocos amigos. Eso también es importante. Ya te voy a cobrar, loco, por todo lo que te estoy diciendo. ¿Qué más puede ser? No creo que haya nada más. Esas son, creo que serían las cosas más importantes. Porque de ahí la facultad no tiene problema de riñas entre los estudiantes. Las personas, la mayor parte son personas tranquilas. Otras facultades es un poco más compleja la cosa. Yo creo que solamente eso.
+
+Entrevistador: Esas sí serían otro tipo de incidencias.
+
+DOC-03: Claro, eso ya es otras cosas. Yo creo que eso nomás, como para mis clases, es lo que más me importaría es eso. Nada más. Las puertas, el poder cambiarme de aula si al aula le ocurre algo, no necesariamente puede estar inundada. Podría ser que yo entre y la banca se la llevaron porque alguna cuestión pasó y se llevaron esas bancas, y yo llego y, bueno, ¿a qué aula me puedo cambiar? Eventos que pueden pasar. Otra cosa que como docente me interesaría es poder hacer uso de la impresora de la secretaría.
+
+Entrevistador: ¿En la impresora? ¿No tienen acceso a eso?
+
+DOC-03: Bueno, nosotros vamos donde la señorita secretaria y sí nos imprime. Pero yo quisiera que sea un poco más automático.
+
+Entrevistador: Ah, ya, usted mandar a imprimir.
+
+DOC-03: Yo coger y decirle, mandar el PDF o poder imprimir desde mi computadora e ir a retirar. Eso es algo que me ayudaría. Tampoco soy de imprimir todos los días, pero a veces al semestre toca una vez imprimir algo. Chuta, hay que ir donde ella, pedirle favor. Pero bueno, ya eso ya son cosas muy, ¿cómo se dice? Detalles ya de poca importancia. Yo creo que con lo que te he dicho está bien.
+
+Entrevistador: Gracias.

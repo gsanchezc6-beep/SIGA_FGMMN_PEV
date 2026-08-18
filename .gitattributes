@@ -1,0 +1,8 @@
+# Normalizacion de fin de linea: LF tanto en el repositorio como en el arbol de
+# trabajo. Sin esto, Git entrega CRLF al clonar en Windows y los hashes de
+# checksums.sha256 dejan de coincidir, volviendo inverificable ese archivo.
+* text=auto eol=lf
+
+# Binarios grandes gestionados con Git LFS
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.wav filter=lfs diff=lfs merge=lfs -text

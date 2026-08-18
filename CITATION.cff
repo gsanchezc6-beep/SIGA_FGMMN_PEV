@@ -1,0 +1,82 @@
+# ======================================================================
+# CITATION.cff — Proyecto SIGA (Sistema Inteligente de Gestion de Aulas)
+# Formato: Citation File Format v1.2.0
+# Equipo FGMMN — Universidad Tecnica Estatal de Quevedo (UTEQ)
+#
+# NOTA PARA EL EQUIPO: los campos marcados con "PENDIENTE" deben
+# completarse antes del cierre de la Entrega 4 (2B). El campo "doi" solo
+# se agrega una vez publicado el conjunto de datos en Zenodo. El ORCID
+# de cada integrante se obtiene gratis y en minutos en https://orcid.org
+# ======================================================================
+cff-version: 1.2.0
+message: "Si utiliza este software, conjunto de datos o documento, por favor citelo de la siguiente manera."
+type: software
+title: "SIGA — Sistema Inteligente de Gestion de Aulas"
+version: "PE5-1.0.0"
+date-released: "PENDIENTE-COMPLETAR-AAAA-MM-DD"
+doi: "PENDIENTE-COMPLETAR-TRAS-DEPOSITO-EN-ZENODO"
+repository-code: "https://github.com/gsanchezc6-beep/SIGA_FGMMN_PEV"
+license: "CC-BY-4.0"
+abstract: >-
+  Sistema Inteligente de Gestion de Aulas (SIGA): plataforma de IoT e
+  inteligencia artificial para el monitoreo en tiempo real de
+  temperatura, humedad y ocupacion de aulas, control remoto de
+  proyectores y climatizacion, generacion de alertas automaticas,
+  analisis predictivo de fallos, gestion de solicitudes de
+  mantenimiento y reportes administrativos, desarrollado para la
+  Facultad de Ciencias de la Computacion y Diseno Digital de la
+  Universidad Tecnica Estatal de Quevedo.
+keywords:
+  - "ingenieria de requerimientos"
+  - "internet de las cosas"
+  - "gestion de aulas inteligentes"
+  - "explicabilidad"
+  - "modelos grandes de lenguaje"
+authors:
+  - family-names: "Sanchez Cornejo"
+    given-names: "Gary Alberto"
+    affiliation: "Universidad Tecnica Estatal de Quevedo"
+    orcid: "PENDIENTE-COMPLETAR"
+    role: "Analista lider"
+  - family-names: "Mendoza Palma"
+    given-names: "Allan Jeremy"
+    affiliation: "Universidad Tecnica Estatal de Quevedo"
+    orcid: "PENDIENTE-COMPLETAR"
+    role: "Modelador"
+  - family-names: "Cedeno Avila"
+    given-names: "Winston Damian"
+    affiliation: "Universidad Tecnica Estatal de Quevedo"
+    orcid: "PENDIENTE-COMPLETAR"
+    role: "Modelador"
+  - family-names: "Munoz Quinonez"
+    given-names: "Yeranick Esther"
+    affiliation: "Universidad Tecnica Estatal de Quevedo"
+    orcid: "PENDIENTE-COMPLETAR"
+    role: "Documentadora"
+  - family-names: "Gilces Carranza"
+    given-names: "Jose Ignacio"
+    affiliation: "Universidad Tecnica Estatal de Quevedo"
+    orcid: "PENDIENTE-COMPLETAR"
+    role: "Verificador"
+contact:
+  - family-names: "Guerrero Ulloa"
+    given-names: "Gleiston"
+    affiliation: "Universidad Tecnica Estatal de Quevedo"
+    role: "Docente responsable / supervisor"
+preferred-citation:
+  type: generic
+  title: "SIGA — Sistema Inteligente de Gestion de Aulas: Especificacion de Requisitos de Software"
+  authors:
+    - family-names: "Sanchez Cornejo"
+      given-names: "Gary Alberto"
+    - family-names: "Mendoza Palma"
+      given-names: "Allan Jeremy"
+    - family-names: "Cedeno Avila"
+      given-names: "Winston Damian"
+    - family-names: "Munoz Quinonez"
+      given-names: "Yeranick Esther"
+    - family-names: "Gilces Carranza"
+      given-names: "Jose Ignacio"
+  year: 2026
+  institution:
+    name: "Universidad Tecnica Estatal de Quevedo"

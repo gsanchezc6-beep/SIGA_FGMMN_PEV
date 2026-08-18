@@ -1,0 +1,72 @@
+
+# ---- Archivos temporales de oficina ----
+# ---- Credenciales — NUNCA subir al repositorio ----
+# ---- Editores / IDE ----
+# ---- LaTeX: residuos de compilación (01_ERS/) ----
+# ---- MVP (05_MVP/, si el código fuente vive en este mismo repo) ----
+# ---- Scripts de análisis (06_Experimento/scripts_analisis/) ----
+# ---- Sistema operativo ----
+# 05_MVP/, 06_Experimento/resultados/, 07_Publicacion/dataset_zenodo/
+# ============================================================
+# El .tex y el .pdf final SÍ se versionan; solo se ignoran los intermedios.
+# Esas carpetas son evidencia obligatoria y deben quedar versionadas.
+# NUNCA agregar aquí: 02_Evidencias/, 03_Modelado/, 04_Trazabilidad/,
+# SIGA — Nombre_Proyecto_ISR401 — .gitignore
+*.7z
+*.RData
+*.Rhistory
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.key
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.pem
+*.pyc
+*.run.xml
+*.snm
+*.swp
+*.synctex.gz
+*.tmp
+*.toc
+*.vrb
+*~
+.DS_Store
+.env
+.env.local
+.idea/
+.ipynb_checkpoints/
+.netrc
+.venv/
+.vscode/
+Thumbs.db
+__pycache__/
+build/
+desktop.ini
+dist/
+docker-compose.override.yml
+node_modules/
+osf_token.txt
+secrets.*
+venv/
+zenodo_token.txt
+~$*.docx
+~$*.pptx
+~$*.xlsx
+
+# ---- Zona restringida [R]: datos personales identificables ----
+# Politica del propio proyecto (02_Evidencias/00_Restringido/README_Restringido.md):
+# videos, audios, consentimientos firmados con cedula y firma visibles y actas
+# firmadas NO se publican en el repositorio abierto, conforme a la LOPDP. Viven en
+# el contenedor cifrado evidencias_restringidas.7z, fuera del control de versiones.
+02_Evidencias/Consentimientos/
+02_Evidencias/Audio/
+02_Evidencias/Video/
+02_Evidencias/00_Restringido/
+06_Experimento/CLAVE_RESPUESTAS_no_compartir_con_jueces.csv

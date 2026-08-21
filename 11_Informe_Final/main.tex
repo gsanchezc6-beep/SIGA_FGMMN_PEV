@@ -1,0 +1,98 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{lastpage}
+\usepackage{multirow}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{referencias.bib}
+\graphicspath{{../01_ERS/figuras/}{../01_ERS/}}
+
+% ---------------------------------------------------------------------------
+% URL DEL REPOSITORIO — cambiar aqui y solo aqui.
+% Aparece en la caratula (gatekeeper G1: debe verse en UNA SOLA LINEA) y en la
+% seccion de gestion. Debe apuntar al repositorio donde esta este trabajo.
+% ---------------------------------------------------------------------------
+\newcommand{\repourl}{\url{https://github.com/gsanchezc6-beep/SIGA_FGMMN_PEV}}
+
+\definecolor{sigagreen}{HTML}{1D6B36}
+\definecolor{rotuloblue}{HTML}{0070C0}
+
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\addto\captionsspanish{\renewcommand{\listtablename}{\'Indice de tablas}}
+\addto\captionsspanish{\renewcommand{\listfigurename}{\'Indice de figuras}}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\titleformat{\section}{\normalfont\bfseries\fontsize{14}{16}\selectfont}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries\fontsize{12}{14}\selectfont}{\thesubsection}{1em}{}
+\linespread{1.25}
+
+% Evita que nombres de clase, identificadores y rutas en \texttt, que no admiten
+% guion de division, empujen la linea fuera del margen derecho.
+\setlength{\emergencystretch}{3em}
+\hyphenpenalty=1000
+\tolerance=2000
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{P\'agina \thepage\ de \pageref{LastPage}}
+
+\title{}
+\date{}
+
+\begin{document}
+
+% =====================================================================
+% CARATULA
+% =====================================================================
+\input{secciones/00_caratula}
+\newpage
+
+% =====================================================================
+% RESUMEN BILINGUE
+% =====================================================================
+\input{secciones/00_resumen}
+\newpage
+
+\tableofcontents
+\listoftables
+\newpage
+
+% =====================================================================
+% CUERPO (10 secciones exigidas por la Seccion 8 de la guia PE5)
+% =====================================================================
+\input{secciones/01_introduccion}
+\input{secciones/02_metodologia}
+\input{secciones/03_ers_final}
+\input{secciones/04_modelos_uml}
+\input{secciones/05_validacion}
+\input{secciones/06_gestion_trazabilidad}
+\input{secciones/07_requisitos_ia}
+\input{secciones/08_metricas_calidad}
+\input{secciones/09_retrospectiva}
+\input{secciones/10_conclusiones}
+
+% =====================================================================
+% REFERENCIAS
+% =====================================================================
+\newpage
+\printbibliography[title={IX. Referencias}]
+
+% =====================================================================
+% ANEXOS
+% =====================================================================
+\newpage
+\input{secciones/11_anexos}
+
+\end{document}

@@ -1,0 +1,19 @@
+% CU-17 -- listo para pegar en secciones_generadas.tex, seccion 4.2, a continuacion de CU-16
+% (mismo formato de tabla que CU-01 a CU-16, verificado contra el documento real)
+
+\begingroup
+\small
+\begin{longtable}{|p{7.8cm}|p{7.8cm}|}
+\hline
+CU-17 | Ejercer derechos sobre datos personales & CU-17 | Ejercer derechos sobre datos personales \\ \hline
+Actor principal & Docente \\ \hline
+Actores secundarios & Personal Administrativo; Personal de TI \\ \hline
+Requisitos relacionados & RF-24, RF-25, RNF-11 \\ \hline
+Propósito & Permitir que un titular de datos personales (usuario registrado en SIGA) ejerza su derecho de acceso (exportar sus propios datos) o de rectificación (corregir datos inexactos de su perfil), conforme a los Art. 13 y 14 de la Ley Orgánica de Protección de Datos Personales del Ecuador. \\ \hline
+Precondiciones & El usuario debe estar autenticado en el sistema. / El usuario debe tener un perfil registrado con datos personales asociados (credenciales, bitácora de acciones). \\ \hline
+Postcondiciones & Si es solicitud de acceso: el usuario recibe un archivo exportado con sus datos personales en un plazo $\leq$15 días hábiles (RNF-11). / Si es solicitud de rectificación: el dato corregido queda actualizado en el perfil y la corrección queda registrada en bitácora (RF-23). \\ \hline
+Curso normal de eventos & 1. El usuario ingresa a la sección de gestión de su perfil/cuenta. 2. El sistema presenta las opciones "Exportar mis datos" y "Solicitar corrección de datos". 3a. (Acceso) El usuario solicita la exportación; el sistema genera el archivo con los datos personales del usuario y lo pone a disposición. 3b. (Rectificación) El usuario indica el campo a corregir y el valor propuesto. 4. El sistema valida la solicitud y, si corresponde, aplica el cambio o entrega el archivo. 5. El sistema registra la solicitud y su resolución en la bitácora, con fecha y hora, para demostrar cumplimiento del plazo legal (Art. 10-k, Art. 47-2 LOPDP). \\ \hline
+Flujos alternativos / excepciones & A1. Si el usuario no tiene datos personales registrados más allá de las credenciales mínimas, el sistema informa que no hay datos adicionales que exportar. A2. Si la solicitud de rectificación involucra un campo que no es editable por el usuario (p. ej. rol asignado), el sistema deriva la solicitud a Personal Administrativo/TI para revisión manual. A3. Si el plazo de 15 días hábiles está por vencer sin resolución, el sistema genera una alerta interna al responsable (mecanismo de cumplimiento, no automatiza la decisión). \\ \hline
+\caption{Especificación textual del caso de uso CU-17: Ejercer derechos sobre datos personales}
+\end{longtable}
+\endgroup

@@ -1,0 +1,24 @@
+% CU-17 — nuevo en PE5. Insertar en 01_ERS/secciones_generadas.tex, sección 4.2,
+% inmediatamente después de CU-16 (antes de "\subsection*{4.3 Diagrama de clases refinado}").
+% También actualizar el conteo de la sección 4.1 de "16 casos de uso" a "17 casos de uso".
+%
+% Por qué existe: RF-24 y RF-25 (exportación y rectificación de datos personales, LOPDP
+% Art. 13/14) no tenían ningún CU asociado — quedaban huérfanos en la matriz de
+% trazabilidad (M4_ade). Ver 05_Metricas/PE5_Anexo_A_Auditoria_Calidad_ERS_SIGA.md, defecto #3.
+
+\begingroup
+\small
+\begin{longtable}{|p{7.8cm}|p{7.8cm}|}
+\hline
+CU-17 | Ejercer derechos sobre datos personales & CU-17 | Ejercer derechos sobre datos personales \\ \hline
+Actor principal & Usuario autenticado (titular de sus propios datos) \\ \hline
+Actores secundarios & Personal de TI \\ \hline
+Requisitos relacionados & RF-24, RF-25, RNF-11 \\ \hline
+Propósito & Permitir que un usuario autenticado ejerza su derecho de acceso (exportar sus datos personales) y su derecho de rectificación (corregir datos inexactos), conforme a los Art. 13 y 14 de la LOPDP. \\ \hline
+Precondiciones & El usuario debe estar autenticado. / El dato personal a exportar o corregir debe pertenecer al usuario solicitante. \\ \hline
+Postcondiciones & Se genera un archivo descargable con los datos personales del usuario (derecho de acceso) o se actualiza el campo corregido con registro de auditoría en bitácora (derecho de rectificación). / La solicitud queda resuelta dentro del plazo de 15 días hábiles exigido por la LOPDP. \\ \hline
+Curso normal de eventos & 1. El usuario ingresa a la sección "Mis datos personales" de su perfil. 2. El sistema presenta las opciones "Exportar mis datos" y "Solicitar corrección". 3a. (Exportación) El usuario solicita la exportación; el sistema recopila perfil y bitácora asociada y genera un archivo descargable. 3b. (Rectificación) El usuario indica el campo y el valor propuesto; el sistema valida que el dato le pertenece. 4. El sistema ejecuta la operación solicitada dentro del plazo de 15 días hábiles. 5. El sistema registra la operación (tipo de solicitud, fecha, usuario) en la bitácora de auditoría (RF-23). \\ \hline
+Flujos alternativos / excepciones & A1. Si el usuario solicita corregir un dato que no le pertenece, el sistema deniega la operación. A2. Si el archivo de exportación no puede generarse, el sistema notifica el error y reintenta antes de agotar el plazo legal. A3. Si el plazo de 15 días hábiles está por vencer sin resolución, el sistema genera una alerta interna al Personal de TI (RNF-11). \\ \hline
+\caption{Especificación textual del caso de uso CU-17: Ejercer derechos sobre datos personales}
+\end{longtable}
+\endgroup

@@ -1,0 +1,49 @@
+ID,Tipo,ID_Requisito,Nombre,Fuente,MoSCoW,ID_CU,Clase_UML,Proceso_DFD,Estado,Criterio_BDD,ID_CP,Historia,Estado_de_la_traza,Nota
+1,RF,RF-01,Recopilacion de datos ambientales,EV-01,Must,CU-01;CU-03,SensorIoT;LecturaSensor,P-1,N/A (entidad sin ciclo de vida modelado),CA-01,CP-01,HU-01,Completa,
+2,RF,RF-02,Control remoto de dispositivos,EV-01,Must,CU-02,GatewayIoT;Equipo,P-2,N/A (entidad sin ciclo de vida modelado),CA-02,CP-02,HU-02,Completa,
+3,RF,RF-03,Deteccion automatica de ocupacion,EV-01,Must,CU-03,SensorIoT;Aula,P-1,N/A (entidad sin ciclo de vida modelado),CA-03,CP-03,HU-03,Completa,
+4,RF,RF-04,Monitoreo y control de proyectores,EV-01;EV-02;EV-03,Must,CU-01;CU-02,Proyector,P-2,N/A (entidad sin ciclo de vida modelado),CA-04,CP-04,HU-04,Completa,
+5,RF,RF-05,Monitoreo y ajuste de climatizacion,EV-01;EV-03,Must,CU-01;CU-02,Climatizador,P-2,N/A (entidad sin ciclo de vida modelado),CA-05,CP-05,HU-05,Completa,
+6,RF,RF-06,Integracion con videovigilancia,EV-01,Should,CU-15,CamaraVigilancia,P-2,N/A (entidad sin ciclo de vida modelado),N/A (RF Should),CP-06,N/A (RF Should),Completa,La guia solo exige historia y criterio BDD para los RF Must
+7,RF,RF-07,Panel de control centralizado,EV-01;EV-02;EV-03,Must,CU-01,Aula,P-1;P-6,N/A (entidad sin ciclo de vida modelado),CA-06,CP-07,HU-06,Completa,
+8,RF,RF-08,Generacion y envio de alertas,EV-01;EV-03,Must,CU-04;CU-05,Alerta,P-3,Alerta: Generada -> Notificada,CA-07,CP-08,HU-07,Completa,
+9,RF,RF-09,Analisis predictivo de fallos mediante IA,EV-02,Should,CU-16,Equipo,P-5,N/A (entidad sin ciclo de vida modelado),N/A (RF Should),CP-09,N/A (RF Should),Completa,Refinado por RF-IA-01 a RF-IA-03 (ficha IA-01)
+10,RF,RF-10,Registro historico de fallas,EV-01,Must,CU-08,SolicitudMantenimiento,P-5,Solicitud: historial de estados,CA-08,CP-10,HU-08,Completa,
+11,RF,RF-11,Notificacion inmediata ante fallas criticas,EV-02;EV-03,Must,CU-04;CU-05,Alerta,P-3,Alerta: Notificada,CA-09,CP-11,HU-09,Completa,
+12,RF,RF-12,Gestion de solicitudes de mantenimiento,EV-01;EV-02;EV-03,Must,CU-06;CU-07,SolicitudMantenimiento,P-5,Solicitud: Registrada -> En atencion -> Cerrada,CA-10,CP-12,HU-10,Completa,
+13,RF,RF-13,Control automatico de apagado energetico,EV-01,Must,CU-13,Equipo,P-4,N/A (entidad sin ciclo de vida modelado),CA-11,CP-13,HU-11,Completa,Sujeto a la verificacion de seguridad de RNF-17
+14,RF,RF-14,Analisis de patrones de consumo energetico,EV-02,Should,CU-16,ConsumoEnergetico,P-6,N/A (entidad sin ciclo de vida modelado),N/A (RF Should),CP-14,N/A (RF Should),Completa,Refinado por RF-IA-04 a RF-IA-06 (ficha IA-02)
+15,RF,RF-15,Programacion de horarios automatizados,EV-01,Must,CU-13,HorarioAcademico,P-4,N/A (entidad sin ciclo de vida modelado),CA-12,CP-15,HU-12,Completa,
+16,RF,RF-16,Apagado automatico por desocupacion,EV-01,Must,CU-03;CU-13,Aula;Equipo,P-4,N/A (entidad sin ciclo de vida modelado),CA-13,CP-16,HU-13,Completa,Sujeto a la verificacion de seguridad de RNF-17
+17,RF,RF-17,Reportes estadisticos periodicos,EV-02,Should,CU-09,ReporteAdministrativo,P-6,N/A (entidad sin ciclo de vida modelado),N/A (RF Should),CP-17,N/A (RF Should),Completa,
+18,RF,RF-18,Exportacion de reportes PDF/Excel,EV-02,Should,CU-10,ReporteAdministrativo,P-6,N/A (entidad sin ciclo de vida modelado),N/A (RF Should),CP-18,N/A (RF Should),Completa,
+19,RF,RF-19,Gestion de acceso por roles,EV-02,Must,CU-11,Usuario;Rol,P-7,N/A (entidad sin ciclo de vida modelado),CA-14,CP-19,HU-14,Completa,
+20,RF,RF-20,Historial de ocupacion de aulas,EV-02,Should,CU-01;CU-08,Aula;LecturaSensor,P-1;P-6,N/A (entidad sin ciclo de vida modelado),N/A (RF Should),CP-20,N/A (RF Should),Completa,Prioridad Should confirmada al cerrar D-01
+21,RF,RF-21,Notificacion equipos fuera de horario,EV-01,Must,CU-04;CU-13,Alerta;Equipo,P-3;P-4,Alerta: Generada,CA-15,CP-21,HU-15,Completa,
+22,RF,RF-22,Monitoreo de conectividad IoT,EV-01,Must,CU-12,GatewayIoT,P-1,N/A (entidad sin ciclo de vida modelado),CA-16,CP-22,HU-16,Completa,
+23,RF,RF-23,Registro de bitacora de acciones,EV-01;EV-02,Must,CU-14,BitacoraAccion,P-7,N/A (entidad sin ciclo de vida modelado),CA-17,CP-23,HU-17,Completa,
+24,RF,RF-24,Exportacion de datos personales,Analisis normativo LOPDP Art. 13,Should,CU-17,Usuario,P-8,N/A (entidad sin ciclo de vida modelado),N/A (RF Should),CP-24,N/A (RF Should),Completa,CU-17 nuevo en esta entrega; prioridad Should confirmada al cerrar D-01
+25,RF,RF-25,Rectificacion de datos personales,Analisis normativo LOPDP Art. 14,Should,CU-17,Usuario,P-8,N/A (entidad sin ciclo de vida modelado),N/A (RF Should),CP-25,N/A (RF Should),Completa,CU-17 nuevo en esta entrega; prioridad Should confirmada al cerrar D-01
+26,RF-IA,RF-IA-01,Puntaje de riesgo de falla por equipo,Ficha IA-01 (derivada de RF-09),Should (hereda de RF-09),CU-16,Equipo,P-5,N/A (entidad sin ciclo de vida modelado),N/A,CP-IA-01,N/A,Completa,Refina RF-09; medido por RNF-IA-01 y RNF-IA-02
+27,RF-IA,RF-IA-02,Alerta predictiva al superar umbral,Ficha IA-01 (derivada de RF-09),Should (hereda de RF-09),CU-16;CU-04,Equipo;Alerta,P-5;P-3,Alerta: Generada,N/A,CP-IA-02,N/A,Completa,Refina RF-09; se apoya en RF-08
+28,RF-IA,RF-IA-03,Explicacion de la prediccion,Ficha IA-01 (derivada de RF-09),Should (hereda de RF-09),CU-16,Equipo,P-5,N/A (entidad sin ciclo de vida modelado),N/A,CP-IA-03,N/A,Completa,Refina RF-09; operacionaliza RNF-10
+29,RF-IA,RF-IA-04,Linea base de consumo por aula y franja,Ficha IA-02 (derivada de RF-14),Should (hereda de RF-14),CU-16,ConsumoEnergetico,P-6,N/A (entidad sin ciclo de vida modelado),N/A,CP-IA-04,N/A,Completa,Refina RF-14
+30,RF-IA,RF-IA-05,Deteccion de anomalias de consumo,Ficha IA-02 (derivada de RF-14),Should (hereda de RF-14),CU-16,ConsumoEnergetico,P-6,N/A (entidad sin ciclo de vida modelado),N/A,CP-IA-05,N/A,Completa,Refina RF-14; medido por RNF-IA-06 a RNF-IA-08
+31,RF-IA,RF-IA-06,Anomalias incorporadas al reporte,Ficha IA-02 (derivada de RF-14),Should (hereda de RF-14),CU-16;CU-09,ConsumoEnergetico;ReporteAdministrativo,P-6,N/A (entidad sin ciclo de vida modelado),N/A,CP-IA-06,N/A,Completa,Refina RF-14; alimenta RF-17/RF-18
+32,RNF,NFR-01,Alertas en <=60s,Validado en 1B,Must,CU-04;CU-05,Alerta,P-3,Alerta: Generada -> Notificada,N/A,CP-08,N/A,Completa,Verificado junto con RF-08
+33,RNF,NFR-02,Disponibilidad >=99% mensual,Validado en 1B,Must,N/A,N/A,Transversal,N/A,N/A,CP-N02,N/A,Completa,Requisito transversal de plataforma sin CU ni clase propia; verificado por monitoreo de uptime
+34,RNF,NFR-03,Cifrado AES-256 y autenticacion,Validado en 1B,Must,CU-11,Usuario;Rol,P-7,N/A (entidad sin ciclo de vida modelado),N/A,CP-19,N/A,Completa,Verificado junto con RF-19
+35,RNF,NFR-04,Usabilidad basica <=2 min,Validado en 1B,Should,CU-01,Aula,P-1,N/A (entidad sin ciclo de vida modelado),N/A,CP-N04,N/A,Completa,Prioridad declarada en la Tabla 42 del ERS (D-02 cerrado)
+36,RNF,NFR-05,Compatibilidad multi-navegador,Validado en 1B,Must,N/A,N/A,Transversal,N/A,N/A,CP-N05,N/A,Completa,Prioridad declarada en la Tabla 42 del ERS (D-02 cerrado)
+37,RNF,NFR-06,Cobertura de pruebas >=70%,Validado en 1B,Should,N/A,N/A,Transversal,N/A,N/A,CP-N06,N/A,Completa,Prioridad declarada en la Tabla 42; requisito del proceso de desarrollo, sin CU ni clase propia
+38,RNF,NFR-07,Adecuacion funcional deteccion ocupacion >=95%,No verificado en campo,Must,CU-03,SensorIoT;Aula,P-1,N/A (entidad sin ciclo de vida modelado),N/A,CP-03,N/A,Completa,Prioridad declarada en la Tabla 42 del ERS (D-02 cerrado)
+39,RNF,NFR-08,Compatibilidad con Horario Academico,Parcialmente sustentado (EV-10),Must,CU-13,HorarioAcademico,P-4,N/A (entidad sin ciclo de vida modelado),N/A,CP-N08,N/A,Completa,Prioridad declarada en la Tabla 42 del ERS (D-02 cerrado)
+40,RNF,NFR-09,Flexibilidad <=8h-persona nuevo sensor,No verificado en campo,Could,N/A,N/A,Transversal,N/A,N/A,CP-N09,N/A,Completa,Prioridad declarada en la Tabla 42; requisito de arquitectura, sin CU ni clase propia
+41,RNF,NFR-10,Explicabilidad de RF-09,Gatekeeper G7,Must,CU-16,Equipo,P-5,N/A (entidad sin ciclo de vida modelado),N/A,CP-IA-03,N/A,Completa,Operacionalizado por RF-IA-03
+42,RNF,NFR-11,Derecho de acceso <=15 dias (LOPDP Art. 13),Fundamentado normativamente,Must,CU-17,Usuario,P-8,N/A (entidad sin ciclo de vida modelado),N/A,CP-24,N/A,Completa,Prioridad declarada en la Tabla 42 del ERS (D-02 cerrado)
+43,RNF,NFR-12,Alerta ante acceso no autorizado <=5min,No verificado en campo,Must,CU-11,Usuario;Rol,P-7,N/A (entidad sin ciclo de vida modelado),N/A,CP-N12,N/A,Completa,Prioridad declarada en la Tabla 42 del ERS (D-02 cerrado)
+44,RNF,NFR-13,Reanudacion tras caida de gateway <=5min,No verificado en campo,Should,CU-12,GatewayIoT,P-1,N/A (entidad sin ciclo de vida modelado),N/A,CP-N13,N/A,Completa,Prioridad declarada en la Tabla 42 del ERS (D-02 cerrado)
+45,RNF,NFR-14,Diagnostico de falla <=15min,Parcialmente sustentado (EV-12),Should,CU-08,SolicitudMantenimiento,P-5,Solicitud: En atencion,N/A,CP-N14,N/A,Completa,Prioridad declarada en la Tabla 42 del ERS (D-02 cerrado)
+46,RNF,NFR-15,Portabilidad en banda reducida 1Mbps,No verificado en campo,Should,CU-01,Aula,P-1,N/A (entidad sin ciclo de vida modelado),N/A,CP-N15,N/A,Completa,Prioridad declarada en la Tabla 42 del ERS (D-02 cerrado)
+47,RNF,NFR-16,Disponibilidad en modo degradado sin conectividad,Sustentado en evidencia de campo (EV-15),Must,CU-12,GatewayIoT,P-1,N/A (entidad sin ciclo de vida modelado),N/A,CP-22,N/A,Completa,Prioridad declarada en la Tabla 42 del ERS (D-02 cerrado)
+48,RNF,RNF-17,Apagado automatico seguro (Safety),Borrador PE5 - pendiente de validacion de campo,Must (propuesto),CU-13,Equipo,P-4,N/A (entidad sin ciclo de vida modelado),N/A,CP-S01,N/A,Completa,Nuevo en esta entrega; numerado 17 para no colisionar con NFR-16 existente

@@ -1,0 +1,32 @@
+Identificador,Tipo_patologia,Causa,Accion_tomada,Estado_final
+RF-06,Cadena rota (sin caso de prueba),"RF de prioridad Should sin caso de prueba conceptual","Se redacto CP-06 a partir del criterio de verificacion real del ERS. Historia y criterio BDD no se exigen para RF Should",Enlazado
+RF-09,Cadena rota (sin caso de prueba ni especificacion de rendimiento),"RF de IA sin caso de prueba y sin metricas de exito del modelo","Se redacto CP-09 y se refino el requisito con RF-IA-01 a RF-IA-03 en la ficha IA-01, con umbrales de F1, latencia y reentrenamiento",Enlazado
+RF-14,Cadena rota (sin caso de prueba ni especificacion de rendimiento),"RF de IA sin caso de prueba y sin metricas de exito del modelo","Se redacto CP-14 y se refino el requisito con RF-IA-04 a RF-IA-06 en la ficha IA-02",Enlazado
+RF-17,Cadena rota (sin caso de prueba),"RF de prioridad Should sin caso de prueba conceptual","Se redacto CP-17 a partir del criterio de verificacion real del ERS",Enlazado
+RF-18,Cadena rota (sin caso de prueba),"RF de prioridad Should sin caso de prueba conceptual","Se redacto CP-18 a partir del criterio de verificacion real del ERS",Enlazado
+RF-20,Conflicto de prioridad + cadena rota,"D-01: el documento declaraba Should y priorizacion_moscow_kano.csv declaraba Must","Resuelto a favor del documento (Should). Priorizacion consolidada en un unico archivo con 17 Must y 8 Should; se redacto CP-20",Enlazado
+RF-24,Requisito huerfano de caso de uso + conflicto de prioridad,"No tenia CU propio: colgaba implicitamente de CU-11, cuyo proposito es la gestion de acceso por roles y no el ejercicio de derechos del titular","Se creo CU-17, fusionado en la seccion 4.2 del ERS, enlazado al proceso P-8 del DFD y verificado por CP-24. Prioridad resuelta como Should",Enlazado
+RF-25,Requisito huerfano de caso de uso + conflicto de prioridad,"Mismo motivo que RF-24","Se enlazo a CU-17 (compartido con RF-24) y al proceso P-8; se redacto CP-25. Prioridad resuelta como Should",Enlazado
+NFR-01,Cadena rota (sin caso de prueba propio),"RNF sin caso de prueba","Se enlaza a CP-08, que verifica el mismo umbral de entrega de alerta que RF-08",Enlazado
+NFR-02,Cadena rota (sin CU, sin clase, sin caso de prueba),"Requisito de plataforma que no se realiza en ningun caso de uso ni clase de dominio","Se declara transversal y se redacto CP-N02 (monitoreo de uptime durante 30 dias continuos), derivado de su criterio de verificacion en la Tabla 39",Enlazado
+NFR-03,Cadena rota (sin caso de prueba propio),"RNF sin caso de prueba","Se enlaza a CP-19, que verifica el control de acceso por roles junto con RF-19",Enlazado
+NFR-04,Cadena rota (sin prioridad, sin caso de prueba),"D-02: sin prioridad MoSCoW declarada en ningun lugar del documento","Prioridad Should declarada y justificada en la Tabla 42; se redacto CP-N04",Enlazado
+NFR-05,Cadena rota (sin prioridad, sin CU, sin caso de prueba),"D-02","Prioridad Must declarada y justificada en la Tabla 42; se redacto CP-N05. Requisito transversal, sin CU ni clase propia",Enlazado
+NFR-06,Cadena rota (sin prioridad, sin CU, sin caso de prueba),"D-02","Prioridad Should declarada y justificada en la Tabla 42; se redacto CP-N06. Requisito del proceso de desarrollo, sin CU ni clase propia",Enlazado
+NFR-07,Cadena rota (sin prioridad),"D-02","Prioridad Must declarada y justificada en la Tabla 42; se enlaza a CP-03, que verifica la misma tasa de acierto de ocupacion que RF-03",Enlazado
+NFR-08,Cadena rota (sin prioridad, sin caso de prueba),"D-02","Prioridad Must declarada y justificada en la Tabla 42; se redacto CP-N08",Enlazado
+NFR-09,Cadena rota (sin prioridad, sin CU, sin caso de prueba),"D-02","Prioridad Could declarada y justificada en la Tabla 42; se redacto CP-N09. Requisito de arquitectura, sin CU ni clase propia",Enlazado
+NFR-10,Cadena rota (sin caso de prueba),"RNF de explicabilidad sin caso de prueba propio","Se operacionaliza mediante RF-IA-03 y se enlaza a CP-IA-03",Enlazado
+NFR-11,Cadena rota (sin prioridad),"D-02","Prioridad Must declarada y justificada en la Tabla 42; se enlaza a CU-17 y a CP-24, que verifican el derecho de acceso junto con RF-24",Enlazado
+NFR-12,Cadena rota (sin prioridad, sin caso de prueba),"D-02","Prioridad Must declarada y justificada en la Tabla 42; se redacto CP-N12",Enlazado
+NFR-13,Cadena rota (sin prioridad, sin caso de prueba),"D-02","Prioridad Should declarada y justificada en la Tabla 42; se redacto CP-N13",Enlazado
+NFR-14,Cadena rota (sin prioridad, sin caso de prueba),"D-02","Prioridad Should declarada y justificada en la Tabla 42; se redacto CP-N14",Enlazado
+NFR-15,Cadena rota (sin prioridad, sin caso de prueba),"D-02","Prioridad Should declarada y justificada en la Tabla 42; se redacto CP-N15",Enlazado
+NFR-16,Cadena rota (sin prioridad),"D-02","Prioridad Must declarada y justificada en la Tabla 42; se enlaza a CP-22, que verifica la deteccion de falta de conectividad junto con RF-22",Enlazado
+Actor:Personal-TI,Actor sin RF de origen,"Concentracion de las fuentes de elicitacion: solo Personal de Infraestructura y Docente figuran como Actor/Origen de algun RF","No afecta la metrica M1c bajo la definicion de cobertura adoptada (participa en 6 casos de uso). Se declara como limitacion de validez externa del ERS; cerrarla exige trabajo de campo adicional, no edicion documental",Justificado como limitacion
+Actor:Personal-Administrativo,Actor sin RF de origen,"Misma causa","Participa en 7 casos de uso. Declarado como limitacion de validez externa",Justificado como limitacion
+Actor:Autoridades-Facultad,Actor sin RF de origen,"Misma causa","Participa en 5 casos de uso. Declarado como limitacion de validez externa",Justificado como limitacion
+Actor:Sensores-Gateway-IoT,Actor de sistema sin RF de origen,"Es un actor de sistema, no una parte interesada que pueda ser entrevistada como fuente de requisitos","Participa en 7 casos de uso. No procede elicitar de el; se justifica por escrito",Justificado
+Actor:Sistema-Videovigilancia,Actor de sistema sin RF de origen,"Misma causa","Participa en 1 caso de uso (CU-15). Justificado por escrito",Justificado
+Actor:Sistema-Horario-Academico,Actor de sistema sin RF de origen,"Misma causa","Participa en 3 casos de uso. Justificado por escrito",Justificado
+Actor:Servicio-Notificaciones,Actor de sistema sin RF de origen,"Misma causa","Participa en 2 casos de uso. Justificado por escrito",Justificado

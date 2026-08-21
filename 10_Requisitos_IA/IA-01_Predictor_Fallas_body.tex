@@ -1,0 +1,36 @@
+\textbf{Tarea y tipo:} clasificaci\'on binaria (riesgo de falla alto/bajo) por equipo y ventana temporal, sobre series de tiempo de sensor. \textbf{Sustenta:} RF-09, RNF-10 (explicabilidad, ya existente en el ERS).
+
+\textbf{(a) Descripci\'on del componente.} Entradas: temperatura, humedad, ciclos de encendido/apagado del equipo, alertas previas (RF-08/RF-10). Salida: puntaje 0--1, etiqueta alto/bajo riesgo, variables m\'as influyentes. Consumidor: Personal de Infraestructura y Mantenimiento, v\'ia alerta predictiva (CU-16). \emph{Fallback:} una predicci\'on de alto riesgo no ejecuta ninguna acci\'on autom\'atica; genera una alerta informativa que un humano eval\'ua.
+
+\textbf{Requisitos funcionales del componente.} Ninguno queda aislado: los tres refinan RF-09, ya especificado en el ERS.
+
+\begingroup
+\small
+\begin{longtable}{|p{2.1cm}|p{9.4cm}|p{3.4cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{ID}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Enunciado verificable}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Traza}} \\ \hline
+RF-IA-01 & El sistema debe calcular, para cada equipo con al menos 90 d\'ias de historial continuo, un puntaje de riesgo de falla en el rango 0--1 referido a una ventana de los pr\'oximos 7 d\'ias, y recalcularlo al menos una vez al d\'ia. & Refina RF-09; verifica CP-IA-01; medido por RNF-IA-01 y RNF-IA-02 \\ \hline
+RF-IA-02 & Cuando el puntaje de un equipo supere el umbral de alto riesgo, el sistema debe generar una alerta predictiva de prioridad Media asociada a ese equipo y aula, visible en la vista de alertas, \textbf{sin} crear autom\'aticamente un ticket de mantenimiento. & Refina RF-09; se apoya en RF-08 y CU-16; verifica CP-IA-02 \\ \hline
+RF-IA-03 & Para cada predicci\'on de alto riesgo mostrada, el sistema debe presentar las variables de sensor que m\'as contribuyeron a esa predicci\'on, en lenguaje natural. & Refina RF-09; operacionaliza RNF-10; verifica CP-IA-03 \\ \hline
+\caption{Requisitos funcionales del componente IA-01}
+\end{longtable}
+\endgroup
+
+\textbf{(b) Datos de entrenamiento.} Origen: historial acumulado por RF-01/RF-03/RF-05 y RF-10. Volumen m\'inimo: 90 d\'ias continuos por equipo (consistente con SUP-06). Etiquetado autom\'atico desde tickets correctivos cerrados (RF-12). Calidad m\'inima: $\geq$80\% de lecturas presentes. Sesgo conocido: equipos de bajo uso reciente subrepresentados: se declara, no se corrige artificialmente. No es dato personal; no aplica LOPDP directamente.
+
+\textbf{(c) M\'etricas de \'exito.}
+\begin{itemize}[nosep]
+\item RNF-IA-01: F1 $\geq$0,70 en conjunto de prueba (holdout temporal) antes de cada despliegue.
+\item RNF-IA-02: latencia de inferencia $\leq$2~s (percentil 95).
+\item RNF-IA-03: reevaluaci\'on cada 30 d\'ias; retiro autom\'atico si F1 $<$0,60 en dos evaluaciones consecutivas.
+\end{itemize}
+
+\textbf{(d) Requisitos \'eticos y de privacidad.}
+\begin{itemize}[nosep]
+\item RNF-IA-04 (equidad): diferencia de falsos negativos $\leq$10 puntos porcentuales entre aulas de uso alto y bajo.
+\item RNF-IA-05 (equidad): diferencia de falsos negativos $\leq$10 puntos porcentuales entre edificios/bloques.
+\item RNF-10 (explicabilidad, reutilizado): explicaci\'on en $\leq$2~s, $\leq$60 palabras, comprensi\'on $\geq$4/5 Likert.
+\item Finalidad: mantenimiento preventivo, no evaluaci\'on de docentes. Sin datos personales. Supervisi\'on humana obligatoria antes de crear un ticket.
+\end{itemize}
+
+\textbf{(e) Plan de monitoreo.} Indicadores: F1 mensual, falsos negativos por segmento, latencia p95. Umbral de deriva: ca\'ida de F1 $>$15 puntos respecto a la l\'inea base. Reentrenamiento: cada 90 d\'ias o al activarse el umbral.

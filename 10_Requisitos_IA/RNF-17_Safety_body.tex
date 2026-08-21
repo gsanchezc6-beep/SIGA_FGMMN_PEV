@@ -1,0 +1,11 @@
+\textbf{Nota de numeraci\'on:} el ERS ya usa el identificador RNF-16 (Disponibilidad en modo degradado sin conectividad, Fiabilidad, sustentado en EV-15). Este requisito nuevo se numera \textbf{RNF-17} para no colisionar.
+
+\textbf{Descripci\'on cuantificada:} antes de ejecutar un apagado autom\'atico de climatizaci\'on (RF-13, RF-16), el sistema debe verificar que el aula est\'a efectivamente desocupada mediante al menos dos lecturas de sensor de presencia consecutivas, separadas por $\geq$30~s, y debe registrar en bit\'acora (RF-23) el estado de ocupaci\'on que motiv\'o cada apagado. Ante una lectura inconsistente o ausente, el sistema \textbf{no} debe ejecutar el apagado y debe generar una alerta de ``verificaci\'on fallida'' (fallback seguro).
+
+\textbf{Caracter\'istica ISO/IEC 25010:2023:} Seguridad f\'isica (Safety).
+
+\textbf{Criterio de verificaci\'on:} prueba de inyecci\'on de lecturas inconsistentes/ausentes durante un ciclo de apagado autom\'atico $\rightarrow$ el sistema no ejecuta el comando y genera la alerta en el 100\% de un m\'inimo de 20 casos de prueba.
+
+\textbf{Estado de validaci\'on:} derivaci\'on directa de RD-04 y RF-13/RF-16: \textbf{borrador PE5, pendiente de validaci\'on de campo}; no existe evidencia de entrevista porque el guion aplicado en la Entrega 3 (2A) no incluy\'o preguntas sobre fallas de sensor durante apagados autom\'aticos.
+
+\textbf{Trazas:} RF-13, RF-16, RD-04, RD-13.

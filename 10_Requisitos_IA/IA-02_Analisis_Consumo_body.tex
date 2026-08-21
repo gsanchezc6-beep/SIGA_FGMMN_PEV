@@ -1,0 +1,36 @@
+\textbf{Tarea y tipo:} detecci\'on de anomal\'ias + agrupamiento no supervisado sobre series de consumo. \textbf{Sustenta:} RF-14, RF-17 (consumidor del resultado).
+
+\textbf{(a) Descripci\'on del componente.} Entradas: ocupaci\'on (RF-03), estado de climatizaci\'on/proyector (RF-04/RF-05), lectura directa de consumo cuando exista sensor dedicado. Salida: lista de anomal\'ias de consumo (aula, franja horaria, magnitud), integrada al reporte administrativo (RF-17/RF-18). Consumidor: Autoridades de la Facultad, Personal Administrativo. \emph{Fallback:} una anomal\'ia mal detectada solo agrega una l\'inea a un reporte revisado por un humano; no ejecuta ninguna acci\'on sobre equipos.
+
+\textbf{Requisitos funcionales del componente.} Los tres refinan RF-14 y alimentan RF-17; ninguno queda aislado.
+
+\begingroup
+\small
+\begin{longtable}{|p{2.1cm}|p{9.4cm}|p{3.4cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{ID}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Enunciado verificable}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Traza}} \\ \hline
+RF-IA-04 & El sistema debe calcular, para cada aula con al menos 60 d\'ias de historial, una l\'inea base de consumo por franja horaria y d\'ia de la semana, e indicar expl\'icitamente si esa l\'inea base proviene de un sensor de consumo real o del indicador indirecto (ocupaci\'on y estado de equipos). & Refina RF-14; se apoya en RF-03/RF-04/RF-05; verifica CP-IA-04 \\ \hline
+RF-IA-05 & El sistema debe ejecutar, una vez al d\'ia, la detecci\'on de desviaciones respecto a la l\'inea base y producir la lista de anomal\'ias con aula, franja horaria y magnitud de la desviaci\'on. & Refina RF-14; verifica CP-IA-05; medido por RNF-IA-06, RNF-IA-07 y RNF-IA-08 \\ \hline
+RF-IA-06 & El sistema debe incorporar las anomal\'ias detectadas al reporte administrativo del periodo, agregadas por aula y franja horaria, indicando para cada una la variable que m\'as contribuy\'o a la desviaci\'on. & Refina RF-14; alimenta RF-17/RF-18; operacionaliza RNF-IA-10 y RNF-IA-11; verifica CP-IA-06 \\ \hline
+\caption{Requisitos funcionales del componente IA-02}
+\end{longtable}
+\endgroup
+
+\textbf{(b) Datos de entrenamiento.} Volumen m\'inimo: 60 d\'ias por aula. No requiere etiquetado manual (modelo no supervisado). Sesgo conocido: las aulas sin sensor de consumo directo dependen de un indicador indirecto menos preciso: se declara expl\'icitamente en el reporte. Dato agregado de aula, no personal.
+
+\textbf{(c) M\'etricas de \'exito.}
+\begin{itemize}[nosep]
+\item RNF-IA-06: tasa de falsos positivos $\leq$15\% sobre validaci\'on manual trimestral.
+\item RNF-IA-07: an\'alisis por lote completado en $\leq$10 minutos, una vez al d\'ia.
+\item RNF-IA-08: cobertura $\geq$90\% de las aulas con sensor de ocupaci\'on activo.
+\end{itemize}
+
+\textbf{(d) Requisitos \'eticos y de privacidad.}
+\begin{itemize}[nosep]
+\item RNF-IA-09 (equidad): diferencia de detecci\'on $\leq$15 puntos porcentuales entre aulas con y sin sensor de consumo real.
+\item RNF-IA-10 (equidad): los reportes no atribuyen responsabilidad individual a un docente por consumo que no controla directamente (climatizaci\'on autom\'atica de RF-13); se reportan agregados por aula y franja.
+\item RNF-IA-11 (explicabilidad): cada anomal\'ia indica la variable que m\'as contribuy\'o, sin requerir consulta t\'ecnica adicional.
+\item Finalidad: eficiencia energ\'etica institucional, no evaluaci\'on individual. Sin identidad de usuario/docente. Ninguna acci\'on correctiva autom\'atica.
+\end{itemize}
+
+\textbf{(e) Plan de monitoreo.} Indicadores: falsos positivos mensuales, cobertura de aulas analizadas. Umbral de deriva: falsos positivos $>$25\% durante dos meses consecutivos, o cobertura $<$80\%. Reentrenamiento: recalcular l\'inea base al inicio de cada periodo acad\'emico.

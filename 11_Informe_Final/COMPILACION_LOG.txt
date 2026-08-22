@@ -1,0 +1,9 @@
+Ultima verificacion de compilacion: 22/08/2026, MiKTeX 25.12 / MiKTeX-pdfTeX 4.23.
+
+Comando: pdflatex -> biber -> pdflatex -> pdflatex (ver compilar.sh)
+
+Resultado: main.pdf generado correctamente, 134 paginas.
+  - 0 errores de LaTeX
+  - 0 imagenes faltantes (las 62 figuras del ERS cargan e insertan)
+  - 0 referencias cruzadas indefinidas
+  - Todas las tablas etiquetadas estan referenciadas en el texto

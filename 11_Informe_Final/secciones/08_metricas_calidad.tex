@@ -1,0 +1,87 @@
+\section{M\'etricas de calidad}
+
+\subsection{Tabla de auditor\'ia (plantilla 7.1 de la gu\'ia PE5)}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{4.2cm}|p{3.2cm}|p{2.9cm}|p{2.3cm}|c|}
+\hline
+\textbf{M\'etrica} & \textbf{Antes (v3.0)} & \textbf{Despu\'es (v4.0)} & \textbf{Referencia} & \textbf{Cumple} \\ \hline
+M1a Completitud (4 atributos) & 70,73\,\% (29/41) & \textbf{100\,\% (42/42)} & $\geq$95\,\% & S\'i \\ \hline
+M1b Completitud (CU) & 100\,\% (16/16) & 100\,\% (17/17) & 100\,\% & S\'i \\ \hline
+M1c Actores con $\geq$1 RF & 100\,\% (9/9) & 100\,\% (9/9) & 100\,\% & S\'i \\ \hline
+M2 Consistencia & 0,957 (2 abiertos) & \textbf{1,000 (0 abiertos)} & $\geq$0,98 y 0 abiertos & S\'i \\ \hline
+M3 Verificabilidad & 100\,\% (41/41) & 100\,\% (42/42) & $\geq$90\,\% & S\'i \\ \hline
+M4\_ade Trazabilidad adelante & 0\,\% (0/25) & \textbf{100\,\% (25/25)} & $\geq$90\,\% & S\'i \\ \hline
+M4\_atr Trazabilidad atr\'as & 100\,\% (25/25) & 100\,\% (25/25) & 100\,\% & S\'i \\ \hline
+M5 Modificabilidad & 4,2 & 4,2 & $\leq$3,0 & \textbf{No} \\ \hline
+M6 Correcci\'on & 1,73 (71/41) & \textbf{0,00 (0/42)} & $\leq$0,05 & S\'i \\ \hline
+\end{tabular}
+\caption{Auditor\'ia de calidad del ERS: comparaci\'on antes/despu\'es}
+\label{tab:auditoria-08}
+\end{table}
+
+Ocho de las nueve mediciones alcanzan su valor de referencia tras las correcciones (Tabla~\ref{tab:auditoria-08}). M5 no lo alcanza y no se maquilla: mide un acoplamiento real del dise\~no, no un defecto documental. Dos advertencias antes de leer las cifras, ambas desarrolladas m\'as abajo: M1c cambi\'o respecto del primer reporte porque se corrigi\'o la \emph{definici\'on operativa} que se estaba aplicando, no porque cambiara el documento; y M6 $=0{,}00$ significa ``cero defectos residuales \emph{de los registrados}'', con una re-inspecci\'on independiente todav\'ia pendiente.
+
+\subsection{Operacionalizaci\'on de cada m\'etrica}
+
+Antes de la aritm\'etica conviene fijar qu\'e cuenta como qu\'e, porque en varias m\'etricas el resultado depende m\'as de la definici\'on que del documento. La Tabla~\ref{tab:operacionalizacion} declara, para cada una, la unidad contada y el criterio de inclusi\'on aplicado.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|p{4.3cm}|p{6.6cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{M\'etrica}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Unidad contada}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Criterio de inclusi\'on aplicado}} \\ \hline
+M1a & Requisito (25 RF + 17 RNF) & Se cuenta completo si tiene los cuatro atributos con contenido: identificador, prioridad, fuente y criterio de aceptaci\'on \\ \hline
+M1b & Caso de uso (17) & Se cuenta especificado si tiene ficha textual con actores, prop\'osito, precondiciones, curso normal y flujos alternativos \\ \hline
+M1c & Actor formal (9) & Se cuenta cubierto si participa en al menos un caso de uso, y por tanto en al menos un requisito que ese caso realiza \\ \hline
+M2 & Verificaci\'on de coherencia (46) & Cada dato duplicado en dos o m\'as lugares cuenta como una verificaci\'on; un conflicto es una discrepancia entre esas apariciones \\ \hline
+M3 & Criterio de verificaci\'on (42) & Se cuenta verificable si tiene umbral o resultado observable, unidad y m\'etodo, y no contiene vocabulario no medible \\ \hline
+M4\_ade & Requisito funcional (25) & Cadena completa si se recorre RF $\rightarrow$ CU $\rightarrow$ clase $\rightarrow$ estado $\rightarrow$ prueba, contando el estado como satisfecho si la entidad no tiene ciclo de vida \\ \hline
+M4\_atr & Requisito funcional (25) & Se cuenta trazado si el campo de origen identifica una evidencia, norma o an\'alisis \\ \hline
+M5 & Requisito de la muestra (5) & Un requisito est\'a acoplado a otro si comparten al menos un caso de uso o una clase de dominio \\ \hline
+M6 & Instancia de defecto (71) & Cuentan las contradicciones, atributos faltantes y ambig\"uedades sobre requisitos ya escritos; no cuentan los artefactos que la Unidad V manda construir \\ \hline
+\end{tabular}
+\caption{Unidad contada y criterio de inclusi\'on de cada m\'etrica}
+\label{tab:operacionalizacion}
+\end{table}
+
+La fila de M1c y la de M4\_ade son las dos que admiten una lectura alternativa defendible, y por eso ambas se discuten expl\'icitamente m\'as abajo con el valor que arrojar\'ia esa lectura.
+
+\subsection{Aritm\'etica y m\'etodo}
+
+\textbf{M1a.} Antes: 25/25 fichas RF completas, pero solo 4/16 RNF, porque solo NFR-01, 02, 03 y 10 ten\'ian prioridad MoSCoW. Correcci\'on: se declar\'o la prioridad de los 13 RNF pendientes en la Tabla 42, cada una con justificaci\'on escrita (7 Must, 5 Should, 1 Could). El criterio aplicado fue: Must lo que, de faltar, impide operar o expone a incumplimiento legal; Should lo que degrada la calidad sin bloquear; Could lo que solo facilita la evoluci\'on futura. Despu\'es: $42/42$, es decir 100\,\%.
+
+\textbf{M1c: correcci\'on de la definici\'on operativa.} El primer reporte aplic\'o la lectura ``actores que \emph{originan} al menos un RF'' y midi\'o $2/9$, es decir 22,22\,\%. Esa lectura es incorrecta por una raz\'on concreta: convierte M1c en un duplicado de M4\_atr, que ya mide exactamente eso. La lectura literal de la f\'ormula, ``\#actores con $\geq$1 RF'', es de \textbf{cobertura}: ning\'un actor debe quedar sin funcionalidad asociada. Verificado por conteo sobre los 17 CU, los nueve actores participan en al menos uno: desde Personal de Infraestructura (10 CU) hasta Sistema de Videovigilancia (1 CU), luego $9/9$, es decir 100\,\%. La concentraci\'on de fuentes de elicitaci\'on que revelaba la otra lectura no desaparece: se mantiene declarada como limitaci\'on de validez (D-03).
+
+\textbf{M2.} Definici\'on operativa: coherencia de cada requisito contra todas sus declaraciones duplicadas: prioridad de los 42 requisitos contrastada entre Tabla 42, \S5.2 y el CSV (42 comparaciones), conteos narrativos frente a identificadores definidos (3) y alcance del MVP entre \S6.1 y \S6.4 (1). Total 46 verificaciones, 2 conflictos hallados (D-01 y D-12), ambos cerrados: $1-0/46 = 1{,}000$. \emph{Limitaci\'on declarada:} no se ejecut\'o el barrido sem\'antico par a par de los 400 pares RF$\leftrightarrow$RNF; un conflicto de contenido latente no quedar\'ia capturado por esta medici\'on.
+
+\textbf{M3.} Cero t\'erminos no medibles en los 42 criterios de verificaci\'on, incluido el nuevo RNF-17, cuyo criterio fija 20 casos de prueba y un 100\,\% de aciertos exigido.
+
+\textbf{M4\_ade.} Cadena \texttt{RF} $\rightarrow$ \texttt{CU} $\rightarrow$ \texttt{clase} $\rightarrow$ \texttt{estado} $\rightarrow$ \texttt{prueba}, contando ``estado'' como satisfecho cuando la entidad no tiene ciclo de vida modelado (la plantilla 7.2 lo marca ``si aplica''). Antes $0/25$, por inexistencia de casos de prueba y de DFD; despu\'es $25/25$. La cadena extendida que adem\'as exige criterio BDD cierra en $17/25$, es decir 68\,\%, porque solo los RF Must llevan historia y Gherkin, que es lo que la gu\'ia pide.
+
+\textbf{M5.} Recalculado por script sobre la matriz: acoplamiento de 6, 6, 5, 2 y 2 para RF-01, RF-07, RF-13, RF-19 y RF-24. Promedio $21/5 = 4{,}2$, sin cambio. Se comprob\'o si la creaci\'on de CU-17 desacoplaba a RF-24 y \textbf{no lo hace}: sigue unido a RF-19 por la clase \texttt{Usuario}. Bajar de 3,0 exigir\'ia rediseñar el modelo de dominio, no reescribir requisitos, y eso excede el alcance de una unidad de ingenier\'ia de requisitos.
+
+\textbf{M6.} Se cuentan solo defectos de calidad de requisitos preexistentes; la columna \texttt{Cuenta\_para\_M6} del registro marca cu\'ales entran, excluyendo los artefactos que la propia gu\'ia manda construir en la PE5. Antes: D-01 (3) + D-02 (12) + D-06 (3) + D-09 (16) + D-10 (17) + D-12 (1) + D-13 (17) + D-14 (2) $= 71/41 = 1{,}73$. Despu\'es: $0/42 = 0{,}00$. El denominador cambia de 41 a 42 porque la versi\'on 4.0 incorpora RNF-17.
+
+\subsection{Advertencia sobre el M6 igual a cero}
+
+Un 0,00 no significa que el ERS carezca de defectos: significa que no queda ninguno \textbf{de los registrados}. La re-inspecci\'on posterior fue automatizada y verific\'o lo comprobable por script: conteos, identificadores definidos, coherencia de prioridad entre tablas y CSV, cobertura de historias de los 17 Must, balance de entornos LaTeX, pero una re-lectura sem\'antica completa \textbf{por una persona distinta de quien aplic\'o las correcciones} sigue pendiente, y es lo que dar\'ia a este valor su respaldo definitivo. Declararlo de otro modo ser\'ia el error que la propia gu\'ia advierte: reportar correcci\'on total cuando el anexo no la respalda.
+
+\subsection{Amenazas a la validez de esta medici\'on}
+
+Las cifras de la Tabla~\ref{tab:auditoria-08} son reproducibles, pero eso no las hace inmunes a sesgo. Se declaran cuatro amenazas concretas:
+
+\textbf{El auditor y el corrector son la misma parte.} Quien detect\'o los defectos aplic\'o tambi\'en las correcciones y volvi\'o a medir. Es la amenaza m\'as seria del conjunto y afecta sobre todo a M6: no hay ninguna garant\'ia de que una lectura externa no encuentre defectos que esta pas\'o por alto. La evidencia de \S5 (dos defectos aparecidos en la segunda pasada) sugiere que probablemente los haya.
+
+\textbf{Varias m\'etricas dependen de una definici\'on operativa elegida por el equipo.} M1c cambia de 22\,\% a 100\,\% seg\'un se lea ``actores que originan un RF'' o ``actores cubiertos por al menos un RF''; M4\_ade depende de que ``estado'' se cuente como satisfecho cuando la entidad no tiene ciclo de vida. Ambas elecciones est\'an argumentadas y declaradas, pero un evaluador que adopte la lectura contraria obtendr\'a otros n\'umeros. Por eso se reporta en cada caso el valor alternativo.
+
+\textbf{M5 se calcula sobre una muestra, no sobre el conjunto.} Cinco requisitos de veinticinco, elegidos por representatividad funcional y no al azar. La gu\'ia admite expresamente una muestra de al menos cinco, pero la elecci\'on intencional puede favorecer o perjudicar el promedio; con RF de \'areas menos acopladas el valor bajar\'ia.
+
+\textbf{La consistencia se verific\'o sobre declaraciones, no sobre sem\'antica.} Las 46 comprobaciones de M2 detectan que dos lugares del documento digan cosas distintas del mismo elemento. No detectan que dos requisitos, cada uno internamente coherente, sean incompatibles entre s\'i en su contenido. Un conflicto de ese tipo seguir\'ia latente.
+
+\subsection{Qu\'e queda pendiente}
+
+M5 (4,2 frente a $\leq$3,0), que se asume y se justifica; la re-inspecci\'on independiente de la versi\'on 4.0; el barrido sem\'antico par a par que cerrar\'ia la limitaci\'on de M2; y ampliar la elicitaci\'on a los siete actores nunca entrevistados como fuente (D-03).

@@ -1,0 +1,118 @@
+\section{Gesti\'on y trazabilidad}
+
+\subsection{L\'inea base y control de cambios}
+
+La l\'inea base del ERS al iniciar esta unidad es el commit \texttt{9f7c54c} (02/08/2026), \'ultimo cambio real sobre \texttt{01\_ERS/secciones\_generadas.tex}. El trabajo de la Unidad V se versiona en un repositorio propio, \repourl. Las incidencias abiertas est\'an en el registro de defectos (\S5, Tabla~\ref{tab:defectos}); no existi\'o un \emph{Change Control Board} formal documentado en las entregas anteriores, lo que se declara como vac\'io de proceso en vez de fabricar un historial de decisiones que no ocurri\'o.
+
+\subsection{Matriz de trazabilidad final}
+
+La matriz heredada (\texttt{04\_Trazabilidad/matriz\_trazabilidad.csv}, 44 filas) trazaba los 25 RF y 6 restricciones, pero \textbf{ning\'un} RNF (defecto D-09) y no ten\'ia columnas de proceso, estado ni caso de prueba. La matriz PE5 (\texttt{04\_Trazabilidad/matriz\_trazabilidad\_PE5.csv}, \textbf{48 filas}) completa la cadena de la plantilla 7.2 de la gu\'ia con las columnas de la Tabla~\ref{tab:columnas-matriz}:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|p{9.5cm}|}
+\hline
+\textbf{Columna} & \textbf{Contenido} \\ \hline
+\texttt{ID\_Requisito} & Identificador \'unico (RF, RF-IA o RNF) \\ \hline
+\texttt{Fuente} & Evidencia de campo (EV-xx), norma o an\'alisis de origen \\ \hline
+\texttt{ID\_CU} & Casos de uso que lo realizan \\ \hline
+\texttt{Clase\_UML} & Clases del modelo de dominio implicadas \\ \hline
+\texttt{Proceso\_DFD} & Proceso P-1 a P-8 del DFD nivel 1 \\ \hline
+\texttt{Estado} & Estado o transici\'on del diagrama de estados, si aplica \\ \hline
+\texttt{Criterio\_BDD} & Criterio de aceptaci\'on Dado--Cuando--Entonces \\ \hline
+\texttt{ID\_CP} & Caso de prueba conceptual \\ \hline
+\texttt{Historia} & Historia del \emph{backlog} \\ \hline
+\texttt{Estado\_de\_la\_traza} & Completa o rota, con la acci\'on tomada \\ \hline
+\end{tabular}
+\caption{Estructura de la matriz de trazabilidad final}
+\label{tab:columnas-matriz}
+\end{table}
+
+Contenido: los 25 RF, los 6 nuevos RF de IA, los 16 RNF existentes y el nuevo RNF-17.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Tipo de requisito} & \textbf{Filas} & \textbf{Cadena completa} & \textbf{\%} \\ \hline
+RF (RF-01 a RF-25) & 25 & 25 & 100\,\% \\ \hline
+RF de IA (RF-IA-01 a RF-IA-06) & 6 & 6 & 100\,\% \\ \hline
+RNF (NFR-01 a NFR-16 y RNF-17) & 17 & 17 & 100\,\% \\ \hline
+\textbf{Total} & \textbf{48} & \textbf{48} & \textbf{100\,\%} \\ \hline
+\end{tabular}
+\caption{Diagn\'ostico de cobertura de la matriz PE5}
+\label{tab:diagnostico-cobertura}
+\end{table}
+
+Las 48 filas cierran cadena completa (Tabla~\ref{tab:diagnostico-cobertura}). En la primera medici\'on eran 35 de 48: las 13 restantes eran RNF, y en doce de los trece casos la causa era la misma, la prioridad MoSCoW no declarada (D-02). Al cerrar ese defecto y redactar los diez casos de prueba de RNF que faltaban, la matriz queda sin filas rotas.
+
+Conviene precisar qu\'e significa aqu\'i ``completa'', porque no todas las columnas aplican a todos los requisitos. Un RNF transversal como NFR-02 (disponibilidad mensual) no se realiza en ning\'un caso de uso ni clase de dominio, y as\'i se declara en su fila: su cadena se cierra por fuente, proceso y caso de prueba, no por caso de uso. Del mismo modo, los RF de prioridad Should no llevan historia ni criterio BDD, porque la gu\'ia los exige solo para los Must. Esas ausencias est\'an marcadas como ``N/A'' con su raz\'on, no como enlaces vac\'ios.
+
+\subsection{Casos de prueba conceptuales}
+
+El ERS no conten\'ia ninguno. Se redactaron \textbf{42}, recogidos en el archivo \texttt{casos\_prueba\_\allowbreak conceptuales.csv} de la carpeta \texttt{04\_Trazabilidad/}, con el formato precondici\'on / acci\'on / resultado esperado y una columna de origen que cita, para cada uno, el criterio de verificaci\'on del ERS del que se deriva. Cubren los 25 RF, los 6 RF de IA y los 17 RNF (diez de ellos con caso propio; los otros siete se verifican junto con el RF con el que comparten umbral). Ejemplo (CP-13, derivado de RF-13): dado un horario cargado y una regla de apagado activa, al simular un aula desocupada fuera de horario, el apagado autom\'atico debe activarse en $\leq$2 minutos y el evento quedar registrado para auditor\'ia.
+
+\subsection{Hu\'erfanos y cadenas rotas}
+
+El cat\'alogo completo est\'a en \texttt{04\_Trazabilidad/huerfanos\_y\_cadenas\_rotas.csv}: 31 entradas, cada una con causa y acci\'on tomada, y ninguna en estado ambiguo. Trece se cerraron como \emph{enlazado} en esta unidad: entre ellas RF-24 y RF-25, que eran hu\'erfanos de caso de uso (colgaban impl\'icitamente de CU-11, que es gesti\'on de acceso y no derechos ARCO) y ahora se realizan en CU-17 y en el proceso P-8 del DFD. El resto queda como \emph{justificado} con su pendiente declarado.
+
+\subsection{Sincronizaci\'on con el \emph{product backlog}}
+
+El equipo no declar\'o formalmente una herramienta de tablero en ninguna entrega anterior verificable en el repositorio, y no se enlaza aqu\'i un tablero inexistente. Lo que s\'i puede verificarse y cuantificarse es la sincronizaci\'on entre el cat\'alogo de requisitos y el conjunto de historias, que es la propiedad que la sincronizaci\'on con el \emph{backlog} persigue: que cada requisito priorizado tenga historia y que cada historia apunte a un requisito existente.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{7.4cm}|c|c|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Comprobaci\'on de sincronizaci\'on}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Resultado}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{\%}} \\ \hline
+RF de prioridad Must con historia asociada & 17 de 17 & 100\,\% \\ \hline
+Historias que apuntan a un RF existente & 17 de 17 & 100\,\% \\ \hline
+Historias hu\'erfanas, sin RF de origen & 0 & 0\,\% \\ \hline
+RF de prioridad Should sin historia & 8 de 8 & no exigido \\ \hline
+Requisitos con caso de prueba asociado & 48 de 48 & 100\,\% \\ \hline
+\end{tabular}
+\caption{Sincronizaci\'on cuantificada entre el cat\'alogo de requisitos y el conjunto de historias}
+\label{tab:sincronizacion}
+\end{table}
+
+La cuarta fila de la Tabla~\ref{tab:sincronizacion} no es un incumplimiento: la gu\'ia exige historia y criterio BDD solo para los requisitos Must, y los ocho Should quedan deliberadamente sin ella, marcados como tales en la matriz. Lo que falta, y se declara, es el soporte en una herramienta de gesti\'on: la correspondencia est\'a verificada sobre los artefactos del repositorio, no sobre un tablero con estados y responsables. Montarlo queda como acci\'on pendiente.
+
+\subsection{An\'alisis de impacto}
+
+La utilidad pr\'actica de una matriz de trazabilidad no es documental sino predictiva: sirve para responder, antes de aceptar un cambio, qu\'e habr\'ia que revisar si ese cambio se aprueba. Se recorri\'o la matriz en sentido inverso para cuatro escenarios de cambio plausibles en este sistema (Tabla~\ref{tab:impacto}), y el resultado no es sim\'etrico.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{4.0cm}|p{4.2cm}|p{4.4cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Cambio hipot\'etico}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Alcance del impacto}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Artefactos a revisar}} \\ \hline
+El horario acad\'emico deja de estar disponible en formato estructurado (cae DEP-02) & RF-13, RF-15, RF-16, RF-21 y NFR-08: toda la automatizaci\'on energ\'etica & Proceso P-4 completo, CU-13, cuatro historias, cinco casos de prueba \\ \hline
+Se cambia el umbral de entrega de alertas de NFR-01 & RF-08, RF-11, RF-21 y la transici\'on \texttt{Notificada} $\rightarrow$ \texttt{Escalada} & Diagrama de estados de \texttt{Alerta}, proceso P-3, CP-08 y CP-11 \\ \hline
+Se incorpora un nuevo tipo de sensor (escenario de NFR-09) & RF-01, RF-03 y RF-22 & Clase \texttt{SensorIoT}, proceso P-1, CP-01 y CP-03 \\ \hline
+Cambia el plazo legal de respuesta de los Art. 13 y 14 de la LOPDP & RF-24, RF-25 y NFR-11 & CU-17, proceso P-8, CP-24 y CP-25 \\ \hline
+\end{tabular}
+\caption{An\'alisis de impacto para cuatro escenarios de cambio}
+\label{tab:impacto}
+\end{table}
+
+Dos observaciones sobre esta tabla. La primera es que el impacto m\'as amplio no proviene de un cambio en el sistema sino \textbf{de un cambio en una dependencia externa}: la p\'erdida del horario acad\'emico estructurado inutiliza cuatro requisitos Must y un proceso completo del DFD. Esa concentraci\'on de riesgo no era visible en ning\'un artefacto anterior a esta unidad, porque DEP-02 se declaraba como supuesto en la \S2.6 del ERS sin ninguna traza hacia los requisitos que dependen de \'el.
+
+La segunda es que el cambio legal (el \'unico de los cuatro que el equipo no controla en absoluto) tiene el impacto \emph{m\'as acotado}, precisamente porque RF-24 y RF-25 ahora se realizan en un caso de uso propio (CU-17) y un proceso propio (P-8). Antes de esta unidad, cuando col\-gaban de CU-11, un cambio en el plazo legal habr\'ia obligado a revisar tambi\'en la gesti\'on de acceso por roles, que no tiene nada que ver. Separar CU-17 no fue entonces una correcci\'on formal: redujo el acoplamiento de la parte del sistema sujeta a cambio normativo.
+
+\subsection{Control de cambios}
+
+El control de cambios de esta unidad se apoy\'o en tres mecanismos, y conviene ser expl\'icito sobre cu\'al de ellos no existi\'o.
+
+\textbf{Registro de defectos como cola de trabajo.} Cada modificaci\'on aplicada al ERS responde a un defecto registrado con su ubicaci\'on exacta. Ning\'un cambio se introdujo por preferencia editorial: la Tabla~\ref{tab:cambios-v4} de \S3 asocia cada uno de los siete cambios de la versi\'on 4.0 a su defecto de origen.
+
+\textbf{Historial de commits como bit\'acora.} El repositorio agrupa los cambios por bloque tem\'atico, con un mensaje que explica el porqu\'e y no solo el qu\'e. La reproducibilidad del informe desde el repositorio se verific\'o clonando en limpio y compilando.
+
+\textbf{Comit\'e de control de cambios: no existi\'o.} No hubo un CCB formal en ninguna entrega del proyecto, de modo que no hay solicitudes de cambio evaluadas, aprobadas ni rechazadas que reportar. Se declara como vac\'io de proceso en lugar de construir retroactivamente un historial de decisiones que no ocurri\'o. La consecuencia real es que las decisiones de alcance (por ejemplo, posponer cinco RF del MVP) se tomaron sin quedar registradas en el momento, y hubo que reconstruirlas al detectar el defecto D-12.
+
+\subsection{Publicaci\'on y citabilidad de los artefactos}
+
+El repositorio se organiz\'o para que sus artefactos sean localizables y reutilizables por terceros, siguiendo los principios FAIR de gesti\'on de datos de investigaci\'on \cite{wilkinson2016fair}: identificadores estables para cada requisito y artefacto, metadatos de cita en \texttt{CITATION.cff} conforme a los principios de citaci\'on de software \cite{smith2016software}, licencia expl\'icita, y un archivo de sumas de verificaci\'on que permite comprobar la integridad de los 111 archivos versionados desde un clon limpio.

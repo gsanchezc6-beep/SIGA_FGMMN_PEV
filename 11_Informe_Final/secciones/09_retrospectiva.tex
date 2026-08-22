@@ -1,0 +1,37 @@
+\section{Retrospectiva}
+
+La Tabla~\ref{tab:retro} recoge la retrospectiva en formato Start--Stop--Continue (Anexo D de la gu\'ia PE5), con responsable por cada acci\'on de mejora.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|p{9cm}|l|}
+\hline
+\textbf{Categor\'ia} & \textbf{Elemento} & \textbf{Responsable} \\ \hline
+\multirow{3}{*}{Start} & Ejecutar una auditor\'ia de calidad real (con conteo verificable) al cierre de cada entrega, no solo al final del curso: esta PE5 fue la primera inspecci\'on formal jam\'as registrada del proyecto. & Verificador \\ \cline{2-3}
+ & Sincronizar el archivo de priorizaci\'on MoSCoW con el cuerpo del ERS en cada cambio, y registrar el porqu\'e de cada reclasificaci\'on: evita contradicciones como D-01. & Analista l\'ider \\ \cline{2-3}
+ & Etiquetar (\texttt{git tag}) la l\'inea base del ERS al cierre de cada entrega, para tener puntos de comparaci\'on reales entre versiones. & Equipo \\ \hline
+\multirow{3}{*}{Stop} & Editar el archivo de priorizaci\'on (CSV) sin sincronizar el cambio con el cuerpo del ERS: caus\'o la contradicci\'on D-01 (RF-20/24/25) que bloque\'o varias m\'etricas. & Equipo \\ \cline{2-3}
+ & Dejar los RNF fuera de la matriz de trazabilidad mientras se traza minuciosamente cada RF: caus\'o que 16 RNF quedaran sin fila propia (D-09). & Documentadora \\ \cline{2-3}
+ & Redactar historias de usuario con una cl\'ausula ``Cuando'' gen\'erica de plantilla en vez del evento real que dispara el escenario (D-10). & Modeladores \\ \hline
+\multirow{3}{*}{Continue} & Declarar expl\'icitamente lo que no est\'a validado (``No verificado (ver Secci\'on X'') en vez de maquillar un porcentaje) pr\'actica ya presente en el ERS desde la Entrega 3 (2A) y que esta unidad mantiene. & Equipo \\ \cline{2-3}
+ & Mantener la plantilla de 8 atributos para cada RF: dio 100\% de completitud real en esta auditor\'ia (M1a sobre RF). & Modeladores \\ \cline{2-3}
+ & Citar la evidencia de campo exacta (EV-xx) en cada requisito: es lo que permiti\'o M4\_atr = 100\% en esta auditor\'ia. & Documentadora \\ \hline
+\end{tabular}
+\caption{Retrospectiva Start-Stop-Continue}
+\label{tab:retro}
+\end{table}
+
+\subsection{Lectura de la retrospectiva}
+
+Las nueve entradas de la Tabla~\ref{tab:retro} no son impresiones: cada una se apoya en un defecto registrado o en una m\'etrica de \S8. Conviene explicar las tres que m\'as cambiar\'ian el resultado si se hubieran aplicado antes.
+
+\textbf{Auditar al cierre de cada entrega, no solo al final (Start).} Es la de mayor retorno. El proyecto acumul\'o setenta y una instancias de defecto a lo largo de tres versiones porque nunca hubo un instrumento de medici\'on hasta la Unidad V. Ninguno de esos defectos era dif\'icil de encontrar: D-01 se detecta comparando dos archivos, D-02 contando campos vac\'ios. El costo de haberlos arrastrado no fue el de corregirlos (eso llev\'o horas) sino el de haber construido modelos, historias y un MVP sobre una priorizaci\'on que se contradec\'ia a s\'i misma.
+
+\textbf{Dejar de editar un artefacto sin sincronizar sus duplicados (Stop).} Los tres defectos de contradicci\'on del registro: D-01, D-12 y D-14: comparten causa: un dato que vive en dos lugares y se actualiz\'o en uno solo. La prioridad MoSCoW viv\'ia en la Tabla 42 y en un CSV; el alcance del MVP, en las secciones 6.1 y 6.4; la caracter\'istica de calidad, en la Tabla 39 y en la declaraci\'on de cobertura de la norma. La acci\'on correctiva no es ``tener m\'as cuidado'', que no es accionable, sino reducir la duplicaci\'on: la priorizaci\'on qued\'o consolidada en un \'unico archivo y esa es la raz\'on por la que se elimin\'o el duplicado en lugar de mantener los dos sincronizados.
+
+\textbf{Mantener la declaraci\'on expl\'icita de lo no validado (Continue).} Es la pr\'actica que m\'as sostiene la credibilidad del ERS ante el tribunal, y viene de la Entrega 3. Nueve de los diecisiete RNF siguen marcados como ``no verificado'' con la raz\'on escrita al lado. La tentaci\'on de reetiquetarlos como validados al cerrar el proyecto existi\'o y se descart\'o: un umbral que nadie midi\'o no se vuelve cierto porque el documento lo afirme, y un anexo que lo desmienta cuesta m\'as que el pendiente declarado.
+
+\subsection{Lo que esta retrospectiva no puede cerrar}
+
+Dos de las acciones de mejora exceden el alcance de una unidad y se dejan enunciadas sin responsable de cierre. La primera es la ampliaci\'on de las fuentes de elicitaci\'on: depende de la disponibilidad de personas, no de esfuerzo del equipo. La segunda es la reducci\'on del acoplamiento que mide M5, que exigir\'ia rediseñar el modelo de dominio (separar el agregado \texttt{Aula} de \texttt{LecturaSensor}) y por tanto rehacer buena parte del modelado UML y de la matriz. Ambas quedan como recomendaci\'on para una eventual continuaci\'on del proyecto, no como compromiso de esta entrega.

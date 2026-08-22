@@ -1,0 +1,70 @@
+\section{Requisitos de componentes de inteligencia artificial}
+
+Especificar un componente de aprendizaje autom\'atico no es especificar una funci\'on determinista: el comportamiento se induce de datos, la salida es probabil\'istica y la calidad depende tanto del modelo como del conjunto de datos y del contexto de uso. Por eso la especificaci\'on debe fijar medidas de desempe\~no, requisitos sobre los datos y requisitos de calidad que no aparecen en el software convencional. Entre ellos, la \textbf{explicabilidad} se ha consolidado como requisito no funcional de pleno derecho, con definici\'on, modelo y cat\'alogo propios \cite{chazette2020explainability,chazette2021exploring}, y con criterios para evaluarla a lo largo del ciclo de vida \cite{chazette2022explainable}. Ese es el marco que sustenta el RNF-10 ya presente en el ERS.
+
+El sistema tiene dos componentes basados en aprendizaje autom\'atico, ambos ya identificados en el ERS como RF-09 y RF-14 (\S3.2 del ERS, \S\ref{sec:ers-final}), pero sin especificaci\'on de rendimiento, equidad ni explicabilidad m\'as all\'a de RNF-10 (explicabilidad de RF-09, ya existente). Esta secci\'on formaliza ambos componentes con los cinco bloques exigidos por la gu\'ia PE5 y cubre los m\'inimos por componente: 3 requisitos funcionales, 3 no funcionales de rendimiento, 2 de equidad y 1 de explicabilidad. En total se a\~naden seis RF de IA (RF-IA-01 a RF-IA-06) y once RNF de IA (RNF-IA-01 a RNF-IA-11). Ninguno queda aislado: todos refinan RF-09 o RF-14, ya especificados en el ERS, y cada uno tiene su caso de prueba conceptual en \texttt{04\_Trazabilidad/casos\_prueba\_conceptuales.csv}.
+
+\subsection{IA-01: Predictor de fallas de equipos (RF-09)}
+\input{../10_Requisitos_IA/IA-01_Predictor_Fallas_body}
+
+\subsection{IA-02: An\'alisis de patrones de consumo energ\'etico (RF-14)}
+\input{../10_Requisitos_IA/IA-02_Analisis_Consumo_body}
+
+\subsection{RNF-17: Seguridad f\'isica (Safety)}
+\input{../10_Requisitos_IA/RNF-17_Safety_body}
+
+\subsection{Comparaci\'on de los dos componentes}
+
+Los dos componentes comparten el marco de especificaci\'on pero difieren en casi todo lo dem\'as, y esas diferencias tienen consecuencias de dise\~no que conviene hacer expl\'icitas (Tabla~\ref{tab:comparacion-ia}).
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{3.1cm}|p{5.1cm}|p{5.1cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Dimensi\'on}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{IA-01 Predictor de fallas}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{IA-02 Consumo energ\'etico}} \\ \hline
+Tipo de aprendizaje & Supervisado, clasificaci\'on binaria & No supervisado, detecci\'on de anomal\'ias \\ \hline
+Etiquetado & Autom\'atico, desde tickets correctivos cerrados & No requiere etiquetado \\ \hline
+Historial m\'inimo & 90 d\'ias por equipo & 60 d\'ias por aula \\ \hline
+Frecuencia & Diaria, con latencia $\leq$2 s por inferencia & Diaria, por lote, en $\leq$10 minutos \\ \hline
+M\'etrica principal & F1 $\geq$0,70 en holdout temporal & Falsos positivos $\leq$15\,\% \\ \hline
+Consumidor & Infraestructura y Mantenimiento & Autoridades y Personal Administrativo \\ \hline
+Consecuencia de un error & Una alerta informativa de m\'as o de menos & Una l\'inea de m\'as o de menos en un reporte \\ \hline
+Riesgo de equidad & Ignorar equipos de aulas poco usadas & Penalizar aulas con menos instrumentaci\'on \\ \hline
+\end{tabular}
+\caption{Comparaci\'on de los dos componentes de inteligencia artificial}
+\label{tab:comparacion-ia}
+\end{table}
+
+La diferencia con mayor efecto sobre la especificaci\'on es la del etiquetado. IA-01 puede entrenarse sin trabajo manual porque el propio sistema genera su variable objetivo: un ticket correctivo cerrado con causa de falla \emph{es} la etiqueta. Esa comodidad tiene un costo que se declara en la ficha como sesgo conocido: el historial de fallas depende de cu\'an diligente fue el registro manual antes de que el sistema existiera, de modo que el modelo aprender\'a tambi\'en los h\'abitos de registro del personal, no solo el comportamiento de los equipos.
+
+IA-02, en cambio, no necesita etiquetas pero arrastra un problema distinto: en las aulas sin sensor de consumo dedicado trabaja sobre un indicador indirecto (ocupaci\'on m\'as estado de equipos) que es menos preciso. De ah\'i que RF-IA-04 obligue a \textbf{declarar en el propio resultado} si la l\'inea base proviene de medici\'on real o de indicador indirecto: sin ese dato, un reporte mezclar\'ia dos calidades de evidencia sin que el lector pueda distinguirlas.
+
+\subsection{Plan de monitoreo y criterio de retirada}
+
+Ninguno de los dos componentes se declara terminado al desplegarse. Ambos tienen indicadores en producci\'on, frecuencia de medici\'on, umbral de deriva y criterio de reentrenamiento, que la Tabla~\ref{tab:monitoreo-ia} resume.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{2.9cm}|p{5.2cm}|p{5.2cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Elemento}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{IA-01}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{IA-02}} \\ \hline
+Indicadores & F1 mensual, falsos negativos por segmento, latencia p95 & Falsos positivos mensuales, cobertura de aulas analizadas \\ \hline
+Umbral de deriva & Ca\'ida de F1 mayor a 15 puntos respecto a la l\'inea base & Falsos positivos por encima del 25\,\% durante dos meses, o cobertura bajo el 80\,\% \\ \hline
+Reentrenamiento & Cada 90 d\'ias o al activarse el umbral & Al inicio de cada periodo acad\'emico \\ \hline
+Retirada & Autom\'atica si F1 baja de 0,60 en dos evaluaciones consecutivas & No aplica: el resultado solo alimenta un reporte revisado por humanos \\ \hline
+\end{tabular}
+\caption{Plan de monitoreo de los componentes de inteligencia artificial}
+\label{tab:monitoreo-ia}
+\end{table}
+
+La asimetr\'ia de la \'ultima fila es deliberada. IA-01 se retira solo porque una predicci\'on degradada genera alertas que consumen tiempo de personal t\'ecnico; dejarlo operando con F1 bajo tiene un costo real. IA-02 no necesita retirada autom\'atica porque su salida nunca llega a un actuador ni a una persona sin pasar antes por la revisi\'on de quien firma el reporte.
+
+\subsection{Nota sobre el uso de modelos de lenguaje en el propio proceso}
+
+Conviene distinguir dos usos de la inteligencia artificial en este proyecto, porque se eval\'uan de forma distinta. Uno es el de los componentes IA-01 e IA-02, que forman parte del sistema especificado y son objeto de esta secci\'on. El otro es el uso de modelos de lenguaje como asistente del propio proceso de ingenier\'ia de requisitos, que es lo que estudia el componente emp\'irico del proyecto y lo que se declara en el Anexo E. Sobre ese segundo uso existe hoy evidencia sistematizada acerca de su alcance y sus l\'imites \cite{cheng2026genai,arora2024advancing}, gu\'ias metodol\'ogicas para aplicarlo a tareas de procesamiento de lenguaje natural en requisitos \cite{vogelsang2024using}, y estudios espec\'ificos sobre elicitaci\'on asistida \cite{ronanki2023investigating,gorer2023generating}, aseguramiento de la calidad de requisitos \cite{lubos2024leveraging} y estandarizaci\'on de su redacci\'on \cite{ray2023agile}. Ninguno de esos trabajos sostiene que el modelo sustituya el an\'alisis humano, y este informe no lo asume.
+
+\subsection{S\'intesis}
+
+Ambos componentes se clasifican como riesgo m\'inimo/limitado bajo el enfoque del Reglamento (UE) 2024/1689, usado como marco de referencia de buenas pr\'acticas: no como obligaci\'on legal directa, dado que el sistema opera \'unicamente en Ecuador sin nexo con la Uni\'on Europea. La obligaci\'on legal real y aplicable es la Ley Org\'anica de Protecci\'on de Datos Personales del Ecuador \cite{asamblea2021lopdp}, cuyos art\'iculos 13 y 14 originan RF-24 y RF-25 y se mapean requisito por requisito en la \S3.4 del ERS. Ninguno de los dos componentes ejecuta una acci\'on autom\'atica irreversible sobre personas o equipos sin supervisi\'on humana: toda predicci\'on de alto riesgo o anomal\'ia de consumo pasa por revisi\'on de Infraestructura/Autoridades antes de generar un ticket o una decisi\'on de inversi\'on.

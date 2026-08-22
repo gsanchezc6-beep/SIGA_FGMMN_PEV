@@ -1,0 +1,27 @@
+\section{Conclusiones}
+
+Se presenta una conclusi\'on por unidad. Cada una enuncia un hallazgo que este proyecto produjo y que no ser\'ia igual de v\'alido en otro: una afirmaci\'on que podr\'ia aparecer en cualquier informe no es una conclusi\'on.
+
+\subsection{Unidad I: Planificaci\'on y elicitaci\'on}
+
+Aplicar tres t\'ecnicas de elicitaci\'on distintas produjo resultados consistentes en el n\'ucleo funcional: entrevista, cuestionario y observaci\'on directa convergieron en los mismos RF-01 a RF-13. Esa convergencia se interpret\'o en su momento como se\~nal de cobertura suficiente, y la auditor\'ia de la Unidad V mostr\'o que era una lectura incompleta. Las tres t\'ecnicas se aplicaron mayoritariamente sobre las mismas dos fuentes, de modo que su acuerdo mide consistencia de esas fuentes, no cobertura del dominio: siete de los nueve actores del sistema nunca fueron origen de un requisito. \textbf{La diversidad de t\'ecnicas no sustituye a la diversidad de informantes}, y confundirlas produce una falsa sensaci\'on de saturaci\'on. En este proyecto la limitaci\'on es de poblaci\'on: el conjunto de personas que operan las aulas es reducido y el docente autoriz\'o cerrar en once entrevistas, pero la lecci\'on metodol\'ogica se sostiene con independencia de esa autorizaci\'on.
+
+\subsection{Unidad II: Especificaci\'on}
+
+La decisi\'on de exigir umbral, unidad y m\'etodo de comprobaci\'on en cada criterio de aceptaci\'on desde la primera redacci\'on tuvo un retorno medible: la verificabilidad result\'o 100\,\% en la auditor\'ia, sin una sola reescritura correctiva. Es la \'unica de las nueve mediciones que naci\'o cumpliendo su umbral. El contraste con lo ocurrido en las historias de usuario es instructivo: all\'i donde se us\'o una plantilla que se rellenaba mec\'anicamente: la cl\'ausula ``cuando se cumple la condici\'on operativa de RF-XX'': el resultado fueron diecisiete escenarios inservibles como criterio de prueba. \textbf{Una plantilla disciplina la redacci\'on solo si cada campo obliga a una decisi\'on}; si admite un relleno gen\'erico, produce documentos que parecen completos y no lo est\'an.
+
+\subsection{Unidad III: Modelado}
+
+El modelado UML fue exhaustivo en las dos dimensiones que la asignatura enfatiza: estructura (clases, componentes, despliegue) y comportamiento: secuencia, actividad, estados, con m\'as de cuarenta diagramas. Ninguno describ\'ia el flujo de datos a nivel de proceso. Ese hueco no se detect\'o durante tres entregas consecutivas porque cada modelo era correcto por separado y la revisi\'on se hizo modelo por modelo. Solo apareci\'o al intentar recorrer la cadena de trazabilidad completa, que exige un eslab\'on de proceso entre la clase y la prueba. \textbf{La completitud de un conjunto de modelos no se verifica revis\'andolos uno a uno, sino intentando atravesarlos de extremo a extremo}: la traza es el instrumento que detecta la vista ausente.
+
+\subsection{Unidad IV: Validaci\'on}
+
+Este proyecto lleg\'o a la Unidad V con tres versiones del ERS, una calificaci\'on de 9,70/10 en la Entrega 2 y \emph{cero} registros de inspecci\'on. La primera inspecci\'on formal, hecha en esta unidad, encontr\'o catorce defectos ra\'iz y setenta y una instancias, entre ellas una contradicci\'on cr\'itica de prioridad que hab\'ia sobrevivido a las tres versiones. Ninguno de esos defectos era sutil; simplemente nadie los hab\'ia buscado con un instrumento. \textbf{Un documento revisado no es un documento inspeccionado}: la revisi\'on informal confirma lo que el autor cree haber escrito, mientras que la inspecci\'on con criterios fijados de antemano contrasta el documento con una definici\'on externa de correcci\'on.
+
+\subsection{Unidad V: Integraci\'on, m\'etricas y defensa}
+
+Medir sobre el documento real, y no sobre una estimaci\'on de c\'omo deber\'ia verse, corrigi\'o el diagn\'ostico del proyecto en las dos direcciones: elev\'o una m\'etrica que se supon\'ia d\'ebil (la verificabilidad result\'o 100\,\%) y confirm\'o con evidencia exacta una debilidad que solo se intu\'ia. M\'as revelador a\'un fue el efecto de las definiciones: M1c pas\'o de 22\,\% a 100\,\% sin que el documento cambiara una l\'inea, solo por corregir la lectura operativa de la f\'ormula. \textbf{Una m\'etrica sin definici\'on operativa expl\'icita no mide calidad, mide la interpretaci\'on de quien la calcula}, y por eso el valor de una auditor\'ia est\'a menos en el n\'umero que en la aritm\'etica reproducible que lo acompa\~na. Es tambi\'en la raz\'on por la que este informe declara sus cuatro amenazas a la validez (\S8) en lugar de presentar nueve cifras cerradas.
+
+\subsection{Conclusi\'on integradora}
+
+Las cinco unidades comparten un mismo patr\'on: en cada una, el artefacto que parec\'ia terminado result\'o incompleto en cuanto se lo someti\'o a un instrumento externo: otro informante, otra plantilla, otra traza, otra lista de verificaci\'on, otra definici\'on. El aprendizaje central del Proyecto Integrador no es que la ingenier\'ia de requisitos produzca documentos, sino que \textbf{la calidad de un requisito no es una propiedad del texto, sino del proceso de contraste al que ese texto ha sido sometido}. Un ERS con veinticinco requisitos bien redactados y ninguna inspecci\'on registrada tiene menos garant\'ias que uno con defectos conocidos, ubicados y contados.

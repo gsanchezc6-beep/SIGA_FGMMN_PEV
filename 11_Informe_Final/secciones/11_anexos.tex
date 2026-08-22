@@ -1,0 +1,90 @@
+\section*{Anexos}
+\addcontentsline{toc}{section}{Anexos}
+
+\subsection*{Anexo A: Instrumento de auditor\'ia de calidad del ERS}
+\addcontentsline{toc}{subsection}{Anexo A: Instrumento de auditor\'ia de calidad del ERS}
+
+Ver \S5 y \S8 de este informe para la tabla de auditor\'ia y la aritm\'etica completa. El detalle l\'inea por l\'inea, con los comandos exactos usados para reproducir cada conteo, est\'a en los dos archivos que la carpeta \texttt{09\_Metricas/} del repositorio contiene: el anexo de auditor\'ia en formato Markdown y el registro de defectos en formato CSV.
+
+\textbf{Instrumento aplicado.} Para cada m\'etrica se registra la f\'ormula, los conteos usados, el resultado, el valor de referencia, el veredicto y la acci\'on de mejora, conforme a la escala de valoraci\'on de la gu\'ia que recoge la Tabla~\ref{tab:escala-auditoria}:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|c|p{11.0cm}|}
+\hline
+\textbf{Nivel} & \textbf{Criterio} \\ \hline
+4 & Cumple el valor de referencia con evidencia completa \\ \hline
+3 & Lo cumple con evidencia parcial \\ \hline
+2 & Queda por debajo, pero con acci\'on de mejora documentada y aplicada \\ \hline
+1 & Queda por debajo sin acci\'on \\ \hline
+0 & No se midi\'o \\ \hline
+\end{tabular}
+\caption{Escala de valoraci\'on por m\'etrica del instrumento de auditor\'ia}
+\label{tab:escala-auditoria}
+\end{table}
+
+Aplicada a los resultados de \S8, la valoraci\'on es de nivel 4 en M1a, M1b, M1c, M2, M3, M4 y M6, y de nivel 2 en M5: queda por debajo del umbral, pero con la causa identificada (acoplamiento del modelo de dominio), la acci\'on de mejora enunciada (separar el agregado \texttt{Aula} de \texttt{LecturaSensor}) y la raz\'on por la que no se aplic\'o en esta unidad (exige rehacer el modelado UML y la matriz completos).
+
+\subsection*{Anexo B: Banco de preguntas del tribunal}
+\addcontentsline{toc}{subsection}{Anexo B: Banco de preguntas del tribunal}
+
+Reproducido de la Gu\'ia Ampliada PE5 (\S10, Anexo B), con la respuesta anticipada de cada tema y el artefacto que la respalda.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|p{10cm}|}
+\hline
+Fundamentos & \S1--3: frontera del sistema y l\'imite; diferencia contexto/l\'imite en este proyecto; modelo de proceso seguido y por qu\'e. \\ \hline
+Elicitaci\'on & \S4--6: t\'ecnica que aport\'o requisitos no descubribles de otro modo; stakeholder subrepresentado (respuesta lista: los 7 actores sin RF de origen, D-03) y c\'omo se compens\'o; origen concreto de un requisito. \\ \hline
+Especificaci\'on & \S7--9: un RNF elegido y c\'omo se comprueba objetivamente; el requisito m\'as costoso de redactar verificable; por qu\'e un CU incluye a otro y no lo extiende. \\ \hline
+Validaci\'on & \S10--12: cu\'antos defectos hall\'o la inspecci\'on y cu\'ales siguen abiertos (respuesta lista: 14 defectos ra\'iz, 71 instancias contables; los que cuentan para M6 quedaron cerrados y se mantiene declarada la limitaci\'on de elicitaci\'on D-03); qu\'e defecto cr\'itico se escap\'o y c\'omo se detect\'o (D-01, contradicci\'on de MoSCoW entre el ERS y el CSV de priorizaci\'on, que sobrevivi\'o tres versiones porque nunca hubo inspecci\'on); c\'omo se sabe que las correcciones no introdujeron nuevos defectos (se volvi\'o a medir: M4\_ade 0\,\%$\rightarrow$100\,\% y M6 1,73$\rightarrow$0,00, con la advertencia de \S8.4 sobre la re-inspecci\'on pendiente). \\ \hline
+Gesti\'on & \S13--15: qu\'e RF se rompe si ma\~nana cambia (usar la muestra M5: RF-01/RF-07 afectan a 6 otros RF cada uno); qu\'e RFC rechaz\'o el CCB (respuesta honesta: no existi\'o un CCB formal documentado en ninguna entrega, se declara como vac\'io de proceso); l\'inea base vigente y d\'onde est\'a etiquetada (commit \texttt{9f7c54c}, sin tag de Git formal: pendiente). \\ \hline
+IA & \S16--18: qu\'e decide el modelo y qu\'e pasa cuando se equivoca (ver fichas IA-01/IA-02, bloque (a), fallback); con qu\'e datos se entrenar\'ia y con qu\'e base legal (bloque (b) de cada ficha); c\'omo se medir\'ia que el modelo no perjudica sistem\'aticamente a un grupo (RNF-IA-04/05/09/10, equidad). \\ \hline
+M\'etricas & \S19--20: qu\'e m\'etrica sali\'o peor y qu\'e se hizo (M4\_ade sali\'o 0\,\%; se construyeron el DFD, CU-17 y los 42 casos de prueba en esta unidad y volvi\'o a medirse en 100\,\%. La peor al cierre es M6, 0,73 frente a un umbral de 0,05); mostrar los conteos de verificabilidad (M3, 41/41, comando de b\'usqueda documentado en \S8.2). \\ \hline
+\'Etica & \S21--22: qu\'e datos personales trata el sistema y c\'omo se protegen (credenciales, bit\'acora; AES-256, NFR-03; CU-17 para derechos ARCO); qu\'e partes de este informe fueron asistidas por IA y c\'omo se validaron (ver Anexo E). \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Anexo C: Declaraci\'on individual de aporte al PFC}
+\addcontentsline{toc}{subsection}{Anexo C: Declaraci\'on individual de aporte al PFC}
+
+\textbf{Aporte hist\'orico verificable (PE1--PE4, hasta el 02/08/2026), seg\'un el historial real de \texttt{git log} de ambos repositorios: ninguna cifra de esta tabla est\'a estimada:}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{4.6cm}|c|c|p{5.4cm}|}
+\hline
+\textbf{Integrante} & \textbf{ERS} & \textbf{MVP} & \textbf{Aportes concretos verificables} \\ \hline
+S\'anchez Cornejo Gary Alberto & 50 & 4 & Estructura del repositorio, MVP completo, evidencias e integraci\'on general \\ \hline
+Mu\~noz Qui\~nonez Yeranick Esther & 24 & 0 & Evidencias de campo y transcripciones \\ \hline
+Mendoza Palma Allan Jeremy & 19 & 0 & Diagramas UML de actividad y secuencia, evidencias \\ \hline
+Cede\~no Avila Winston Damian & 16 & 0 & Diagramas UML de componentes y despliegue, evidencias \\ \hline
+Gilces Carranza Jos\'e Ignacio & 0 & 0 & Ninguno verificable en el historial hasta el 20/08/2026 \\ \hline
+\end{tabular}
+\caption{Aporte hist\'orico PE1--PE4 (fuente: \texttt{git log --format="\%an"} de ambos repositorios)}
+\end{table}
+
+\textbf{Aporte en la Unidad V (PE5):} S\'anchez Cornejo Gary Alberto, Mu\~noz Qui\~nonez Yeranick Esther, Ce\~no Avila Winston Damian y Mendoza Palma Allan Jeremy son los integrantes activos del equipo en esta unidad. Gilces Carranza Jos\'e Ignacio no registra aporte verificable, ni en las entregas anteriores ni en la Unidad V. Esta tabla se completa con el detalle de aporte de la PE5 una vez existan los commits correspondientes sobre esta carpeta.
+
+\subsection*{Anexo D: Retrospectiva}
+\addcontentsline{toc}{subsection}{Anexo D: Retrospectiva}
+
+Ver \S9 de este informe.
+
+\subsection*{Anexo E: Referencias y declaraci\'on de uso de IA}
+\addcontentsline{toc}{subsection}{Anexo E: Referencias y declaraci\'on de uso de IA}
+
+\textbf{Herramienta:} Claude (Anthropic), modelo Opus 5, v\'ia Claude Code, sesiones del 20 al 22 de agosto de 2026.
+
+\textbf{Secciones asistidas y tipo de asistencia:}
+\begin{itemize}[nosep]
+\item \textbf{Auditor\'ia de calidad (Anexo A, \S5, \S8):} extracci\'on de conteos reales del documento (grep/awk sobre el .tex y los .csv reales), c\'alculo de las f\'ormulas de la gu\'ia sobre esos conteos, y redacci\'on de la interpretaci\'on. Los conteos son reproducibles con los comandos documentados en el Anexo A; no se gener\'o ning\'un n\'umero sin poder mostrarlo.
+\item \textbf{Fichas de IA (IA-01, IA-02) y RNF-17:} redacci\'on completa asistida por IA, a partir del dominio real del sistema (RF-09, RF-14, RF-13/RF-16 ya existentes en el ERS). No se cit\'o ninguna evidencia de campo (EV-xx) que no existiera; donde no hay evidencia real, se declara expl\'icitamente ``borrador PE5, pendiente de validaci\'on de campo''.
+\item \textbf{DFD Nivel 1, CU-17, matriz de trazabilidad PE5, registro de hu\'erfanos:} construcci\'on completa asistida por IA, derivada del modelo real de RF/CU/clases ya existente en el ERS y en \texttt{matriz\_trazabilidad.csv}: no de una plantilla gen\'erica.
+\item \textbf{Retrospectiva (\S9) y Conclusiones (\S10):} redacci\'on asistida por IA a partir de hechos verificables del repositorio (fechas, versiones, hallazgos de la auditor\'ia).
+\end{itemize}
+
+\textbf{M\'etodo de validaci\'on del contenido:} toda cifra de m\'etrica y todo defecto reportado en este informe es reproducible ejecutando los comandos documentados en el Anexo A sobre el repositorio real (\texttt{github.com/gsanchezc6-beep/SIGA\_FGMMN\_ISR401\_AVANCE\_2A}, commit \texttt{9f7c54c}). Ninguna secci\'on evaluativa (conclusiones, justificaciones de decisiones de ingenier\'ia) se declara como producci\'on \'integra de IA sin revisi\'on humana subsecuente.

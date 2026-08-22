@@ -3,7 +3,7 @@
 # Cubre todos los archivos versionados, excepto este mismo archivo.
 # Verificacion:  sha256sum -c checksums.sha256
 #
-aeda26b508351690c52c8dd5492e69f4abb71aa05c009d2cdd575b49eadb214a *.gitattributes
+a3e38b7503b950b824888dcf3e01192c66608a915807dfed8d3888f042a35e35 *.gitattributes
 cca7b9f156a98d3e81e76290aa8c2c0ccf6e0518353ee03d24e89098c4938bc2 *.gitignore
 7eaaed4da699618e977084c9f271b5ef4a4bdd5dd4b7c0e3fe06f500b46237ad *01_ERS/ERS_SRS_2A_v1.0.pdf
 42758aae12b3078f3e60383c2a527e89c94c387c8ec57a89b7bead9cdcfd38bd *01_ERS/ERS_SRS_2A_v1.0.tex

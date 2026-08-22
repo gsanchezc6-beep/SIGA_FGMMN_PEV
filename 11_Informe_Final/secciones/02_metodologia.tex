@@ -1,0 +1,45 @@
+\section{Metodolog\'ia de Ingenier\'ia de Requisitos}
+
+\subsection{Marco normativo y conceptual}
+
+El ERS se estructura y redacta conforme a ISO/IEC/IEEE 29148:2018, que define tanto el contenido de una especificaci\'on de requisitos como las caracter\'isticas de calidad exigibles a un requisito individual y al conjunto \cite{iso29148_2018}. La calidad del producto documental se interpreta con el modelo de ISO/IEC 25010:2023, del que esta unidad deriva sus seis m\'etricas \cite{iso25010_2023}. Los fundamentos conceptuales y las t\'ecnicas de elicitaci\'on, documentaci\'on y validaci\'on siguen a Pohl \cite{pohl2010requirements} y al cuerpo de conocimiento de la disciplina \cite{washizaki2024swebok}; el encuadre de proceso de desarrollo se apoya en Sommerville \cite{sommerville2015software}.
+
+\subsection{Proceso seguido, de PE1 a PE5}
+
+Se sigui\'o un ciclo incremental por entregas:
+
+\begin{itemize}
+\item \textbf{Entrega 1 (1A), 30/05/2026.} Definici\'on de dominio, alcance y partes interesadas.
+\item \textbf{Entrega 2 (1B), 05/07/2026.} ERS parcial con 23 RF, 6 RNF, 18 restricciones y 16 casos de uso; primera ronda de campo. Calificaci\'on docente: 9,70/10.
+\item \textbf{Entrega 3 (2A), 02/08/2026.} ERS completo, modelado UML, priorizaci\'on MoSCoW + Kano + WSJF, segunda ronda de campo, MVP funcional y componente emp\'irico.
+\item \textbf{Entrega 4 (2B).} Manuscrito de publicaci\'on y conjunto de datos, en curso al momento de este corte.
+\item \textbf{Unidad V (PE5), 22/08/2026.} Auditor\'ia de calidad, cierre de trazabilidad, requisitos de IA, ERS versi\'on 4.0 y defensa.
+\end{itemize}
+
+La elecci\'on de un proceso incremental y no de uno en cascada responde a una condici\'on del dominio: al iniciar, el equipo no conoc\'ia las pr\'acticas reales de operaci\'on de las aulas. La primera ronda de campo defini\'o el n\'ucleo funcional y la segunda lo corrigi\'o y ampli\'o: de ella salieron, entre otros, el requisito de aviso ante falta de conectividad y la evidencia sobre el proceso manual de cruce de horarios. Congelar el alcance antes de la segunda ronda habr\'ia dejado fuera esos hallazgos.
+
+\subsection{T\'ecnicas de elicitaci\'on y su sustento}
+
+Se aplicaron tres t\'ecnicas: entrevista semiestructurada, cuestionario digital y observaci\'on directa. El dise\~no del cuestionario sigui\'o la lista de verificaci\'on para encuestas en ingenier\'ia de software de Moll\'eri \emph{et al.} \cite{molleri2020empirically}, y el estudio en su conjunto se encuadra como caso de estudio seg\'un las gu\'ias de Runeson y H\"ost \cite{runeson2009guidelines}.
+
+\textbf{Sobre el n\'umero de entrevistas.} Se realizaron y transcribieron \textbf{once} entrevistas (EV-01, EV-02 y EV-08 a EV-16). La literatura sobre saturaci\'on sit\'ua en torno a doce entrevistas el punto en que dejan de aparecer c\'odigos nuevos en poblaciones relativamente homog\'eneas \cite{guest2006how}, aunque distingue entre saturaci\'on de c\'odigos y saturaci\'on de significado, que requiere m\'as material \cite{hennink2017code}. El tama\~no alcanzado se sit\'ua en ese umbral y no por encima de \'el, lo que se declara como limitaci\'on en \S5. La restricci\'on es de poblaci\'on, no de esfuerzo: el conjunto de personas que operan o dependen directamente de las aulas de la Facultad es reducido, y el docente responsable autoriz\'o expl\'icitamente cerrar la recolecci\'on en ese n\'umero.
+
+\subsection{Decisiones metodol\'ogicas y alternativas descartadas}
+
+Cuatro decisiones condicionaron el resultado del proyecto m\'as que cualquier otra, y en los cuatro casos exist\'ia una alternativa razonable que se descart\'o por un motivo concreto.
+
+\textbf{Dos rondas de campo en lugar de una.} La alternativa era concentrar toda la elicitaci\'on en una ronda inicial y dedicar el resto del tiempo a especificaci\'on y modelado. Se descart\'o porque la primera ronda dej\'o preguntas abiertas sobre el proceso real de mantenimiento que ning\'un an\'alisis documental pod\'ia cerrar. El retorno fue concreto: de la segunda ronda salieron RNF-16: el aviso de falta de conectividad, que naci\'o de una observaci\'on espont\'anea en EV-15: y el sustento emp\'irico de NFR-08 y NFR-14. El costo fue que el modelado UML se comprimi\'o en la Entrega 3.
+
+\textbf{Priorizaci\'on combinada en lugar de MoSCoW solo.} Se aplicaron MoSCoW, Kano y WSJF sobre el mismo cat\'alogo. La alternativa (MoSCoW \'unicamente) habr\'ia sido suficiente para ordenar el MVP y m\'as barata. Se descart\'o para poder contrastar la prioridad declarada por el equipo con la percepci\'on de los usuarios, y el contraste result\'o revelador en sentido negativo: el cuestionario Kano no arroj\'o categor\'ia dominante para RF-07 ni RF-08 con la muestra disponible. Ese resultado se report\'o como no concluyente en lugar de forzar una clasificaci\'on, y es la raz\'on por la que la prioridad final se sostiene en MoSCoW y no en Kano.
+
+\textbf{Un MVP funcional en lugar de prototipos de interfaz.} La alternativa era ampliar los mockups a un prototipo navegable, mucho m\'as barato. Se opt\'o por c\'odigo ejecutable con simulador de sensores porque varios requisitos: RF-08, RF-13, RF-16: describen comportamiento aut\'onomo del sistema ante umbrales, y un prototipo de interfaz no puede demostrar que una regla se dispare sola. El costo de esa decisi\'on aparece en el defecto D-12: cinco requisitos planificados se pospusieron al chocar con la ausencia de hardware real.
+
+\textbf{Conservar el formato editable de los diagramas en lugar de exportar a XMI.} Se decidi\'o versionar los archivos fuente de la herramienta de modelado junto con las exportaciones a imagen. La alternativa, exportar a XMI para independencia de herramienta, se descart\'o por el costo de verificar la fidelidad de la conversi\'on en m\'as de cuarenta diagramas. La consecuencia asumida es una dependencia de herramienta que quedar\'ia como deuda si el proyecto cambiara de suite de modelado.
+
+\subsection{Decisiones metodol\'ogicas propias de esta unidad}
+
+\begin{itemize}
+\item La auditor\'ia de calidad se ejecut\'o como \textbf{primera inspecci\'on formal registrada} del proyecto: no exist\'ia ning\'un registro de defectos de ninguna entrega anterior. Esto condiciona la lectura de la m\'etrica de correcci\'on, porque no hay un ``antes'' previo contra el cual comparar, sino un primer conteo real. La literatura sobre calidad de requisitos advierte precisamente que la medici\'on emp\'irica en esta \'area es escasa y heterog\'enea \cite{montgomery2022empirical}.
+\item Las m\'etricas se calcularon sobre conteos verificables del documento entregado, no sobre estimaciones, y cada c\'alculo se acompa\~na del comando que lo reproduce (Anexo A).
+\item El componente emp\'irico del proyecto se dise\~n\'o siguiendo las convenciones de experimentaci\'on en ingenier\'ia de software \cite{wohlin2012experimentation} y de reporte de experimentos \cite{jedlitschka2008reporting}, con registro previo del protocolo conforme a la pr\'actica de preregistro \cite{nosek2018preregistration}. El acuerdo entre evaluadores se calcula con los coeficientes de Cohen \cite{cohen1960coefficient} y de Fleiss \cite{fleiss1971measuring}. La revisi\'on de literatura de apoyo sigui\'o las gu\'ias de Kitchenham y Charters \cite{kitchenham2007guidelines}.
+\end{itemize}

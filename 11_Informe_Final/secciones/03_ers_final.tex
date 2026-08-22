@@ -1,0 +1,191 @@
+\section{ERS/SRS final}
+\label{sec:ers-final}
+
+\subsection{Alcance de esta secci\'on}
+
+El ERS/SRS es un entregable independiente de este informe: reside completo en \texttt{01\_ERS/} del repositorio, en su versi\'on \textbf{4.0} del 22 de agosto de 2026, y se compila por separado. Esta secci\'on no lo reproduce. Presenta su estructura conforme a ISO/IEC/IEEE 29148:2018 (Tabla~\ref{tab:estructura-ers}), el cat\'alogo de requisitos clave, y lo que cambi\'o en la versi\'on 4.0 respecto de la 3.0 entregada en la Unidad III.
+
+\subsection{Estructura conforme a ISO/IEC/IEEE 29148:2018}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|p{10.2cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Secci\'on del ERS}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Contenido}} \\ \hline
+I. Introducci\'on & Prop\'osito, alcance del producto, glosario de 23 t\'erminos, referencias y visi\'on general \\ \hline
+II. Descripci\'on general & Perspectiva y l\'imite del sistema, funciones, 5 clases de usuario, mapa de 8 \emph{stakeholders} con matriz poder/inter\'es, 8 conflictos potenciales, entorno operativo, 7 suposiciones, 9 dependencias y modelado i* (SD y SR) \\ \hline
+III. Requisitos espec\'ificos & Interfaces externas con 4 mockups, 25 requisitos funcionales con plantilla de 8 atributos, 17 requisitos no funcionales cuantificados, requisitos legales LOPDP, 18 restricciones de dise\~no y 17 historias de usuario con criterios Gherkin \\ \hline
+IV. Modelado UML & Casos de uso general, especificaci\'on textual de 17 casos de uso, clases refinadas, secuencia y actividad por caso de uso, estados, componentes, despliegue y DFD de nivel 1 \\ \hline
+V. Priorizaci\'on y trazabilidad & Clasificaci\'on de requisitos, MoSCoW justificado, modelo de Kano, WSJF y matriz de trazabilidad extendida \\ \hline
+VI. Producto M\'inimo Viable & Alcance planificado, desviaci\'on, arquitectura, despliegue y estado verificado contra c\'odigo \\ \hline
+VII. Componente emp\'irico & Protocolo, PICOC, hip\'otesis, plan de an\'alisis estad\'istico y registro \\ \hline
+VIII--X & Conclusiones, referencias y anexos de plan, evidencias y declaraci\'on de uso de IA \\ \hline
+\end{tabular}
+\caption{Estructura del ERS/SRS versi\'on 4.0}
+\label{tab:estructura-ers}
+\end{table}
+
+\subsection{Cat\'alogo de requisitos funcionales}
+
+Veinticinco requisitos funcionales, priorizados en 17 Must y 8 Should (Tabla~\ref{tab:catalogo-rf}). Cada uno se especifica en el ERS con ocho atributos: identificador, descripci\'on, actor y origen, entradas y salidas, precondici\'on y postcondici\'on, prioridad MoSCoW y criterio de verificaci\'on cuantificado.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|p{9.3cm}|l|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{ID}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Requisito}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{MoSCoW}} \\ \hline
+RF-01 & Monitorear el estado ambiental del aula & Must \\ \hline
+RF-02 & Controlar remotamente los dispositivos del aula & Must \\ \hline
+RF-03 & Detectar autom\'aticamente la ocupaci\'on del aula & Must \\ \hline
+RF-04 & Controlar remotamente los proyectores & Must \\ \hline
+RF-05 & Ajustar remotamente la climatizaci\'on & Must \\ \hline
+RF-06 & Integrar el sistema con la videovigilancia existente & Should \\ \hline
+RF-07 & Consultar un panel de control centralizado & Must \\ \hline
+RF-08 & Generar y enviar alertas por anomal\'ias & Must \\ \hline
+RF-09 & Predecir fallos de equipos mediante IA & Should \\ \hline
+RF-10 & Registrar el historial de fallas y mantenimientos & Must \\ \hline
+RF-11 & Notificar de forma inmediata las fallas cr\'iticas & Must \\ \hline
+RF-12 & Gestionar las solicitudes de mantenimiento & Must \\ \hline
+RF-13 & Controlar autom\'aticamente el apagado energ\'etico & Must \\ \hline
+RF-14 & Analizar patrones de consumo energ\'etico & Should \\ \hline
+RF-15 & Programar horarios automatizados de encendido y apagado & Must \\ \hline
+RF-16 & Apagar autom\'aticamente equipos de aulas desocupadas & Must \\ \hline
+RF-17 & Generar reportes estad\'isticos peri\'odicos & Should \\ \hline
+RF-18 & Exportar reportes en PDF y Excel & Should \\ \hline
+RF-19 & Gestionar acceso diferenciado por roles & Must \\ \hline
+RF-20 & Registrar el historial de ocupaci\'on de aulas & Should \\ \hline
+RF-21 & Notificar equipos encendidos fuera de horario & Must \\ \hline
+RF-22 & Monitorear la conectividad de la red IoT & Must \\ \hline
+RF-23 & Registrar bit\'acora de acciones de usuario & Must \\ \hline
+RF-24 & Exportar los datos personales del usuario a solicitud & Should \\ \hline
+RF-25 & Rectificar los datos personales del usuario & Should \\ \hline
+\end{tabular}
+\caption{Cat\'alogo de requisitos funcionales y su prioridad}
+\label{tab:catalogo-rf}
+\end{table}
+
+A ellos se suman los seis requisitos funcionales de los componentes de inteligencia artificial (RF-IA-01 a RF-IA-06), que refinan RF-09 y RF-14 y se detallan en \S7.
+
+\subsection{Requisitos no funcionales y cobertura del modelo de calidad}
+
+Diecisiete requisitos no funcionales cuantificados (Tabla~\ref{tab:catalogo-rnf}), que cubren las nueve caracter\'isticas de ISO/IEC 25010:2023 \cite{iso25010_2023}. La columna de estado de validaci\'on es deliberadamente expl\'icita: distingue lo validado en campo de lo que sigue siendo un umbral propuesto sin confirmar, y esa distinci\'on se mantiene en la versi\'on final en lugar de suavizarse.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|p{5.0cm}|l|l|p{3.3cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{ID}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Requisito}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Caracter\'istica}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Prior.}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Validaci\'on}} \\ \hline
+NFR-01 & Alertas entregadas en $\leq$60 s & Efic. de desempe\~no & Must & Validado en 1B \\ \hline
+NFR-02 & Disponibilidad $\geq$99\,\% mensual & Fiabilidad & Must & Validado en 1B \\ \hline
+NFR-03 & Cifrado AES-256 y acceso autenticado & Seguridad & Must & Validado en 1B \\ \hline
+NFR-04 & Tarea b\'asica en $\leq$2 min sin capacitaci\'on & Interacci\'on de usuario & Should & Validado en 1B \\ \hline
+NFR-05 & Operaci\'on en 3 navegadores, 360--1920 px & Compatibilidad & Must & Validado en 1B \\ \hline
+NFR-06 & Cobertura de pruebas $\geq$70\,\% & Mantenibilidad & Should & Validado en 1B \\ \hline
+NFR-07 & Acierto de ocupaci\'on $\geq$95\,\% & Adecuaci\'on funcional & Must & No verificado \\ \hline
+NFR-08 & Sincronizaci\'on de horario sin p\'erdida & Compatibilidad & Must & Parcial (EV-10) \\ \hline
+NFR-09 & Nuevo sensor en $\leq$8 h-persona & Flexibilidad & Could & No verificado \\ \hline
+NFR-10 & Explicabilidad de la predicci\'on de RF-09 & Interacci\'on de usuario & Must & No verificado \\ \hline
+NFR-11 & Derecho de acceso en $\leq$15 d\'ias h\'abiles & Seguridad / legal & Must & Normativo \\ \hline
+NFR-12 & Alerta ante acceso no autorizado $\leq$5 min & Seguridad & Must & No verificado \\ \hline
+NFR-13 & Reanudaci\'on tras ca\'ida de gateway $\leq$5 min & Fiabilidad & Should & No verificado \\ \hline
+NFR-14 & Diagn\'ostico de falla $\leq$15 min & Mantenibilidad & Should & Parcial (EV-12) \\ \hline
+NFR-15 & Operaci\'on con ancho de banda $\geq$1 Mbps & Flexibilidad & Should & No verificado \\ \hline
+NFR-16 & Aviso expl\'icito de falta de conectividad & Fiabilidad & Must & Campo (EV-15) \\ \hline
+RNF-17 & Apagado autom\'atico seguro & Seguridad f\'isica & Must & Borrador PE5 \\ \hline
+\end{tabular}
+\caption{Requisitos no funcionales, caracter\'istica de calidad, prioridad y estado de validaci\'on}
+\label{tab:catalogo-rnf}
+\end{table}
+
+Nueve de los diecisiete siguen sin validaci\'on de campo. La causa est\'a documentada en el propio ERS: el guion de entrevista aplicado no inclu\'ia preguntas dirigidas a confirmar umbrales cuantitativos, de modo que ning\'un participante los discuti\'o. Declararlos como ``no verificado'' en lugar de darlos por validados es una decisi\'on deliberada, y es lo que permite que la m\'etrica de verificabilidad (\S8) se lea sin ambig\"uedad: un requisito puede ser \emph{verificable} (tener umbral, unidad y m\'etodo) sin estar todav\'ia \emph{verificado}.
+
+\subsection{Actores y cobertura}
+
+El sistema define nueve actores: cinco humanos y cuatro de sistema. La \'ultima columna de la Tabla~\ref{tab:actores} es la que sustenta la m\'etrica M1c (\S8) y, le\'ida junto a la anterior, expone la limitaci\'on de elicitaci\'on que el proyecto declara: hay actores que participan intensamente en el sistema sin haber sido nunca fuente de un requisito.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{4.6cm}|l|c|c|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Actor}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Tipo}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{RF que origina}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{CU en que participa}} \\ \hline
+Personal de Infraestructura y Mantenimiento & Humano & 16 & 10 \\ \hline
+Docente & Humano & 9 & 4 \\ \hline
+Personal de TI & Humano & 0 & 6 \\ \hline
+Personal Administrativo & Humano & 0 & 7 \\ \hline
+Autoridades de la Facultad & Humano & 0 & 5 \\ \hline
+Sensores / Gateway IoT & Sistema & 0 & 7 \\ \hline
+Sistema de Horario Acad\'emico & Sistema & 0 & 3 \\ \hline
+Servicio de Notificaciones & Sistema & 0 & 2 \\ \hline
+Sistema de Videovigilancia & Sistema & 0 & 1 \\ \hline
+\end{tabular}
+\caption{Actores del sistema, requisitos que originan y casos de uso en que participan}
+\label{tab:actores}
+\end{table}
+
+\subsection{Historias de usuario}
+
+Los diecisiete requisitos de prioridad Must tienen historia en formato Connextra con un escenario de aceptaci\'on Gherkin. Las diecisiete se reescribieron por completo en la versi\'on 4.0 (defectos D-10 y D-13). La Tabla~\ref{tab:historias} resume el rol y el beneficio de cada una; el escenario completo est\'a en la \S3.6 del ERS.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|l|p{2.9cm}|p{6.2cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{HU}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{RF}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Rol}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Beneficio buscado}} \\ \hline
+HU-01 & RF-01 & Infraestructura & Conocer el estado de las aulas sin recorrerlas \\ \hline
+HU-02 & RF-02 & Infraestructura & No desplazarse hasta el aula para operar equipos \\ \hline
+HU-03 & RF-03 & Infraestructura & Activar el ahorro sin revisar c\'amaras manualmente \\ \hline
+HU-04 & RF-04 & Infraestructura & Resolver la falla m\'as frecuente sin interrumpir la clase \\ \hline
+HU-05 & RF-05 & Infraestructura & Mantener condiciones adecuadas sin desplazarse \\ \hline
+HU-06 & RF-07 & Infraestructura & Detectar de un vistazo qu\'e aula necesita atenci\'on \\ \hline
+HU-07 & RF-08 & Infraestructura & Enterarse de la anomal\'ia sin vigilar el panel \\ \hline
+HU-08 & RF-10 & Infraestructura & Sustentar los informes al decanato con datos \\ \hline
+HU-09 & RF-11 & Docente & Que la interrupci\'on se resuelva sin perder la hora \\ \hline
+HU-10 & RF-12 & Docente & Saber si el reporte fue recibido y en qu\'e punto est\'a \\ \hline
+HU-11 & RF-13 & Infraestructura & No depender de que alguien recorra el edificio \\ \hline
+HU-12 & RF-15 & Infraestructura & Que el ahorro no dependa de una acci\'on diaria \\ \hline
+HU-13 & RF-16 & Infraestructura & Eliminar el desperdicio energ\'etico nocturno \\ \hline
+HU-14 & RF-19 & Personal de TI & Desplegar en producci\'on sin exponer operaciones cr\'iticas \\ \hline
+HU-15 & RF-21 & Infraestructura & Corregir el desperdicio que motiv\'o el proyecto \\ \hline
+HU-16 & RF-22 & Personal de TI & No decidir con datos desactualizados sin advertirlo \\ \hline
+HU-17 & RF-23 & Personal de TI & Auditar qui\'en hizo qu\'e y cu\'ando \\ \hline
+\end{tabular}
+\caption{Historias de usuario de los requisitos Must}
+\label{tab:historias}
+\end{table}
+
+Los ocho requisitos de prioridad Should no llevan historia ni criterio BDD, porque la gu\'ia los exige \'unicamente para los Must. Esa ausencia est\'a marcada como tal en la matriz de trazabilidad, con su raz\'on, y no como una cadena rota.
+
+\subsection{Requisitos legales}
+
+El sistema trata datos personales, por lo que el ERS mapea cada obligaci\'on relevante de la Ley Org\'anica de Protecci\'on de Datos Personales del Ecuador \cite{asamblea2021lopdp} al requisito que la operacionaliza: el Art. 13 (derecho de acceso) origina RF-24 y NFR-11; el Art. 14 (rectificaci\'on) origina RF-25; el deber de responsabilidad demostrada de los Art. 10 lit. k y 47 num. 2 se apoya en la bit\'acora de RF-23; y la notificaci\'on de vulneraciones de los Art. 43 y 46 se apoya en NFR-12. La \S3.4 del ERS argumenta adem\'as por qu\'e el procesamiento de imagen para determinar presencia agregada no constituye dato biom\'etrico en los t\'erminos del Art. 4, lo que sustenta la clasificaci\'on del proyecto en Categor\'ia B de riesgo \'etico.
+
+\subsection{Restricciones de dise\~no}
+
+Dieciocho restricciones acotan el espacio de soluci\'on en cinco ejes: tecnol\'ogico (RD-01 a RD-06: protocolos IoT, red institucional, base de datos aprobada, compatibilidad de equipos, l\'imite de la integraci\'on con videovigilancia y ejecuci\'on en navegador), econ\'omico (RD-07 y RD-08: presupuesto de hardware y despliegue por aulas piloto), normativo (RD-09 a RD-11: protecci\'on de datos, acceso por roles y bit\'acora), operativo (RD-12 y RD-13: dependencia del personal de Infraestructura y del horario acad\'emico digital), temporal (RD-14 y RD-15) y de alcance (RD-16 a RD-18, que fijan por escrito lo que el sistema no har\'a).
+
+\subsection{Qu\'e cambi\'o en la versi\'on 4.0}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{4.3cm}|p{8.4cm}|l|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Cambio}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Motivo}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Defecto}} \\ \hline
+RNF-17, seguridad f\'isica & El modelo de calidad no cubr\'ia \emph{Safety} pese a que el sistema emite comandos de apagado sobre equipos f\'isicos & D-04 \\ \hline
+CU-17, derechos sobre datos & RF-24 y RF-25 colgaban de CU-11, cuyo prop\'osito es la gesti\'on de acceso, no el ejercicio de derechos & D-07 \\ \hline
+\S4.11, DFD de nivel 1 & Ning\'un modelo describ\'ia el flujo de datos a nivel de proceso, eslab\'on exigido por la cadena de trazabilidad & D-08 \\ \hline
+Prioridad de 13 RNF & Solo cuatro RNF ten\'ian prioridad MoSCoW declarada & D-02 \\ \hline
+Reescritura de 17 historias & Connextra malformado y cl\'ausula \emph{Cuando} sin evento observable & D-10, D-13 \\ \hline
+\S6.1, alcance del MVP & Las secciones 6.1 y 6.4 declaraban conjuntos distintos de RF; solo siete coincid\'ian & D-12 \\ \hline
+Reclasificaci\'on de NFR-05 y NFR-15 & Usaban \emph{Portabilidad}, caracter\'istica que ISO/IEC 25010:2023 sustituy\'o por \emph{Flexibilidad} & D-14 \\ \hline
+\end{tabular}
+\caption{Cambios incorporados en la versi\'on 4.0 del ERS}
+\label{tab:cambios-v4}
+\end{table}
+
+Los siete cambios provienen de la auditor\'ia de calidad (\S5), no de una revisi\'on editorial: cada uno cierra un defecto registrado con su ubicaci\'on exacta en el documento.

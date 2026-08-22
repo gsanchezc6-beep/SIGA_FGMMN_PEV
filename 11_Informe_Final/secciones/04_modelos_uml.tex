@@ -1,0 +1,97 @@
+\section{Modelos UML}
+
+El conjunto completo de modelos reside en el ERS (\S\ref{sec:ers-final}) y como archivos individuales en \texttt{03\_Modelado/}, en formato editable y exportado. Esta secci\'on no los reproduce: los lee. La gu\'ia pide para este apartado una \emph{lectura interpretativa}, y eso es lo que sigue: qu\'e decisi\'on de ingenier\'ia sostiene cada modelo, qu\'e revela que los otros no muestran, y d\'onde los modelos se contradicen entre s\'i o con el texto.
+
+\subsection{Qu\'e sostiene cada modelo}
+
+La Tabla~\ref{tab:modelos-decision} resume, para cada modelo, la pregunta que responde y la decisi\'on de ingenier\'ia que sostiene.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{3.4cm}|p{5.6cm}|p{5.0cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Modelo}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Pregunta que responde}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Decisi\'on que sostiene}} \\ \hline
+Contexto & Qu\'e queda dentro y qu\'e fuera del sistema & Las cuatro exclusiones de RD-16 a RD-18 \\ \hline
+Casos de uso (17) & Qu\'e puede hacer cada actor & El reparto de permisos de RF-19 \\ \hline
+Clases refinadas (16) & Qu\'e entidades persisten y c\'omo se relacionan & La jerarqu\'ia \texttt{Equipo} y el acoplamiento que mide M5 \\ \hline
+Secuencia (16) & En qu\'e orden colaboran los objetos & Los umbrales de latencia de NFR-01 y de los RF de control \\ \hline
+Actividad (16) & Qu\'e decisiones y bifurcaciones tiene cada flujo & Los flujos alternativos de cada caso de uso \\ \hline
+Estados (2) & Qu\'e ciclo de vida tienen las entidades no triviales & La columna \texttt{Estado} de la matriz de trazabilidad \\ \hline
+Componentes & C\'omo se reparte la l\'ogica en m\'odulos & La estructura de m\'odulos del MVP \\ \hline
+Despliegue & D\'onde se ejecuta cada parte & Las dependencias DEP-01 a DEP-09 \\ \hline
+i* SD y SR & Por qu\'e cada actor quiere lo que quiere & La justificaci\'on de prioridad de los RF n\'ucleo \\ \hline
+DFD nivel 1 & Por d\'onde circulan los datos & El eslab\'on \texttt{Proceso} de la cadena de trazabilidad \\ \hline
+\end{tabular}
+\caption{Modelos del sistema y decisi\'on de ingenier\'ia que cada uno sostiene}
+\label{tab:modelos-decision}
+\end{table}
+
+\subsection{Lectura del modelo de clases}
+
+El modelo refina diecis\'eis clases: \texttt{Aula}, \texttt{SensorIoT}, \texttt{LecturaSensor}, \texttt{Equipo}, \texttt{Proyector}, \texttt{Climatizador}, \texttt{GatewayIoT}, \texttt{Alerta}, \texttt{SolicitudMantenimiento}, \texttt{Usuario}, \texttt{Rol}, \texttt{HorarioAcademico}, \texttt{ConsumoEnergetico}, \texttt{ReporteAdministrativo}, \texttt{BitacoraAccion} y \texttt{CamaraVigilancia}.
+
+La decisi\'on estructural m\'as relevante es la \textbf{jerarqu\'ia de herencia} \texttt{Equipo} $\rightarrow$ \{\texttt{Proyector}, \texttt{Climatizador}\}. No es cosm\'etica: es lo que permite que RF-02 (control remoto de dispositivos) se especifique una sola vez y que RF-04 y RF-05 sean casos concretos suyos sobre subtipos, en lugar de tres requisitos de control independientes que habr\'ia que mantener en paralelo. La alternativa descartada era modelar proyector y climatizador como clases sin relaci\'on, con un atributo \texttt{tipo} discriminante; se descart\'o porque obligaba a duplicar las operaciones de control y porque romp\'ia la extensibilidad que exige NFR-09 (incorporar un nuevo tipo de dispositivo sin tocar el n\'ucleo).
+
+La segunda lectura relevante es de \textbf{acoplamiento}, y es la que explica la \'unica m\'etrica que no cumple. Dos clases concentran las relaciones: \texttt{Aula}, que participa en pr\'acticamente todo flujo de monitoreo, y \texttt{Equipo}, que participa en todo flujo de control. Por eso, al muestrear la modificabilidad (\S8), RF-01 y RF-07 arrastran seis requisitos cada uno. Ese acoplamiento no es un error de especificaci\'on sino una propiedad del dominio: un aula es, literalmente, el agregado que contiene todo lo dem\'as, pero tiene una consecuencia pr\'actica que conviene declarar: cualquier cambio en la definici\'on de \texttt{Aula} o en la de \texttt{LecturaSensor} obliga a revisar la mitad del cat\'alogo funcional.
+
+\subsection{Lectura de los diagramas de estados}
+
+Solo dos entidades tienen ciclo de vida modelado: \texttt{Alerta} (Generada $\rightarrow$ Notificada $\rightarrow$ \{Atendida $\mid$ Escalada\}) y \texttt{SolicitudMantenimiento} (Registrada $\rightarrow$ En atenci\'on $\rightarrow$ Cerrada). La pregunta pertinente no es por qu\'e hay dos, sino por qu\'e no hay m\'as, y la respuesta es un criterio expl\'icito: se modela el estado de una entidad cuando su comportamiento depende de su historia, no de su valor actual. Un \texttt{Aula} est\'a ocupada o vac\'ia seg\'un su \'ultima lectura, sin memoria; una \texttt{Alerta}, en cambio, no puede escalarse si no fue notificada antes. Aplicar el criterio al rev\'es (modelar un estado por cada clase) habr\'ia producido nueve diagramas triviales sin valor de verificaci\'on.
+
+Esa decisi\'on tiene una consecuencia directa sobre la trazabilidad: la columna \texttt{Estado} de la matriz aparece como \emph{no aplica} en la mayor\'ia de las filas, y eso se declara con su raz\'on en cada una. La plantilla de la gu\'ia lo prev\'e expresamente al definir esa columna como aplicable ``si aplica''.
+
+La transici\'on \texttt{Notificada} $\rightarrow$ \texttt{Escalada} merece atenci\'on aparte porque es la \'unica que se dispara por tiempo y no por acci\'on de un actor: ocurre cuando transcurre el umbral sin atenci\'on. Es, por tanto, el punto donde el modelo de estados y NFR-01 se tocan, y donde un cambio en el umbral de la alerta obliga a revisar ambos artefactos.
+
+\subsection{Lectura del modelado organizacional i*}
+
+Los diagramas i* responden una pregunta que ni los casos de uso ni las clases responden: \emph{por qu\'e} cada actor quiere lo que pide. El diagrama de Dependencia Estrat\'egica muestra que el Docente no depende del sistema, sino del Personal de Infraestructura, y que es este \'ultimo quien depende de SIGA para obtener datos de sensor en tiempo real. Esa cadena (Docente $\rightarrow$ Infraestructura $\rightarrow$ SIGA) explica un hecho que de otro modo parecer\'ia un descuido de elicitaci\'on: el Docente figura como origen de nueve requisitos pero casi nunca como usuario operativo del sistema. No es que se le haya ignorado; es que su dependencia est\'a mediada.
+
+El diagrama de Raz\'on Estrat\'egica descompone el \emph{softgoal} ``reducir el tiempo de respuesta a fallas'' del Personal de Infraestructura en tres tareas que se corresponden con RF-07, RF-08 y RF-12. Esa descomposici\'on es la justificaci\'on documentada de por qu\'e esos tres requisitos son Must: no lo son por criterio del equipo, sino porque son las tres tareas en que se descompone el objetivo del actor con mayor poder e inter\'es del mapa de \emph{stakeholders}.
+
+\subsection{CU-17: Ejercer derechos sobre datos personales (nuevo)}
+
+RF-24 (exportaci\'on de datos personales) y RF-25 (rectificaci\'on) exist\'ian desde la Entrega 3, derivados del an\'alisis de los Art. 13 y 14 de la LOPDP, pero no ten\'ian caso de uso propio: colgaban impl\'icitamente de CU-11, cuyo prop\'osito es la gesti\'on de acceso por roles. Son cosas distintas: CU-11 responde a ``qui\'en puede entrar y a qu\'e'', mientras que el ejercicio de derechos responde a ``qu\'e puede exigir el titular sobre sus propios datos'', con actores, plazos legales y evidencia diferentes. Mientras esa confusi\'on persisti\'o, ambos requisitos figuraban como hu\'erfanos de caso de uso en el diagn\'ostico de trazabilidad.
+
+CU-17 lo corrige: actor principal Docente, actores secundarios Personal Administrativo y de TI, con un curso normal que cubre las dos v\'ias (acceso y rectificaci\'on), el plazo de $\leq$15 d\'ias h\'abiles de NFR-11 y el registro en bit\'acora que permite demostrar cumplimiento ante la Autoridad de Protecci\'on de Datos. Su flujo alternativo A3 es deliberadamente conservador: cuando el plazo est\'a por vencer, el sistema alerta al responsable pero \textbf{no} resuelve la solicitud por su cuenta, porque una respuesta autom\'atica a un derecho del titular no ser\'ia defendible ante la autoridad.
+
+\subsection{Diagrama de Flujo de Datos: Nivel 1 (nuevo)}
+
+El ERS de la Entrega 3 modelaba estructura y comportamiento, pero ning\'un modelo describ\'ia el flujo de datos a nivel de proceso. Ese vac\'io no era cosm\'etico: el proceso DFD es un eslab\'on de la cadena de trazabilidad que la gu\'ia exige, y sin \'el ninguna cadena adelante pod\'ia cerrarse, que es la causa de que M4\_ade midiera 0\,\% en la primera auditor\'ia (\S8).
+
+Los ocho procesos (Tabla~\ref{tab:dfd-procesos}) se derivaron agrupando los RF que comparten el mismo flujo de entrada y salida, verificado contra la matriz de trazabilidad; no provienen de una plantilla gen\'erica.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|p{5.5cm}|p{5.2cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Proceso}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Nombre}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{RF que agrupa}} \\ \hline
+P-1 & Captura de datos ambientales y ocupaci\'on & RF-01, RF-03, RF-20, RF-22 \\ \hline
+P-2 & Control remoto de equipos & RF-02, RF-04, RF-05 \\ \hline
+P-3 & Generaci\'on y gesti\'on de alertas & RF-08, RF-11, RF-21 \\ \hline
+P-4 & Automatizaci\'on energ\'etica & RF-13, RF-15, RF-16 \\ \hline
+P-5 & Gesti\'on de mantenimiento & RF-10, RF-12 \\ \hline
+P-6 & Reportes administrativos & RF-14, RF-17, RF-18 \\ \hline
+P-7 & Gesti\'on de acceso y auditor\'ia & RF-19, RF-23 \\ \hline
+P-8 & Gesti\'on de derechos sobre datos personales & RF-24, RF-25 \\ \hline
+\end{tabular}
+\caption{Procesos del DFD de nivel 1}
+\label{tab:dfd-procesos}
+\end{table}
+
+El diagrama hace visibles dos cosas que ning\'un modelo anterior mostraba. La primera es que el almac\'en de bit\'acora (D4) recibe escrituras de \textbf{seis de los ocho procesos}. Es coherente con RF-23 y con el deber de responsabilidad demostrada de la LOPDP, pero convierte a ese almac\'en en un punto \'unico de fallo para la auditabilidad de todo el sistema: si la escritura en bit\'acora falla silenciosamente, el sistema sigue operando con normalidad y la p\'erdida solo se descubre cuando alguien pide la evidencia. Ning\'un requisito actual cubre ese escenario, y se deja anotado como candidato para la siguiente iteraci\'on.
+
+La segunda es que P-8 no exist\'ia como proceso en ninguna vista previa, lo que confirma desde un \'angulo independiente el mismo problema que motiv\'o CU-17: el ejercicio de derechos del titular estaba disuelto dentro de la gesti\'on de acceso.
+
+\subsection{Coherencia entre modelos}
+
+Un conjunto de modelos puede ser individualmente correcto y colectivamente incoherente, de modo que se verificaron tres correspondencias que deb\'ian cumplirse por construcci\'on:
+
+\begin{itemize}
+\item \textbf{Casos de uso frente a clases.} Toda clase del modelo de dominio participa en al menos un caso de uso, y todo caso de uso referencia al menos una clase. Se comprob\'o sobre la matriz de trazabilidad, columna \texttt{Clase\_UML}.
+\item \textbf{Casos de uso frente a actores.} Los nueve actores del diagrama general participan en al menos un caso de uso, desde Personal de Infraestructura, presente en diez, hasta el Sistema de Videovigilancia, presente solo en CU-15. Ese conteo es el que sustenta la m\'etrica M1c (\S8).
+\item \textbf{Procesos DFD frente a requisitos.} Los 25 RF est\'an cubiertos por exactamente uno de los ocho procesos, sin solapamiento ni hueco. Los RF de IA se adscriben al proceso del RF que refinan.
+\end{itemize}
+
+La \'unica incoherencia detectada entre modelos y texto durante esta verificaci\'on fue la ausencia f\'isica de una figura de diagrama de estados que el ERS referenciaba (defecto D-11): el archivo exist\'ia en la carpeta de modelado pero no en la de figuras del documento, de modo que el modelo estaba, y lo que faltaba era su v\'inculo.

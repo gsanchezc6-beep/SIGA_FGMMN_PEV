@@ -1,0 +1,121 @@
+\section{Validaci\'on}
+
+\subsection{Naturaleza de esta inspecci\'on}
+
+No exist\'ia en el repositorio ning\'un registro de defectos ni de inspecci\'on de ninguna entrega anterior. Esta secci\'on documenta la \textbf{primera} inspecci\'on formal realizada sobre el ERS, ejecutada entre el 20 y el 22 de agosto de 2026 sobre la versi\'on 3.0 (commit \texttt{9f7c54c}), y la re-inspecci\'on posterior a las correcciones sobre la versi\'on 4.0. El registro completo, con ubicaci\'on de cada hallazgo y la acci\'on tomada, est\'a en \texttt{09\_Metricas/registro\_defectos.csv}; la aritm\'etica de las m\'etricas derivadas, en \texttt{09\_Metricas/Anexo\_A\_Auditoria\_Calidad\_ERS\_SIGA.md} y en \S8.
+
+\subsection{M\'etodo de inspecci\'on}
+
+La inspecci\'on no fue una lectura general en busca de errores, sino un recorrido con criterios fijados de antemano. Se aplicaron cuatro pasadas sobre el documento:
+
+\begin{enumerate}
+\item \textbf{Completitud de atributos.} Para cada uno de los 42 requisitos se comprob\'o la presencia de los cuatro atributos obligatorios: identificador, prioridad, fuente y criterio de aceptaci\'on, contando campos no vac\'ios. Esta pasada produjo D-02.
+\item \textbf{Verificabilidad.} A cada criterio de aceptaci\'on se le aplicaron las cuatro preguntas de la gu\'ia: si existe umbral num\'erico o resultado observable, si est\'a definida la unidad, si se indica el m\'etodo de comprobaci\'on, y si dos evaluadores independientes llegar\'ian al mismo veredicto. Complementariamente se busc\'o de forma autom\'atica el vocabulario no medible habitual.
+\item \textbf{Coherencia entre declaraciones duplicadas.} Cada dato que aparece m\'as de una vez en el proyecto (la prioridad de un requisito, el n\'umero de requisitos de cada tipo, el alcance del MVP, la caracter\'istica de calidad de cada RNF) se contrast\'o entre todas sus apariciones. Esta pasada produjo los tres defectos de contradicci\'on: D-01, D-12 y D-14.
+\item \textbf{Integridad de la cadena de trazabilidad.} Se recorri\'o cada requisito de la fuente al caso de prueba, marcando el eslab\'on donde la cadena se interrumpe. Esta pasada produjo D-05, D-07, D-08 y D-09.
+\end{enumerate}
+
+Un defecto se registr\'o solo cuando pod\'ia se\~nalarse su ubicaci\'on exacta en el documento. Las impresiones sin ubicaci\'on verificable no entraron al registro, porque un defecto que no se puede mostrar tampoco se puede corregir ni contar.
+
+\subsection{Clasificaci\'on adoptada y su efecto en la medici\'on}
+
+Los defectos se clasificaron en cuatro tipos (Tabla~\ref{tab:tipos-defecto}), y esa clasificaci\'on determina cu\'ales entran en la m\'etrica de correcci\'on:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|p{7.6cm}|c|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Tipo}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Criterio}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Cuenta para M6}} \\ \hline
+Contradicci\'on & El documento afirma dos cosas incompatibles sobre el mismo elemento & S\'i \\ \hline
+Atributo faltante & Un requisito existente carece de un atributo obligatorio & S\'i \\ \hline
+Ambig\"uedad & Un enunciado existente admite m\'as de una lectura o no es comprobable & S\'i \\ \hline
+Artefacto faltante & Un producto de trabajo que la Unidad V manda construir no exist\'ia a\'un & No \\ \hline
+\end{tabular}
+\caption{Tipos de defecto y su inclusi\'on en la m\'etrica de correcci\'on}
+\label{tab:tipos-defecto}
+\end{table}
+
+La distinci\'on de la \'ultima fila es la m\'as importante y conviene justificarla, porque infla o desinfla la m\'etrica seg\'un c\'omo se decida. La m\'etrica de correcci\'on mide \emph{defectos residuales que sobreviven a la inspecci\'on} sobre el documento ya corregido. Un DFD que no exist\'ia no es un defecto del ERS de la Entrega 3: es un entregable que la Unidad V pide construir en su Paso 2. Contarlo como defecto habr\'ia elevado artificialmente el valor ``antes'' y hecho parecer m\'as espectacular la mejora. Contarlo aparte, como se hace aqu\'i, deja la m\'etrica midiendo lo que dice medir.
+
+\subsection{Defectos hallados y estado al cierre}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|l|l|p{5.6cm}|c|c|l|}
+\hline
+\textbf{ID} & \textbf{Tipo} & \textbf{Sever.} & \textbf{Descripci\'on} & \textbf{Inst.} & \textbf{M6} & \textbf{Estado} \\ \hline
+D-01 & Contradicci\'on & Cr\'itica & Prioridad MoSCoW de RF-20/24/25 distinta entre el documento y el CSV de priorizaci\'on & 3 & S\'i & Resuelto \\ \hline
+D-02 & Atributo falt. & Alta & Doce RNF sin prioridad MoSCoW declarada en ning\'un lugar & 12 & S\'i & Resuelto \\ \hline
+D-03 & Limitaci\'on & Media & Solo 2 de 9 actores figuran como fuente de alg\'un RF & 7 & No & Declarado \\ \hline
+D-04 & Vac\'io normativo & Alta & Ninguna caracter\'istica Safety pese al apagado autom\'atico f\'isico & 1 & No & Resuelto \\ \hline
+D-05 & Artefacto falt. & Cr\'itica & Cero casos de prueba conceptual & 25 & No & Resuelto \\ \hline
+D-06 & Artefacto falt. & Media & RF Must sin historia de usuario ni Gherkin & 3 & S\'i & Resuelto \\ \hline
+D-07 & Artefacto falt. & Media & Sin CU dedicado a los derechos LOPDP & 1 & No & Resuelto \\ \hline
+D-08 & Artefacto falt. & Cr\'itica & Sin Diagrama de Flujo de Datos & 1 & No & Resuelto \\ \hline
+D-09 & Artefacto falt. & Alta & Los RNF ausentes de la matriz de trazabilidad & 16 & S\'i & Resuelto \\ \hline
+D-10 & Ambig\"uedad & Media & Cl\'ausula Gherkin ``Cuando'' sin evento observable & 17 & S\'i & Resuelto \\ \hline
+D-11 & Artefacto falt. & Alta & Imagen de diagrama de estados referenciada e inexistente & 1 & No & Resuelto \\ \hline
+D-12 & Contradicci\'on & Alta & \S6.1 y \S6.4 con conjuntos distintos de RF para el MVP & 1 & S\'i & Resuelto \\ \hline
+D-13 & Ambig\"uedad & Media & Connextra malformado en las 17 historias de usuario & 17 & S\'i & Resuelto \\ \hline
+D-14 & Contradicci\'on & Media & Dos RNF clasificados bajo \emph{Portabilidad}, caracter\'istica que ISO/IEC 25010:2023 sustituy\'o por \emph{Flexibilidad} & 2 & S\'i & Resuelto \\ \hline
+\end{tabular}
+\caption{Registro de defectos de la inspecci\'on PE5 y su estado al cierre}
+\label{tab:defectos}
+\end{table}
+
+\subsection{Correcciones aplicadas}
+
+\begin{itemize}
+\item \textbf{D-01.} Resuelto a favor del documento: RF-20, RF-24 y RF-25 quedan Should, versi\'on coherente con cuatro secciones del ERS, con el \texttt{CHANGELOG} y con el README del MVP. La priorizaci\'on se consolid\'o en un \'unico archivo (17 Must, 8 Should) y se elimin\'o el duplicado que manten\'ia viva la contradicci\'on dentro del repositorio.
+\item \textbf{D-02.} Se declar\'o la prioridad de los 13 RNF pendientes en la Tabla 42, cada una con justificaci\'on escrita.
+\item \textbf{D-04.} RNF-17 (seguridad f\'isica) redactado y fusionado en la Tabla 39. Se numera 17 y no 16 para no colisionar con el NFR-16 preexistente, que trata la disponibilidad en modo degradado y tiene evidencia de campo propia (EV-15).
+\item \textbf{D-05.} Cuarenta y dos casos de prueba conceptuales, cada uno derivado del criterio de verificaci\'on real de su requisito.
+\item \textbf{D-06.} Disuelto al cerrar D-01: los tres RF son Should y la gu\'ia exige historia y criterio BDD solo para los Must. Verificado por script que los 17 Must tienen historia.
+\item \textbf{D-07 y D-08.} CU-17 fusionado en la \S4.2 del ERS y DFD de nivel 1 como \S4.11.
+\item \textbf{D-09.} Matriz PE5 de 48 filas, con los 17 RNF y los 6 RF de IA.
+\item \textbf{D-10 y D-13.} Las 17 historias reescritas por completo: cl\'ausula Connextra con rol, funcionalidad y beneficio diferenciados, y escenario Gherkin cuyo ``Cuando'' nombra el evento concreto que lo dispara.
+\item \textbf{D-11.} Figura restituida desde \texttt{03\_Modelado/}.
+\item \textbf{D-12.} La \S6.1 se reescribi\'o declarando el alcance planificado, la desviaci\'on y su causa: cinco RF pospuestos por depender de hardware no disponible y cuatro sustituidos por otros demostrables con el simulador. Se fija la cifra de \S6.4 (11/17, 64,7\,\%) como cobertura real verificada contra c\'odigo.
+\end{itemize}
+
+\subsection{Lo que no se corrigi\'o y por qu\'e}
+
+\textbf{D-03} se reclasific\'o de defecto a \textbf{limitaci\'on declarada}. Bajo la definici\'on de cobertura adoptada para M1c (\S8), los nueve actores participan en al menos un caso de uso, de modo que no hay un vac\'io de completitud en el documento. Lo que s\'i persiste, y se declara, es una \textbf{concentraci\'on real de las fuentes de elicitaci\'on}: siete de los nueve actores nunca fueron entrevistados como origen de un requisito, lo que afecta la validez externa del ERS y solo se resuelve con m\'as trabajo de campo, no con edici\'on documental.
+
+Tambi\'en queda pendiente la \textbf{re-inspecci\'on independiente} de la versi\'on 4.0. La verificaci\'on posterior a las correcciones fue automatizada y cubri\'o lo comprobable por script; una re-lectura sem\'antica por una persona distinta de quien aplic\'o las correcciones es lo que respaldar\'ia definitivamente el M6 igual a cero que se reporta en \S8.
+
+\subsection{Resultado de la re-inspecci\'on}
+
+Tras aplicar las correcciones se ejecut\'o una re-inspecci\'on sobre la versi\'on 4.0. La parte automatizable se verific\'o por \emph{script} para que el resultado no dependa del criterio de quien mira; la Tabla~\ref{tab:reinspeccion} recoge qu\'e se comprob\'o y qu\'e devolvi\'o cada comprobaci\'on.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{6.9cm}|p{3.1cm}|p{3.4cm}|}
+\hline
+\cellcolor{sigagreen}\textcolor{white}{\textbf{Comprobaci\'on}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Esperado}} & \cellcolor{sigagreen}\textcolor{white}{\textbf{Obtenido}} \\ \hline
+Identificadores RF definidos frente a citados & 25 y sin hu\'erfanos & 25, sin hu\'erfanos \\ \hline
+Identificadores RNF definidos & 17 & 17 \\ \hline
+Casos de uso con especificaci\'on textual & 17 & 17 \\ \hline
+Historias de usuario para los RF Must & 17 de 17 & 17 de 17 \\ \hline
+Prioridad MoSCoW: Tabla 42 frente al CSV & Coincidencia en los 42 & Coincidencia en los 42 \\ \hline
+Conteos narrativos frente a identificadores reales & Coincidencia & Coincidencia \\ \hline
+Casos de prueba citados en la matriz y definidos & Correspondencia en ambos sentidos & Correspondencia total \\ \hline
+Filas de la matriz con cadena completa & 48 de 48 & 48 de 48 \\ \hline
+Entradas bibliogr\'aficas citadas en el cuerpo & 36 de 36 & 36 de 36 \\ \hline
+Entornos de tabla abiertos y cerrados & Balance exacto & Balance exacto \\ \hline
+Figuras referenciadas y presentes en disco & Todas & Todas \\ \hline
+\end{tabular}
+\caption{Comprobaciones automatizadas de la re-inspecci\'on sobre la versi\'on 4.0}
+\label{tab:reinspeccion}
+\end{table}
+
+Ninguna de estas comprobaciones sustituye a la lectura sem\'antica: verifican que el documento sea internamente coherente, no que lo que afirma sea correcto. Un requisito puede estar bien identificado, bien trazado y bien contado, y aun as\'i describir mal lo que el usuario necesita. Esa es exactamente la distancia que la m\'etrica de correcci\'on no alcanza a medir y que la re-inspecci\'on pendiente deber\'ia cubrir.
+
+\subsection{Una comprobaci\'on emp\'irica de por qu\'e esa re-inspecci\'on hace falta}
+
+La necesidad de esa segunda lectura no es una precauci\'on ret\'orica: se comprob\'o en este mismo trabajo. Los defectos D-13 y D-14 \textbf{no aparecieron en la primera pasada}. D-13 (el Connextra malformado en las diecisiete historias) se detect\'o al reescribir los escenarios Gherkin por D-10, es decir, al mirar el mismo texto con otro prop\'osito. D-14 (dos RNF clasificados bajo una caracter\'istica de calidad que la edici\'on 2023 de la norma ya no contempla) se detect\'o al generar la tabla resumen de \S3, o sea al obligarse a tabular un dato que hasta entonces se hab\'ia le\'ido en prosa.
+
+El patr\'on es consistente y vale como lecci\'on transferible: en ambos casos el defecto emergi\'o cuando el documento se manipul\'o con una finalidad distinta de la de buscar defectos. Una inspecci\'on que se agota en una \'unica lectura dirigida encuentra lo que su lista de verificaci\'on anticipa, y poco m\'as. Por eso la cifra de correcci\'on que se reporta en \S8 se acompa\~na de su advertencia en lugar de presentarse como un resultado cerrado.

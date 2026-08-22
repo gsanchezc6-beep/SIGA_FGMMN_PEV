@@ -1,0 +1,42 @@
+\section{Introducci\'on}
+
+\subsection{Problema y contexto}
+
+La gesti\'on de la infraestructura de aulas de la Facultad de Ciencias de la Computaci\'on de la UTEQ (climatizaci\'on, proyectores, conectividad y mantenimiento) se realiza de forma manual. El trabajo de campo de este proyecto document\'o cuatro consecuencias concretas: una sola persona recorre el edificio apagando equipos, se pierden entre quince y treinta minutos de clase cuando una falla no se resuelve a tiempo, el cruce de horarios se hace comparando dos ventanas de pantalla a mano, y la mayor\'ia de las aulas carece de conectividad estable.
+
+Ese cuadro no es exclusivo de esta facultad. La literatura sobre \emph{smart campus} identifica la gesti\'on manual de recursos f\'isicos como uno de los problemas recurrentes que motivan la instrumentaci\'on de los espacios universitarios \cite{polin2023smartcampus}, y las revisiones sobre aulas inteligentes coinciden en que los sensores y el an\'alisis autom\'atico de sus datos son la v\'ia habitual para abordarlo \cite{zhang2024smartclassrooms,talu2025exploring}. En el contexto ecuatoriano existe adem\'as un antecedente directo: un sistema IoT para la automatizaci\'on y el monitoreo de iluminaci\'on y climatizaci\'on en aulas universitarias, orientado expl\'icitamente a la eficiencia energ\'etica \cite{delgado2026riemat}.
+
+Dos decisiones t\'ecnicas del sistema se apoyan en esa misma literatura. La primera es la detecci\'on de ocupaci\'on, que es el requisito del que dependen todas las reglas de ahorro: las t\'ecnicas disponibles y sus compromisos de precisi\'on est\'an sistematizados en la revisi\'on de Chaudhari \emph{et al.} \cite{chaudhari2024fundamentals}, y trabajos recientes muestran alternativas que combinan sensores de gas con video para elevar la exactitud en aulas \cite{challa2025gas}. La segunda es la arquitectura del aula instrumentada, para la que existen descripciones consolidadas de referencia \cite{kurni2025iot}.
+
+\subsection{El sistema propuesto}
+
+SIGA es una plataforma web que instrumenta las aulas de la Facultad con sensores y controladores conectados a un \emph{gateway} IoT. Sobre esa base ofrece seis grupos de funciones: monitoreo en tiempo real de temperatura, humedad y ocupaci\'on; control remoto de proyectores y climatizaci\'on; generaci\'on autom\'atica de alertas ante condiciones fuera de umbral; automatizaci\'on energ\'etica, que apaga equipos en aulas desocupadas y programa encendidos seg\'un el horario acad\'emico; gesti\'on de solicitudes de mantenimiento mediante tickets trazables; y reportes administrativos exportables. A ello se suman dos componentes de aprendizaje autom\'atico (predicci\'on de fallas de equipos y an\'alisis de patrones de consumo) que se especifican en \S7.
+
+El sistema atiende a nueve actores, cinco humanos y cuatro de sistema. El actor central no es el docente ni la autoridad, sino el \textbf{Personal de Infraestructura y Mantenimiento}: es quien opera el sistema a diario, quien origina dieciséis de los veinticinco requisitos funcionales y de cuyo objetivo de reducir el tiempo de respuesta a fallas se derivan los tres requisitos de mayor prioridad. Esa centralidad se document\'o con el modelado organizacional i* y no se asumi\'o por defecto.
+
+\subsection{Alcance y l\'imites declarados}
+
+Cuatro exclusiones se fijaron por escrito como restricciones de dise\~no, y se mantienen sin cambio en la versi\'on final del ERS:
+
+\begin{itemize}
+\item \textbf{No reemplaza la videovigilancia existente} (RD-05). El sistema puede integrarla como vista complementaria si hay permisos t\'ecnicos, pero no administra su infraestructura.
+\item \textbf{No gestiona procesos acad\'emicos} (RD-16): ni matr\'icula, ni asistencia, ni calificaciones, ni la asignaci\'on oficial de horarios. Consume el horario acad\'emico como dato de entrada, no lo produce.
+\item \textbf{No controla la red el\'ectrica del campus} (RD-18). Su alcance de actuaci\'on llega hasta los equipos de aula compatibles con control remoto.
+\item \textbf{No realiza mantenimiento f\'isico} (RD-17). Registra, notifica y da seguimiento a incidencias; la reparaci\'on sigue siendo humana.
+\end{itemize}
+
+Estas exclusiones no son formalidades: la tercera es la que sustenta, en \S7, que ninguno de los dos componentes de IA se clasifique como sistema de gesti\'on de infraestructura cr\'itica bajo el enfoque basado en riesgo del Reglamento (UE) 2024/1689.
+
+\subsection{Objetivos de esta entrega (Unidad V)}
+
+\begin{itemize}
+\item Auditar la calidad del ERS final con seis m\'etricas derivadas del modelo de calidad de producto de ISO/IEC 25010:2023 \cite{iso25010_2023}, calculadas sobre conteos reales del documento.
+\item Verificar y cerrar la trazabilidad \emph{end-to-end}, eliminando requisitos hu\'erfanos y cadenas rotas.
+\item Especificar los requisitos funcionales y no funcionales de los dos componentes de inteligencia artificial del sistema, incluidos los de equidad y explicabilidad.
+\item Consolidar la versi\'on final del ERS conforme a ISO/IEC/IEEE 29148:2018 \cite{iso29148_2018} y el informe integrador de las cinco unidades.
+\item Defender individualmente, ante el tribunal, las decisiones de ingenier\'ia tomadas.
+\end{itemize}
+
+\subsection{Estructura del documento}
+
+Este informe sigue la estructura de la Secci\'on 8 de la Gu\'ia Ampliada PE5: introducci\'on, metodolog\'ia, ERS final, modelos UML, validaci\'on, gesti\'on y trazabilidad, requisitos de IA, m\'etricas de calidad, retrospectiva y conclusiones, seguidas de las referencias en formato IEEE y los anexos A--E.

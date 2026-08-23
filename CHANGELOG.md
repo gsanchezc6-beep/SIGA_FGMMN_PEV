@@ -4,6 +4,35 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 Todas las versiones corresponden a entregas del Proyecto Fin de Curso
 ISR-401 Ingeniería de Requerimientos, período 2026–2027 PPA.
 
+## [PEV-1.1.0] — 2026-08-23 (Entrega 5 — Unidad V, revisión de cierre)
+
+### Añadido
+- Diez figuras numeradas y referenciadas en el informe final (casos de uso,
+  contexto, componentes, despliegue, clases, los dos diagramas de estados, i* SD
+  y SR, y la secuencia de CU-16), con `\listoffigures`. El cuerpo analítico pasa
+  de 37 a 46 páginas sin anexos.
+- `11_Informe_Final/secciones/fig_estado_alerta.tex`: diagrama de estados de
+  `Alerta` redibujado en TikZ dentro del repositorio, de modo que se regenera al
+  compilar en lugar de depender de una imagen exportada a mano.
+- Etiqueta anotada `v4.0-PE5` como línea base de salida de la unidad, declarada
+  en la §3 y la §6.1 del informe.
+
+### Corregido
+- **D-15 (nuevo defecto, severidad alta).** El diagrama de estados de `Alerta`
+  entregado desde la Entrega 3 modelaba `Pending → InProgress → Closed`, ciclo
+  calcado del de `SolicitudMantenimiento`, y no el especificado en la §4.6 del
+  ERS (`Generada → Notificada → {Atendida | Escalada}`); omitía la escalada por
+  vencimiento del umbral de NFR-01. Se corrigió el diagrama, no el texto: el
+  ciclo especificado tiene respaldo en NFR-01, en la columna `Estado` de la
+  matriz y en el análisis de impacto. Con ello el registro pasa a 15 defectos
+  raíz y 72 instancias contables, y M6 «antes» de 1,73 a 1,76. M6 «después»
+  sigue en 0,00.
+- La tabla de respaldo de M6 en el Anexo A omitía la fila de D-14, de modo que
+  sumaba 69 instancias frente a las 71 que declaraba el texto. Se completa la
+  tabla y se añade la fila de total, para que la aritmética sea auditable.
+- Resúmenes bilingües ampliados a 230 palabras en español y 231 en inglés; antes
+  quedaban en 172 y 151, por debajo de las 200 que pide la guía.
+
 ## [PEV-1.0.0] — 2026-08-22 (Entrega 5 — Unidad V, versión de entrega)
 
 ### Añadido
@@ -29,15 +58,19 @@ ISR-401 Ingeniería de Requerimientos, período 2026–2027 PPA.
 - M1a completitud: 70,73 % → 100 %
 - M2 consistencia: 0,957 → 1,000, sin conflictos abiertos
 - M4 trazabilidad adelante: 0 % → 100 %
-- M6 corrección: 1,68 → 0,00
+- M6 corrección: 1,76 → 0,00 (valor «antes» actualizado en PEV-1.1.0 al
+  incorporarse D-15; la cifra 1,68 que constaba aquí era anterior al registro
+  completo de defectos)
 - M5 modificabilidad: 4,2, no alcanza el umbral de 3,0; se asume y se justifica
 
 ### Pendiente
 - Re-inspección independiente de la versión 4.0, que respaldaría el M6 igual a cero.
 - Barrido semántico par a par de los 400 pares RF↔RNF.
 - Ampliar la elicitación a los siete actores nunca entrevistados como fuente (D-03).
-- Citar en el cuerpo del informe las referencias que hoy entran por comodín, y
-  verificar DOI o ISBN de cada una.
+- Completar el DOI o ISBN de las siete referencias que no lo llevan (dos normas
+  ISO/IEC, la LOPDP, el SWEBOK v4.0, el informe técnico de Kitchenham y dos
+  libros). No se rellenan con valores no comprobados. Las 36 entradas están
+  citadas individualmente en el cuerpo: no se usa `\nocite` comodín.
 - Ensayo cronometrado de la defensa.
 
 ## [PEV-0.2.0] — 2026-08-22 (Entrega 5 — Unidad V)
@@ -56,8 +89,10 @@ ISR-401 Ingeniería de Requerimientos, período 2026–2027 PPA.
   IA, 11 RNF de IA y clasificación de riesgo (10_Requisitos_IA/).
 - RNF-17 de seguridad física (Safety), ausente del modelo de calidad pese al
   apagado automático de climatización.
-- Informe final en LaTeX, 134 páginas, con instrucciones de compilación
-  reproducibles (11_Informe_Final/).
+- Informe final en LaTeX, con instrucciones de compilación reproducibles
+  (11_Informe_Final/). La cifra de páginas verificada al cierre de la versión
+  está en `11_Informe_Final/COMPILACION_LOG.txt`; la que constaba aquí (134)
+  era incorrecta y se retira.
 
 ### Corregido
 - Prioridad MoSCoW de RF-20, RF-24 y RF-25: el CSV de priorización los marcaba

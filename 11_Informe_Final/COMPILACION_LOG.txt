@@ -1,9 +1,86 @@
-Ultima verificacion de compilacion: 22/08/2026, MiKTeX 25.12 / MiKTeX-pdfTeX 4.23.
+REGISTRO DE VERIFICACION DE COMPILACION - Informe final PE5 (SIGA / FGMMN)
 
-Comando: pdflatex -> biber -> pdflatex -> pdflatex (ver compilar.sh)
+Entorno declarado  : MiKTeX 25.12 / MiKTeX-pdfTeX 4.23
+Archivo principal  : 11_Informe_Final/main.tex
+Secuencia          : pdflatex -> biber -> pdflatex -> pdflatex (ver compilar.sh)
+Fecha de la corrida: 23/08/2026
 
-Resultado: main.pdf generado correctamente, 134 paginas.
-  - 0 errores de LaTeX
-  - 0 imagenes faltantes (las 62 figuras del ERS cargan e insertan)
-  - 0 referencias cruzadas indefinidas
-  - Todas las tablas etiquetadas estan referenciadas en el texto
+--------------------------------------------------------------------------
+RESULTADO DE LA COMPILACION (leido de main.log de esta corrida)
+--------------------------------------------------------------------------
+  [x] Numero de errores de LaTeX          : 0
+  [x] Referencias cruzadas indefinidas    : 0
+  [x] Imagenes no encontradas             : 0
+  [x] Tablas etiquetadas sin referenciar  : 0
+  [x] Figuras etiquetadas sin referenciar : 0
+
+Detalle:
+  - Las 10 figuras del informe se cargan desde ../01_ERS/figuras/ mediante
+    \graphicspath, salvo la del diagrama de estados de Alerta, que se dibuja
+    en TikZ desde secciones/fig_estado_alerta.tex.
+  - 21 etiquetas de tabla (tab:*) y 10 de figura (fig:*), todas referenciadas
+    con \ref en el texto. Dos tablas del Anexo (secciones/11_anexos.tex) no
+    llevan etiqueta y por tanto no entran en el conteo.
+
+Avisos tipograficos de la misma corrida:
+  - Overfull \hbox                        : 0
+  - Overfull \vbox                        : 0
+  - Underfull \hbox                       : 27  (espaciado holgado; no
+    desborda el margen ni altera la maqueta)
+  - 1 aviso "Infinite glue shrinkage found in box being split", ignorado por
+    pdfTeX, al partir un longtable entre paginas. No produce error.
+
+--------------------------------------------------------------------------
+DATO VERIFICADO SOBRE EL PDF GENERADO (23/08/2026)
+--------------------------------------------------------------------------
+main.pdf : 60 paginas fisicas. La caratula no lleva numeracion, de modo que
+la numeracion impresa que ve el lector va de 1 a 59 ("Pagina 59 de 59" en la
+ultima). El desglose siguiente usa la numeracion impresa:
+
+  - Caratula (sin numerar) ................... 1 pagina fisica
+  - Resumen bilingue e indices ............... p. 1 a 6
+  - Cuerpo, secciones 1 a 10 ................. p. 7 a 52   (46 paginas)
+  - Referencias .............................. p. 53 a 55
+  - Anexos A a E ............................. p. 56 a 59
+
+Contenido sin anexos: 46 paginas de cuerpo analitico, por encima del minimo
+de 40 que exige la guia, sin necesidad de contar la seccion de referencias.
+
+Resumen bilingue: 230 palabras en espanol y 231 en ingles (la guia pide 200
+de cada uno).
+
+--------------------------------------------------------------------------
+PRUEBA DEL GATEKEEPER G2 (clon limpio)
+--------------------------------------------------------------------------
+Se clono el repositorio en un directorio vacio, se borro el main.pdf
+versionado y se ejecuto compilar.sh:
+
+  git clone https://github.com/gsanchezc6-beep/SIGA_FGMMN_PEV.git
+  rm 11_Informe_Final/main.pdf
+  bash 11_Informe_Final/compilar.sh
+
+Resultado: main.pdf regenerado sin errores desde el clon, con el mismo
+numero de paginas que el versionado. El hash MD5 difiere de una corrida a
+otra porque el PDF incorpora la marca de tiempo (/CreationDate, /ID); el
+contenido paginado es identico.
+
+--------------------------------------------------------------------------
+FIGURAS DEL INFORME
+--------------------------------------------------------------------------
+El informe inserta 10 figuras numeradas y referenciadas en el texto, por lo
+que main.tex declara \tableofcontents, \listoftables y \listoffigures:
+
+  Fig. 1  Diagrama general de casos de uso              (S3, actores)
+  Fig. 2  Diagrama de contexto                          (S4.1)
+  Fig. 3  Diagrama de componentes                       (S4.1)
+  Fig. 4  Diagrama de despliegue                        (S4.1)
+  Fig. 5  Modelo de clases refinado                     (S4.2)
+  Fig. 6  Estados de Alerta, redibujado en TikZ (D-15)  (S4.3)
+  Fig. 7  Estados de SolicitudMantenimiento             (S4.3)
+  Fig. 8  Modelo i* de Dependencia Estrategica (SD)     (S4.4)
+  Fig. 9  Modelo i* de Razon Estrategica (SR)           (S4.4)
+  Fig. 10 Secuencia de CU-16, prediccion de fallas      (S7)
+
+La figura 6 no procede de 01_ERS/figuras/: se redibujo en TikZ dentro del
+repositorio porque el PNG heredado contradecia la especificacion del ERS
+(defecto D-15). Al estar en codigo, se regenera al compilar.

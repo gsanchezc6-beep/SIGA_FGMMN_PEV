@@ -49,12 +49,15 @@ el índice, la lista de tablas/figuras y las citas ya procesadas.
 **Dependencias de paquetes LaTeX:** `babel` (spanish), `geometry`, `graphicx`,
 `float`, `longtable`, `booktabs`, `amssymb`, `xcolor` (opción `table`),
 `hyperref`, `enumitem`, `fancyhdr`, `titlesec`, `lastpage`, `multirow`,
+`tikz` (con las librerías `arrows.meta` y `positioning`),
 `biblatex` (backend `biber`, estilo `ieee`). MiKTeX instala los paquetes
 faltantes automáticamente en la primera compilación si hay conexión a internet.
 
 **Importante:** `main.tex` referencia artefactos fuera de su carpeta mediante
-rutas relativas (`../01_ERS/`, `../04_Trazabilidad/`, `../10_Requisitos_IA/`).
-Debe clonarse el repositorio completo; no basta con descargar `11_Informe_Final/`.
+rutas relativas (`../01_ERS/`, `../04_Trazabilidad/`, `../10_Requisitos_IA/`),
+y las figuras del informe se cargan desde `../01_ERS/figuras/` a través de
+`\graphicspath`. Debe clonarse el repositorio completo; no basta con descargar
+`11_Informe_Final/`.
 
 ---
 

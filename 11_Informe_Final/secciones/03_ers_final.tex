@@ -3,7 +3,7 @@
 
 \subsection{Alcance de esta secci\'on}
 
-El ERS/SRS es un entregable independiente de este informe: reside completo en \texttt{01\_ERS/} del repositorio, en su versi\'on \textbf{4.0} del 22 de agosto de 2026, y se compila por separado. Esta secci\'on no lo reproduce. Presenta su estructura conforme a ISO/IEC/IEEE 29148:2018 (Tabla~\ref{tab:estructura-ers}), el cat\'alogo de requisitos clave, y lo que cambi\'o en la versi\'on 4.0 respecto de la 3.0 entregada en la Unidad III.
+El ERS/SRS es un entregable independiente de este informe: reside completo en \texttt{01\_ERS/} del repositorio, en su versi\'on \textbf{4.0} del 22 de agosto de 2026, etiquetada como \texttt{v4.0-PE5} en el historial del repositorio (\S6.1), y se compila por separado. Esta secci\'on no lo reproduce. Presenta su estructura conforme a ISO/IEC/IEEE 29148:2018 (Tabla~\ref{tab:estructura-ers}), el cat\'alogo de requisitos clave, y lo que cambi\'o en la versi\'on 4.0 respecto de la 3.0 entregada en la Unidad III.
 
 \subsection{Estructura conforme a ISO/IEC/IEEE 29148:2018}
 
@@ -125,6 +125,15 @@ Sistema de Videovigilancia & Sistema & 0 & 1 \\ \hline
 \caption{Actores del sistema, requisitos que originan y casos de uso en que participan}
 \label{tab:actores}
 \end{table}
+
+El diagrama general de casos de uso (Figura~\ref{fig:usecase-general}) es el artefacto sobre el que se cont\'o la \'ultima columna de la Tabla~\ref{tab:actores}: cada asociaci\'on actor--caso de uso del diagrama es una unidad de ese conteo, de modo que la m\'etrica M1c se puede reproducir sin m\'as insumo que la figura.
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=1.25\textwidth]{usecase_general.png}}
+\caption{Diagrama general de casos de uso del sistema SIGA}
+\label{fig:usecase-general}
+\end{figure}
 
 \subsection{Historias de usuario}
 

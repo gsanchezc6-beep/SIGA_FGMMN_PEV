@@ -1,0 +1,32 @@
+% ---------------------------------------------------------------------------
+% Diagrama de estados de la entidad Alerta, redibujado conforme a la
+% especificacion vigente del ERS (seccion 4.6): Generada -> Notificada ->
+% {Atendida | Escalada}. Sustituye al PNG heredado de la Entrega 3, que
+% modelaba Pending -> InProgress -> Closed y no representaba la escalada por
+% vencimiento de umbral de NFR-01 (defecto D-15 del registro de defectos).
+% Se dibuja con TikZ, no como imagen binaria, para que el diagrama sea
+% reproducible desde el propio repositorio al compilar (gatekeeper G2).
+% ---------------------------------------------------------------------------
+\begin{tikzpicture}[
+  font=\small,
+  estado/.style={draw,rounded corners=6pt,minimum width=2.4cm,minimum height=0.9cm,align=center},
+  inicial/.style={circle,fill=black,minimum size=5.5pt,inner sep=0pt},
+  final/.style={circle,draw,minimum size=9pt,inner sep=1.3pt,
+                path picture={\fill (path picture bounding box.center) circle (2.5pt);}},
+  trans/.style={-{Stealth[length=2.4mm]},thick},
+  rot/.style={font=\scriptsize,align=center,inner sep=2.5pt}
+]
+\node[inicial] (i) {};
+\node[estado,right=1.2cm of i] (gen) {Generada};
+\node[estado,right=3.1cm of gen] (not) {Notificada};
+\node[estado,right=3.1cm of not] (ate) {Atendida};
+\node[estado,below=1.9cm of not] (esc) {Escalada};
+\node[final,right=1.2cm of ate] (f) {};
+
+\draw[trans] (i) -- (gen);
+\draw[trans] (gen) -- node[rot,above]{env\'io autom\'atico\\al responsable} (not);
+\draw[trans] (not) -- node[rot,above]{registro de acci\'on\\del responsable} (ate);
+\draw[trans] (not) -- node[rot,right,xshift=1mm]{sin atenci\'on dentro\\del umbral de NFR-01} (esc);
+\draw[trans] (esc) -| node[rot,below,pos=0.24]{intervenci\'on de autoridad} (ate);
+\draw[trans] (ate) -- (f);
+\end{tikzpicture}

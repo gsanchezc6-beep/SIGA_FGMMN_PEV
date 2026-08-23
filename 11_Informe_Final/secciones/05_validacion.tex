@@ -60,6 +60,7 @@ D-11 & Artefacto falt. & Alta & Imagen de diagrama de estados referenciada e ine
 D-12 & Contradicci\'on & Alta & \S6.1 y \S6.4 con conjuntos distintos de RF para el MVP & 1 & S\'i & Resuelto \\ \hline
 D-13 & Ambig\"uedad & Media & Connextra malformado en las 17 historias de usuario & 17 & S\'i & Resuelto \\ \hline
 D-14 & Contradicci\'on & Media & Dos RNF clasificados bajo \emph{Portabilidad}, caracter\'istica que ISO/IEC 25010:2023 sustituy\'o por \emph{Flexibilidad} & 2 & S\'i & Resuelto \\ \hline
+D-15 & Contradicci\'on & Alta & Diagrama de estados de \texttt{Alerta} con un ciclo distinto del especificado en la \S4.6 del ERS, sin estado \texttt{Escalada} & 1 & S\'i & Resuelto \\ \hline
 \end{tabular}
 \caption{Registro de defectos de la inspecci\'on PE5 y su estado al cierre}
 \label{tab:defectos}
@@ -118,4 +119,6 @@ Ninguna de estas comprobaciones sustituye a la lectura sem\'antica: verifican qu
 
 La necesidad de esa segunda lectura no es una precauci\'on ret\'orica: se comprob\'o en este mismo trabajo. Los defectos D-13 y D-14 \textbf{no aparecieron en la primera pasada}. D-13 (el Connextra malformado en las diecisiete historias) se detect\'o al reescribir los escenarios Gherkin por D-10, es decir, al mirar el mismo texto con otro prop\'osito. D-14 (dos RNF clasificados bajo una caracter\'istica de calidad que la edici\'on 2023 de la norma ya no contempla) se detect\'o al generar la tabla resumen de \S3, o sea al obligarse a tabular un dato que hasta entonces se hab\'ia le\'ido en prosa.
 
-El patr\'on es consistente y vale como lecci\'on transferible: en ambos casos el defecto emergi\'o cuando el documento se manipul\'o con una finalidad distinta de la de buscar defectos. Una inspecci\'on que se agota en una \'unica lectura dirigida encuentra lo que su lista de verificaci\'on anticipa, y poco m\'as. Por eso la cifra de correcci\'on que se reporta en \S8 se acompa\~na de su advertencia en lugar de presentarse como un resultado cerrado.
+D-15 confirm\'o el patr\'on por tercera vez, y de la forma m\'as clara. Apareci\'o al final del trabajo, al insertar las figuras en este informe: mientras el diagrama de estados de \texttt{Alerta} solo se citaba en prosa, la contradicci\'on entre el ciclo dibujado y el ciclo especificado era invisible; bast\'o ponerlo en la p\'agina, al lado de su propia descripci\'on, para que saltara. Es un defecto que hab\'ia sobrevivido a dos entregas y a la inspecci\'on formal completa de esta unidad.
+
+El patr\'on es consistente y vale como lecci\'on transferible: en los tres casos el defecto emergi\'o cuando el documento se manipul\'o con una finalidad distinta de la de buscar defectos. Una inspecci\'on que se agota en una \'unica lectura dirigida encuentra lo que su lista de verificaci\'on anticipa, y poco m\'as. Por eso la cifra de correcci\'on que se reporta en \S8 se acompa\~na de su advertencia en lugar de presentarse como un resultado cerrado.

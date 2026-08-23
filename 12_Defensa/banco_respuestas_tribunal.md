@@ -51,7 +51,7 @@ CU-17 (ejercer derechos) **no** extiende CU-11 (gestión de acceso), y esa fue p
 ## Validación
 
 **10. ¿Cuántos defectos halló la inspección y cuáles siguen abiertos?**
-14 defectos raíz, 71 instancias contables para M6. Todos los que cuentan para M6 quedaron cerrados. Sigue **declarado como limitación** D-03 (siete actores sin RF de origen), y quedan dos pendientes metodológicos: la re-inspección independiente de la versión 4.0 y el barrido semántico par a par.
+15 defectos raíz, 72 instancias contables para M6. Todos los que cuentan para M6 quedaron cerrados. Sigue **declarado como limitación** D-03 (siete actores sin RF de origen), y quedan dos pendientes metodológicos: la re-inspección independiente de la versión 4.0 y el barrido semántico par a par.
 → *`registro_defectos.csv`, columnas Instancias, Cuenta_para_M6 y Estado.*
 
 **11. ¿Qué defecto crítico se les escapó y cómo lo detectaron después?**

@@ -27,9 +27,39 @@ DFD nivel 1 & Por d\'onde circulan los datos & El eslab\'on \texttt{Proceso} de 
 \label{tab:modelos-decision}
 \end{table}
 
+Tres de esos modelos fijan la frontera y la distribuci\'on del sistema, y conviene tenerlos a la vista antes de la lectura interpretativa. El diagrama de contexto (Figura~\ref{fig:contexto}) es el que sostiene las exclusiones de RD-16 a RD-18: lo que no aparece como entidad externa conectada al sistema queda, por construcci\'on, fuera del alcance. El diagrama de componentes (Figura~\ref{fig:componentes}) muestra el reparto de la l\'ogica en m\'odulos que el MVP implementa, y el de despliegue (Figura~\ref{fig:despliegue}) muestra d\'onde se ejecuta cada parte, que es lo que convierte las dependencias DEP-01 a DEP-09 en supuestos verificables y no en enunciados de intenci\'on.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{{System Context Diagram of the Intelligent Classroom Management System (SIGA)}.png}
+\caption{Diagrama de contexto del sistema SIGA}
+\label{fig:contexto}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=1.25\textwidth]{component_diagram.png}}
+\caption{Diagrama de componentes del sistema SIGA}
+\label{fig:componentes}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=1.25\textwidth]{deployment_diagram.png}}
+\caption{Diagrama de despliegue del sistema SIGA}
+\label{fig:despliegue}
+\end{figure}
+
 \subsection{Lectura del modelo de clases}
 
-El modelo refina diecis\'eis clases: \texttt{Aula}, \texttt{SensorIoT}, \texttt{LecturaSensor}, \texttt{Equipo}, \texttt{Proyector}, \texttt{Climatizador}, \texttt{GatewayIoT}, \texttt{Alerta}, \texttt{SolicitudMantenimiento}, \texttt{Usuario}, \texttt{Rol}, \texttt{HorarioAcademico}, \texttt{ConsumoEnergetico}, \texttt{ReporteAdministrativo}, \texttt{BitacoraAccion} y \texttt{CamaraVigilancia}.
+El modelo refina diecis\'eis clases: \texttt{Aula}, \texttt{SensorIoT}, \texttt{LecturaSensor}, \texttt{Equipo}, \texttt{Proyector}, \texttt{Climatizador}, \texttt{GatewayIoT}, \texttt{Alerta}, \texttt{SolicitudMantenimiento}, \texttt{Usuario}, \texttt{Rol}, \texttt{HorarioAcademico}, \texttt{ConsumoEnergetico}, \texttt{ReporteAdministrativo}, \texttt{BitacoraAccion} y \texttt{CamaraVigilancia}. La Figura~\ref{fig:clases} reproduce el modelo tal como est\'a versionado. Los identificadores del diagrama est\'an en ingl\'es, que es la convenci\'on de nomenclatura adoptada para el c\'odigo y los modelos desde la Entrega 3, mientras que el texto de este informe los nombra en espa\~nol; la correspondencia es uno a uno y directa (\texttt{Classroom}/\texttt{Aula}, \texttt{Equipment}/\texttt{Equipo}, \texttt{SensorReading}/\texttt{LecturaSensor}, y as\'i con las dem\'as).
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=1.25\textwidth]{class_diagram_refined.png}}
+\caption{Modelo de clases refinado del dominio de SIGA}
+\label{fig:clases}
+\end{figure}
 
 La decisi\'on estructural m\'as relevante es la \textbf{jerarqu\'ia de herencia} \texttt{Equipo} $\rightarrow$ \{\texttt{Proyector}, \texttt{Climatizador}\}. No es cosm\'etica: es lo que permite que RF-02 (control remoto de dispositivos) se especifique una sola vez y que RF-04 y RF-05 sean casos concretos suyos sobre subtipos, en lugar de tres requisitos de control independientes que habr\'ia que mantener en paralelo. La alternativa descartada era modelar proyector y climatizador como clases sin relaci\'on, con un atributo \texttt{tipo} discriminante; se descart\'o porque obligaba a duplicar las operaciones de control y porque romp\'ia la extensibilidad que exige NFR-09 (incorporar un nuevo tipo de dispositivo sin tocar el n\'ucleo).
 
@@ -37,17 +67,47 @@ La segunda lectura relevante es de \textbf{acoplamiento}, y es la que explica la
 
 \subsection{Lectura de los diagramas de estados}
 
-Solo dos entidades tienen ciclo de vida modelado: \texttt{Alerta} (Generada $\rightarrow$ Notificada $\rightarrow$ \{Atendida $\mid$ Escalada\}) y \texttt{SolicitudMantenimiento} (Registrada $\rightarrow$ En atenci\'on $\rightarrow$ Cerrada). La pregunta pertinente no es por qu\'e hay dos, sino por qu\'e no hay m\'as, y la respuesta es un criterio expl\'icito: se modela el estado de una entidad cuando su comportamiento depende de su historia, no de su valor actual. Un \texttt{Aula} est\'a ocupada o vac\'ia seg\'un su \'ultima lectura, sin memoria; una \texttt{Alerta}, en cambio, no puede escalarse si no fue notificada antes. Aplicar el criterio al rev\'es (modelar un estado por cada clase) habr\'ia producido nueve diagramas triviales sin valor de verificaci\'on.
+Solo dos entidades tienen ciclo de vida modelado: \texttt{Alerta} (Generada $\rightarrow$ Notificada $\rightarrow$ \{Atendida $\mid$ Escalada\}, Figura~\ref{fig:estado-alerta}) y \texttt{SolicitudMantenimiento} (Registrada $\rightarrow$ En atenci\'on $\rightarrow$ Cerrada, Figura~\ref{fig:estado-solicitud}). La pregunta pertinente no es por qu\'e hay dos, sino por qu\'e no hay m\'as, y la respuesta es un criterio expl\'icito: se modela el estado de una entidad cuando su comportamiento depende de su historia, no de su valor actual. Un \texttt{Aula} est\'a ocupada o vac\'ia seg\'un su \'ultima lectura, sin memoria; una \texttt{Alerta}, en cambio, no puede escalarse si no fue notificada antes. Aplicar el criterio al rev\'es (modelar un estado por cada clase) habr\'ia producido nueve diagramas triviales sin valor de verificaci\'on.
 
 Esa decisi\'on tiene una consecuencia directa sobre la trazabilidad: la columna \texttt{Estado} de la matriz aparece como \emph{no aplica} en la mayor\'ia de las filas, y eso se declara con su raz\'on en cada una. La plantilla de la gu\'ia lo prev\'e expresamente al definir esa columna como aplicable ``si aplica''.
+
+\begin{figure}[H]
+\centering
+\input{secciones/fig_estado_alerta}
+\caption{Diagrama de estados de la entidad \texttt{Alerta}, redibujado conforme a la \S4.6 del ERS (defecto D-15)}
+\label{fig:estado-alerta}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{state_maintenance_request.png}
+\caption{Diagrama de estados de la entidad \texttt{SolicitudMantenimiento}}
+\label{fig:estado-solicitud}
+\end{figure}
+
+La Figura~\ref{fig:estado-alerta} no es la que se entreg\'o en la Entrega 3, y la diferencia se declara porque es un defecto hallado durante esta unidad. El PNG heredado modelaba la \texttt{Alerta} con el ciclo \texttt{Pending} $\rightarrow$ \texttt{InProgress} $\rightarrow$ \texttt{Closed}, calcado del de \texttt{SolicitudMantenimiento}, sin estado \texttt{Notificada} ni \texttt{Escalada}. Es decir: contradec\'ia la \S4.6 del propio ERS, la columna \texttt{Estado} de la matriz de trazabilidad y el an\'alisis de impacto de la \S6 (Tabla~\ref{tab:impacto}), los tres coincidentes entre s\'i. Se corrigi\'o el diagrama, no el texto, porque el ciclo especificado es el que tiene respaldo en NFR-01 y en tres artefactos independientes; el diagrama era el eslab\'on desalineado. Queda registrado como D-15 (\S5) y se redibuj\'o en c\'odigo TikZ dentro del repositorio, de modo que ahora se regenera al compilar en vez de depender de una imagen exportada a mano.
 
 La transici\'on \texttt{Notificada} $\rightarrow$ \texttt{Escalada} merece atenci\'on aparte porque es la \'unica que se dispara por tiempo y no por acci\'on de un actor: ocurre cuando transcurre el umbral sin atenci\'on. Es, por tanto, el punto donde el modelo de estados y NFR-01 se tocan, y donde un cambio en el umbral de la alerta obliga a revisar ambos artefactos.
 
 \subsection{Lectura del modelado organizacional i*}
 
-Los diagramas i* responden una pregunta que ni los casos de uso ni las clases responden: \emph{por qu\'e} cada actor quiere lo que pide. El diagrama de Dependencia Estrat\'egica muestra que el Docente no depende del sistema, sino del Personal de Infraestructura, y que es este \'ultimo quien depende de SIGA para obtener datos de sensor en tiempo real. Esa cadena (Docente $\rightarrow$ Infraestructura $\rightarrow$ SIGA) explica un hecho que de otro modo parecer\'ia un descuido de elicitaci\'on: el Docente figura como origen de nueve requisitos pero casi nunca como usuario operativo del sistema. No es que se le haya ignorado; es que su dependencia est\'a mediada.
+Los diagramas i* responden una pregunta que ni los casos de uso ni las clases responden: \emph{por qu\'e} cada actor quiere lo que pide. El diagrama de Dependencia Estrat\'egica (Figura~\ref{fig:istar-sd}) muestra que el Docente no depende del sistema, sino del Personal de Infraestructura, y que es este \'ultimo quien depende de SIGA para obtener datos de sensor en tiempo real. Esa cadena (Docente $\rightarrow$ Infraestructura $\rightarrow$ SIGA) explica un hecho que de otro modo parecer\'ia un descuido de elicitaci\'on: el Docente figura como origen de nueve requisitos pero casi nunca como usuario operativo del sistema. No es que se le haya ignorado; es que su dependencia est\'a mediada.
 
-El diagrama de Raz\'on Estrat\'egica descompone el \emph{softgoal} ``reducir el tiempo de respuesta a fallas'' del Personal de Infraestructura en tres tareas que se corresponden con RF-07, RF-08 y RF-12. Esa descomposici\'on es la justificaci\'on documentada de por qu\'e esos tres requisitos son Must: no lo son por criterio del equipo, sino porque son las tres tareas en que se descompone el objetivo del actor con mayor poder e inter\'es del mapa de \emph{stakeholders}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{istar_SD.drawio.png}
+\caption{Modelo i* de Dependencia Estrat\'egica (SD) del proyecto SIGA}
+\label{fig:istar-sd}
+\end{figure}
+
+El diagrama de Raz\'on Estrat\'egica (Figura~\ref{fig:istar-sr}) descompone el \emph{softgoal} ``reducir el tiempo de respuesta a fallas'' del Personal de Infraestructura en tres tareas que se corresponden con RF-07, RF-08 y RF-12. Esa descomposici\'on es la justificaci\'on documentada de por qu\'e esos tres requisitos son Must: no lo son por criterio del equipo, sino porque son las tres tareas en que se descompone el objetivo del actor con mayor poder e inter\'es del mapa de \emph{stakeholders}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{iStar_SR.drawio.png}
+\caption{Modelo i* de Raz\'on Estrat\'egica (SR) del Personal de Infraestructura y Mantenimiento}
+\label{fig:istar-sr}
+\end{figure}
 
 \subsection{CU-17: Ejercer derechos sobre datos personales (nuevo)}
 

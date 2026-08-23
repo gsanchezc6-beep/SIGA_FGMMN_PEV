@@ -240,7 +240,7 @@ function circulo(s, x, y, d, texto, colorFondo, colorTexto) {
 
   tarjeta(s, M, 5.55, W - 2*M, 0.95, "E6F0E4");
   s.addText([
-    { text: "14 defectos raíz · 71 instancias contables. ", options: { bold: true } },
+    { text: "15 defectos raíz · 72 instancias contables. ", options: { bold: true } },
     { text: "Todos los que cuentan para la métrica de corrección quedaron cerrados." },
   ], { x: M + 0.3, y: 5.75, w: W - 2*M - 0.6, h: 0.55, fontSize: 14, color: CARBON, valign: "middle", margin: 0 });
   s.addNotes("Si preguntan cuál se les escapó: D-01, sobrevivió tres versiones del ERS porque nunca hubo inspección.");
@@ -264,7 +264,7 @@ function circulo(s, x, y, d, texto, colorFondo, colorTexto) {
     ["M4a  Trazabilidad adelante", { text: "0 %", options: { align: "center", color: AMBAR } }, { text: "100 %", options: { align: "center", bold: true, color: VERDE } }, { text: "≥ 90 %", options: { align: "center" } }, { text: "Sí", options: { align: "center" } }],
     ["M4b  Trazabilidad atrás", { text: "100 %", options: { align: "center" } }, { text: "100 %", options: { align: "center" } }, { text: "100 %", options: { align: "center" } }, { text: "Sí", options: { align: "center" } }],
     [{ text: "M5   Modificabilidad", options: { bold: true } }, { text: "4,2", options: { align: "center" } }, { text: "4,2", options: { align: "center", bold: true, color: AMBAR } }, { text: "≤ 3,0", options: { align: "center" } }, { text: "No", options: { align: "center", bold: true, color: AMBAR } }],
-    ["M6   Corrección", { text: "1,73", options: { align: "center", color: AMBAR } }, { text: "0,00", options: { align: "center", bold: true, color: VERDE } }, { text: "≤ 0,05", options: { align: "center" } }, { text: "Sí", options: { align: "center" } }],
+    ["M6   Corrección", { text: "1,76", options: { align: "center", color: AMBAR } }, { text: "0,00", options: { align: "center", bold: true, color: VERDE } }, { text: "≤ 0,05", options: { align: "center" } }, { text: "Sí", options: { align: "center" } }],
   ];
   s.addTable(filas, {
     x: M, y: 1.45, w: W - 2*M, colW: [4.3, 1.9, 1.9, 1.9, 1.9],

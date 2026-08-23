@@ -39,7 +39,7 @@ Reproducido de la Gu\'ia Ampliada PE5 (\S10, Anexo B), con la respuesta anticipa
 Fundamentos & \S1--3: frontera del sistema y l\'imite; diferencia contexto/l\'imite en este proyecto; modelo de proceso seguido y por qu\'e. \\ \hline
 Elicitaci\'on & \S4--6: t\'ecnica que aport\'o requisitos no descubribles de otro modo; stakeholder subrepresentado (respuesta lista: los 7 actores sin RF de origen, D-03) y c\'omo se compens\'o; origen concreto de un requisito. \\ \hline
 Especificaci\'on & \S7--9: un RNF elegido y c\'omo se comprueba objetivamente; el requisito m\'as costoso de redactar verificable; por qu\'e un CU incluye a otro y no lo extiende. \\ \hline
-Validaci\'on & \S10--12: cu\'antos defectos hall\'o la inspecci\'on y cu\'ales siguen abiertos (respuesta lista: 14 defectos ra\'iz, 71 instancias contables; los que cuentan para M6 quedaron cerrados y se mantiene declarada la limitaci\'on de elicitaci\'on D-03); qu\'e defecto cr\'itico se escap\'o y c\'omo se detect\'o (D-01, contradicci\'on de MoSCoW entre el ERS y el CSV de priorizaci\'on, que sobrevivi\'o tres versiones porque nunca hubo inspecci\'on); c\'omo se sabe que las correcciones no introdujeron nuevos defectos (se volvi\'o a medir: M4\_ade 0\,\%$\rightarrow$100\,\% y M6 1,73$\rightarrow$0,00, con la advertencia de \S8.4 sobre la re-inspecci\'on pendiente). \\ \hline
+Validaci\'on & \S10--12: cu\'antos defectos hall\'o la inspecci\'on y cu\'ales siguen abiertos (respuesta lista: 15 defectos ra\'iz, 72 instancias contables; los que cuentan para M6 quedaron cerrados y se mantiene declarada la limitaci\'on de elicitaci\'on D-03); qu\'e defecto cr\'itico se escap\'o y c\'omo se detect\'o (D-01, contradicci\'on de MoSCoW entre el ERS y el CSV de priorizaci\'on, que sobrevivi\'o tres versiones porque nunca hubo inspecci\'on); c\'omo se sabe que las correcciones no introdujeron nuevos defectos (se volvi\'o a medir: M4\_ade 0\,\%$\rightarrow$100\,\% y M6 1,73$\rightarrow$0,00, con la advertencia de \S8.4 sobre la re-inspecci\'on pendiente). \\ \hline
 Gesti\'on & \S13--15: qu\'e RF se rompe si ma\~nana cambia (usar la muestra M5: RF-01/RF-07 afectan a 6 otros RF cada uno); qu\'e RFC rechaz\'o el CCB (respuesta honesta: no existi\'o un CCB formal documentado en ninguna entrega, se declara como vac\'io de proceso); l\'inea base vigente y d\'onde est\'a etiquetada (commit \texttt{9f7c54c}, sin tag de Git formal: pendiente). \\ \hline
 IA & \S16--18: qu\'e decide el modelo y qu\'e pasa cuando se equivoca (ver fichas IA-01/IA-02, bloque (a), fallback); con qu\'e datos se entrenar\'ia y con qu\'e base legal (bloque (b) de cada ficha); c\'omo se medir\'ia que el modelo no perjudica sistem\'aticamente a un grupo (RNF-IA-04/05/09/10, equidad). \\ \hline
 M\'etricas & \S19--20: qu\'e m\'etrica sali\'o peor y qu\'e se hizo (M4\_ade sali\'o 0\,\%; se construyeron el DFD, CU-17 y los 42 casos de prueba en esta unidad y volvi\'o a medirse en 100\,\%. La peor al cierre es M6, 0,73 frente a un umbral de 0,05); mostrar los conteos de verificabilidad (M3, 41/41, comando de b\'usqueda documentado en \S8.2). \\ \hline
@@ -67,7 +67,25 @@ Gilces Carranza Jos\'e Ignacio & 0 & 0 & Ninguno verificable en el historial has
 \caption{Aporte hist\'orico PE1--PE4 (fuente: \texttt{git log --format="\%an"} de ambos repositorios)}
 \end{table}
 
-\textbf{Aporte en la Unidad V (PE5):} S\'anchez Cornejo Gary Alberto, Mu\~noz Qui\~nonez Yeranick Esther, Ce\~no Avila Winston Damian y Mendoza Palma Allan Jeremy son los integrantes activos del equipo en esta unidad. Gilces Carranza Jos\'e Ignacio no registra aporte verificable, ni en las entregas anteriores ni en la Unidad V. Esta tabla se completa con el detalle de aporte de la PE5 una vez existan los commits correspondientes sobre esta carpeta.
+\textbf{Aporte en la Unidad V (PE5):} S\'anchez Cornejo Gary Alberto, Mu\~noz Qui\~nonez Yeranick Esther, Cede\~no Avila Winston Damian y Mendoza Palma Allan Jeremy son los integrantes activos del equipo en esta unidad. Gilces Carranza Jos\'e Ignacio no registra aporte verificable, ni en las entregas anteriores ni en la Unidad V. La Tabla~\ref{tab:aporte-pe5} recoge el reparto real sobre el repositorio de esta unidad, le\'ido del historial y no estimado.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{4.3cm}|c|c|p{5.7cm}|}
+\hline
+\textbf{Integrante} & \textbf{Commits} & \textbf{D\'ias activos} & \textbf{\'Areas del repositorio en que commite\'o} \\ \hline
+S\'anchez Cornejo Gary Alberto & 18 & 4 & Estructura del repositorio, ERS, m\'etricas, informe final, trazabilidad, evidencias e integraci\'on general \\ \hline
+Mu\~noz Qui\~nonez Yeranick Esther & 8 & 4 & Evidencias de campo, trazabilidad, secciones del informe final y materiales de defensa \\ \hline
+Cede\~no Avila Winston Damian & 5 & 4 & Figuras del ERS, modelado UML y fichas de los componentes de IA \\ \hline
+Mendoza Palma Allan Jeremy & 4 & 2 & Modelado UML y artefactos de trazabilidad \\ \hline
+Gilces Carranza Jos\'e Ignacio & 0 & 0 & Sin aporte verificable en el historial \\ \hline
+\end{tabular}
+\caption{Aporte en la Unidad V (fuente: \texttt{git shortlog -sn} y \texttt{git log --name-only} sobre \repourl)}
+\label{tab:aporte-pe5}
+\end{table}
+
+El reparto es desigual y se declara como tal en lugar de presentarlo equilibrado: el analista l\'ider concentra el 51\,\% de los commits (18 de 35). Toda la actividad se concentra adem\'as en seis d\'ias, del 18 al 23 de agosto de 2026, lo que refleja que el trabajo se ejecut\'o en bloque al final de la unidad y no de forma distribuida; es una debilidad de proceso, no de contenido, y as\'i se recoge en la retrospectiva (\S9). Las cifras se pueden reproducir sobre el repositorio con los dos comandos del pie de la tabla.
 
 \subsection*{Anexo D: Retrospectiva}
 \addcontentsline{toc}{subsection}{Anexo D: Retrospectiva}
@@ -77,7 +95,7 @@ Ver \S9 de este informe.
 \subsection*{Anexo E: Referencias y declaraci\'on de uso de IA}
 \addcontentsline{toc}{subsection}{Anexo E: Referencias y declaraci\'on de uso de IA}
 
-\textbf{Herramienta:} Claude (Anthropic), modelo Opus 5, v\'ia Claude Code, sesiones del 20 al 22 de agosto de 2026.
+\textbf{Herramienta:} Claude (Anthropic), modelo Opus 5, v\'ia Claude Code, sesiones del 20 al 23 de agosto de 2026.
 
 \textbf{Secciones asistidas y tipo de asistencia:}
 \begin{itemize}[nosep]
@@ -85,6 +103,7 @@ Ver \S9 de este informe.
 \item \textbf{Fichas de IA (IA-01, IA-02) y RNF-17:} redacci\'on completa asistida por IA, a partir del dominio real del sistema (RF-09, RF-14, RF-13/RF-16 ya existentes en el ERS). No se cit\'o ninguna evidencia de campo (EV-xx) que no existiera; donde no hay evidencia real, se declara expl\'icitamente ``borrador PE5, pendiente de validaci\'on de campo''.
 \item \textbf{DFD Nivel 1, CU-17, matriz de trazabilidad PE5, registro de hu\'erfanos:} construcci\'on completa asistida por IA, derivada del modelo real de RF/CU/clases ya existente en el ERS y en \texttt{matriz\_trazabilidad.csv}: no de una plantilla gen\'erica.
 \item \textbf{Retrospectiva (\S9) y Conclusiones (\S10):} redacci\'on asistida por IA a partir de hechos verificables del repositorio (fechas, versiones, hallazgos de la auditor\'ia).
+\item \textbf{Revisi\'on de cierre (23/08/2026):} inserci\'on y referencia de las diez figuras, ampliaci\'on de los res\'umenes, redibujado en TikZ del diagrama de estados de \texttt{Alerta} y completado de la Tabla~\ref{tab:aporte-pe5} de este anexo. En esa misma revisi\'on se detect\'o el defecto D-15 al confrontar el diagrama entregado con la \S4.6 del ERS; el hallazgo y su correcci\'on est\'an documentados en la \S5 y en \texttt{09\_Metricas/registro\_defectos.csv}. Las cifras de la Tabla~\ref{tab:aporte-pe5} se leyeron del historial de Git con los comandos que la propia tabla declara.
 \end{itemize}
 
 \textbf{M\'etodo de validaci\'on del contenido:} toda cifra de m\'etrica y todo defecto reportado en este informe es reproducible ejecutando los comandos documentados en el Anexo A sobre el repositorio real (\texttt{github.com/gsanchezc6-beep/SIGA\_FGMMN\_ISR401\_AVANCE\_2A}, commit \texttt{9f7c54c}). Ninguna secci\'on evaluativa (conclusiones, justificaciones de decisiones de ingenier\'ia) se declara como producci\'on \'integra de IA sin revisi\'on humana subsecuente.

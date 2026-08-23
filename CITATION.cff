@@ -3,18 +3,18 @@
 # Formato: Citation File Format v1.2.0
 # Equipo FGMMN — Universidad Tecnica Estatal de Quevedo (UTEQ)
 #
-# NOTA PARA EL EQUIPO: los campos marcados con "PENDIENTE" deben
-# completarse antes del cierre de la Entrega 4 (2B). El campo "doi" solo
-# se agrega una vez publicado el conjunto de datos en Zenodo. El ORCID
-# de cada integrante se obtiene gratis y en minutos en https://orcid.org
+# NOTA PARA EL EQUIPO: los campos opcionales "doi" y "orcid" se omiten
+# mientras no existan. El "doi" se agrega una vez publicado el conjunto de
+# datos en Zenodo; el ORCID de cada integrante se obtiene gratis en
+# https://orcid.org. Un campo ausente es valido en CFF; uno relleno con un
+# marcador de plantilla, no.
 # ======================================================================
 cff-version: 1.2.0
 message: "Si utiliza este software, conjunto de datos o documento, por favor citelo de la siguiente manera."
 type: software
 title: "SIGA — Sistema Inteligente de Gestion de Aulas"
-version: "PEV-1.0.0"
-date-released: "PENDIENTE-COMPLETAR-AAAA-MM-DD"
-doi: "PENDIENTE-COMPLETAR-TRAS-DEPOSITO-EN-ZENODO"
+version: "PEV-1.1.0"
+date-released: "2026-08-23"
 repository-code: "https://github.com/gsanchezc6-beep/SIGA_FGMMN_PEV"
 license: "CC-BY-4.0"
 abstract: >-
@@ -36,27 +36,22 @@ authors:
   - family-names: "Sanchez Cornejo"
     given-names: "Gary Alberto"
     affiliation: "Universidad Tecnica Estatal de Quevedo"
-    orcid: "PENDIENTE-COMPLETAR"
     role: "Analista lider"
   - family-names: "Mendoza Palma"
     given-names: "Allan Jeremy"
     affiliation: "Universidad Tecnica Estatal de Quevedo"
-    orcid: "PENDIENTE-COMPLETAR"
     role: "Modelador"
   - family-names: "Cedeno Avila"
     given-names: "Winston Damian"
     affiliation: "Universidad Tecnica Estatal de Quevedo"
-    orcid: "PENDIENTE-COMPLETAR"
     role: "Modelador"
   - family-names: "Munoz Quinonez"
     given-names: "Yeranick Esther"
     affiliation: "Universidad Tecnica Estatal de Quevedo"
-    orcid: "PENDIENTE-COMPLETAR"
     role: "Documentadora"
   - family-names: "Gilces Carranza"
     given-names: "Jose Ignacio"
     affiliation: "Universidad Tecnica Estatal de Quevedo"
-    orcid: "PENDIENTE-COMPLETAR"
     role: "Verificador"
 contact:
   - family-names: "Guerrero Ulloa"

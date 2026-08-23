@@ -7,6 +7,15 @@ El sistema tiene dos componentes basados en aprendizaje autom\'atico, ambos ya i
 \subsection{IA-01: Predictor de fallas de equipos (RF-09)}
 \input{../10_Requisitos_IA/IA-01_Predictor_Fallas_body}
 
+El componente no se especifica en el vac\'io: opera dentro de CU-16, cuyo diagrama de secuencia (Figura~\ref{fig:seq-uc16}) fija en qu\'e orden colaboran los objetos y, con ello, d\'onde se inserta la inferencia del modelo dentro del flujo. Esa ubicaci\'on es la que hace medible el umbral de latencia de RNF-IA-02: el l\'imite de dos segundos se aplica al paso de inferencia (mensaje 1.1.8), no al caso de uso completo. Conviene precisar una diferencia de granularidad entre el diagrama y RF-IA-01, para que no se lea como contradicci\'on: el diagrama, elaborado en la Entrega 3, muestra el indicador que se presenta al usuario, categ\'orico (\emph{Low}, \emph{Medium}, \emph{High}); RF-IA-01 especifica la magnitud que el modelo calcula, continua en el rango 0--1. La categor\'ia es la discretizaci\'on de ese puntaje para la interfaz, y los umbrales de corte quedan como decisi\'on de dise\~no pendiente, no como requisito ya fijado.
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=1.25\textwidth]{seq_UC16_predict_equipment_failures.png}}
+\caption{Diagrama de secuencia de CU-16, predicci\'on de fallas de equipos}
+\label{fig:seq-uc16}
+\end{figure}
+
 \subsection{IA-02: An\'alisis de patrones de consumo energ\'etico (RF-14)}
 \input{../10_Requisitos_IA/IA-02_Analisis_Consumo_body}
 

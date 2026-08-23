@@ -21,7 +21,7 @@
 | M4_ade Trazabilidad adelante | 0 % (0/25) | **100 %** (25/25) | ≥90 % | **Sí** |
 | M4_atr Trazabilidad atrás | 100 % (25/25) | **100 %** (25/25) | 100 % | **Sí** |
 | M5 Modificabilidad | 4,2 | **4,2** | ≤3,0 | **No** |
-| M6 Corrección | 1,73 (71/41) | **0,00** (0/42) | ≤0,05 | **Sí** |
+| M6 Corrección | 1,76 (72/41) | **0,00** (0/42) | ≤0,05 | **Sí** |
 
 Ocho de las nueve mediciones alcanzan su valor de referencia tras las correcciones. **M5 sigue sin cumplir** y no se maquilla: refleja un acoplamiento real del diseño, no un defecto documental.
 
@@ -128,11 +128,16 @@ Se cuentan los defectos de **calidad de requisitos ya existentes** (ambigüedad,
 | D-10 Cláusula Gherkin sin evento observable | 17 | Resuelto |
 | D-12 §6.1 y §6.4 con conjuntos distintos | 1 | Resuelto |
 | D-13 Connextra malformado en las 17 historias | 17 | Resuelto |
+| D-14 Dos RNF bajo una característica que ISO/IEC 25010:2023 ya no contempla | 2 | Resuelto |
+| D-15 Diagrama de estados de `Alerta` distinto del ciclo especificado | 1 | Resuelto |
+| **Total** | **72** | |
 
-- **Antes:** 71 instancias / 41 requisitos = **1,73**.
+- **Antes:** 72 instancias / 41 requisitos = **1,76**.
 - **Después:** 0 residuales / 42 requisitos = **0,00**.
 
 **Advertencia sobre esta cifra.** Un 0,00 no significa que el ERS no tenga defectos: significa que no queda ninguno **de los registrados**. La re-inspección posterior a las correcciones fue automatizada y verificó lo comprobable por script —conteos, identificadores definidos, coherencia de prioridad entre tablas y CSV, cobertura de historias de los 17 Must, balance de tablas LaTeX—, pero **una re-lectura semántica completa por una persona distinta de quien aplicó las correcciones sigue pendiente**, y es lo que daría al valor su respaldo definitivo. Reportarlo de otro modo sería exactamente el error que la guía advierte: declarar 100 % de corrección cuando el propio anexo no lo respalda.
+
+**D-15 es un hallazgo posterior al cierre de la inspección**, detectado el 23/08/2026 al insertar las figuras en el informe final: el diagrama de estados de `Alerta` entregado desde la Entrega 3 modela `Pending → InProgress → Closed` y no el ciclo `Generada → Notificada → {Atendida | Escalada}` que especifica la §4.6 del ERS, de modo que omite la escalada por vencimiento del umbral de NFR-01. Se corrigió el diagrama —no el texto— porque el ciclo especificado tiene respaldo en NFR-01, en la columna `Estado` de la matriz y en el análisis de impacto, tres artefactos coincidentes entre sí. Se cuenta en el «antes» porque preexistía a esta unidad.
 
 **D-13 es un hallazgo del cierre de la inspección**, no de la primera pasada: al reescribir los escenarios Gherkin se detectó que también la cláusula Connextra estaba malformada (el «quiero» repetía el título del requisito y el «para» su descripción, en las 17 historias). Se registra y se cuenta en el «antes» aunque se detectara tarde, porque preexistía al trabajo de esta unidad.
 

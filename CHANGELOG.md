@@ -4,7 +4,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 Todas las versiones corresponden a entregas del Proyecto Fin de Curso
 ISR-401 Ingeniería de Requerimientos, período 2026–2027 PPA.
 
-## [PE5-1.0.0] — 2026-08-22 (Entrega 5 — Unidad V, versión de entrega)
+## [PEV-1.0.0] — 2026-08-22 (Entrega 5 — Unidad V, versión de entrega)
 
 ### Añadido
 - **ERS versión 4.0**, consolidando todos los cambios de PE1 a PE5: RNF-17 de
@@ -40,7 +40,7 @@ ISR-401 Ingeniería de Requerimientos, período 2026–2027 PPA.
   verificar DOI o ISBN de cada una.
 - Ensayo cronometrado de la defensa.
 
-## [PE5-0.2.0] — 2026-08-22 (Entrega 5 — Unidad V)
+## [PEV-0.2.0] — 2026-08-22 (Entrega 5 — Unidad V)
 
 ### Añadido
 - Auditoría de calidad del ERS con las seis métricas de ISO/IEC 25010:2023,
@@ -75,7 +75,7 @@ ISR-401 Ingeniería de Requerimientos, período 2026–2027 PPA.
 - Fusionar RNF-17 y CU-17 en el cuerpo del ERS y emitir su versión final.
 - Presentación y ensayo de la defensa.
 
-## [PE5-0.1.0] — 2026-08-22 (Entrega 5 — Unidad V, en curso)
+## [PEV-0.1.0] — 2026-08-22 (Entrega 5 — Unidad V, en curso)
 
 ### Añadido
 - Estructura inicial del repositorio de la Unidad V (carpetas y archivos raíz).

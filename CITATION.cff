@@ -12,7 +12,7 @@ cff-version: 1.2.0
 message: "Si utiliza este software, conjunto de datos o documento, por favor citelo de la siguiente manera."
 type: software
 title: "SIGA — Sistema Inteligente de Gestion de Aulas"
-version: "PE5-1.0.0"
+version: "PEV-1.0.0"
 date-released: "PENDIENTE-COMPLETAR-AAAA-MM-DD"
 doi: "PENDIENTE-COMPLETAR-TRAS-DEPOSITO-EN-ZENODO"
 repository-code: "https://github.com/gsanchezc6-beep/SIGA_FGMMN_PEV"
